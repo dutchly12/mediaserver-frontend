@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "title_template": "%s - Mediaserver"
+  },
+  "pages": {
+    "index": {
+      "meta": {
+        "title": "Main"
+      }
+    },
+    "authentication": {
+      "sign_in": {
+        "meta": {
+          "title": "Sign-in"
+        }
+      }
+    }
+  }
+}
