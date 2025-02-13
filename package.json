@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@unhead/vue": "^1.11.18",
+    "axios": "^1.7.9",
     "pinia": "^2.3.1",
     "vue": "^3.5.13",
     "vue-i18n": "^11.1.1",
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",
     "@types/node": "^22.13.1",
+    "@unocss/preset-web-fonts": "^65.4.3",
     "@unocss/reset": "^65.4.3",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/eslint-config-prettier": "^10.1.0",
