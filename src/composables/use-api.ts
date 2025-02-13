@@ -18,6 +18,13 @@ export const useApi = (): Api => {
       user: {
         info: () => axios('/v1/user', { method: 'get' }),
       },
+      collections: {
+        list: () => axios('/v1/collections', { method: 'get' }),
+        one: (id) => axios(`/v1/collections/${id}`, { method: 'get' })
+      },
+      videos: {
+        one: (id) => axios(`/v1/videos/${id}`, { method: 'get' }),
+      },
       isAxiosError,
     };
   }

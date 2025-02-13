@@ -1,6 +1,7 @@
 {
   "meta": {
-    "title_template": "%s - Mediaserver"
+    "title_template": "%s - Mediaserver",
+    "title": "Mediaserver"
   },
   "pages": {
     "index": {
@@ -12,6 +13,18 @@
       "sign_in": {
         "meta": {
           "title": "Sign-in"
+        },
+        "title": "Authentication",
+        "form": {
+          "email": {
+            "label": "Email",
+            "placeholder": "username{'@'}example.com"
+          },
+          "password": {
+            "label": "Password",
+            "placeholder": "password"
+          },
+          "action": "Sign-in"
         }
       }
     }

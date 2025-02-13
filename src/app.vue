@@ -11,7 +11,7 @@ useHead(() => ({
     dir: 'ltr',
   },
   bodyAttrs: {
-    class: 'm-0',
+    class: 'font-serif',
   },
   titleTemplate: t('meta.title_template'),
 }));

@@ -32,8 +32,6 @@ export const useAxios = (): AxiosInstance => {
           error.response?.status === 401
         ) {
           if (!refresh) {
-            console.log(2);
-
             refresh = userStore
               .refresh()
               .catch(() => console.error('Tokens refresh failed'))
@@ -43,10 +41,12 @@ export const useAxios = (): AxiosInstance => {
           await refresh;
 
           if (userStore.isAuthorized) {
-            const { request } = error;
-            request.__refreshed = true;
-            request.headers.set('Authorization', `Bearer ${userStore.tokens.access_token}`);
-            return axios(request);
+            const { config } = error;
+            if (!config) return Promise.reject(error);
+
+            config.__refreshed = true;
+            config.headers.set('Authorization', `Bearer ${userStore.tokens.access_token}`);
+            return axios(config);
           } else {
             return Promise.reject(error);
           }
