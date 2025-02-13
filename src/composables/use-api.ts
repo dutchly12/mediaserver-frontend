@@ -1,0 +1,26 @@
+import { isAxiosError } from 'axios';
+import { useAxios } from '@/composables/use-axios.ts';
+import type { Api } from '@/types/composables/use-api.ts';
+
+let instance: Api;
+
+export const useApi = (): Api => {
+  if (!instance) {
+    const axios = useAxios();
+
+    instance = {
+      authentications: {
+        create: (data) => axios('/v1/authentications', { method: 'post', data, __noRefresh: true }),
+        refresh: (data) =>
+          axios('/v1/authentications/refresh', { method: 'post', data, __noRefresh: true }),
+        destroy: () => axios('/v1/authentications/sign-out', { method: 'delete' }),
+      },
+      user: {
+        info: () => axios('/v1/user', { method: 'get' }),
+      },
+      isAxiosError,
+    };
+  }
+
+  return instance;
+};

@@ -10,6 +10,7 @@ const routes: RouteRecordRaw[] = [
     name: 'authentication-sign-in',
     component: () => import('@/pages/authentication/sign-in.vue'),
     meta: {
+      authentication: true,
       layout: 'authentication',
     },
   },
