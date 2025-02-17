@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",
-    "@types/node": "^22.13.1",
+    "@types/node": "^22.13.4",
     "@unocss/preset-web-fonts": "^65.5.0",
     "@unocss/reset": "^65.5.0",
     "@vitejs/plugin-vue": "^5.2.1",
