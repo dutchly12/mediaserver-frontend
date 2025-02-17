@@ -34,8 +34,8 @@ importers:
         specifier: ^22.13.1
         version: 22.13.1
       '@unocss/preset-web-fonts':
-        specifier: ^65.4.3
-        version: 65.4.3
+        specifier: ^65.5.0
+        version: 65.5.0
       '@unocss/reset':
         specifier: ^65.5.0
         version: 65.5.0
@@ -893,6 +893,9 @@ packages:
   '@unocss/core@65.4.3':
     resolution: {integrity: sha512-luFgdcchSlNrYSaDvU2176T2PPQZdxqfREVbxEXNXlFEgyEFrx5hOSUXoJtJSZjRhAcE6zkWyLDf/JkQJ5Eeyw==}
 
+  '@unocss/core@65.5.0':
+    resolution: {integrity: sha512-XYWdS09M2XOjZNDotGhI2TIW/6duLNiyssopwjCbv4AlPklF0bZI86SKI55syYDBt6GRadoQbuvUkhSiTV/hzQ==}
+
   '@unocss/extractor-arbitrary-variants@65.4.3':
     resolution: {integrity: sha512-RhSOOzOxkNjJl9zeglaBe0U+o39jleCCNPWJ87DDJA3ckbyylIIf21ZwY1Xu76rmdar5DT9ob7ucuPfEpJLN9A==}
 
@@ -925,6 +928,9 @@ packages:
 
   '@unocss/preset-web-fonts@65.4.3':
     resolution: {integrity: sha512-edkyohQ4+qjuOxIJf+NeQiEayB47A9eA2NhBLbcqZ0OfMpN8tRZPVW5cyB3b5Ef253NGMd4S8H/96vGTBpqOBA==}
+
+  '@unocss/preset-web-fonts@65.5.0':
+    resolution: {integrity: sha512-zWPsQiMSCoP61J8DX++3Z8Ncs20a3rdBb3uI7bDzHdf9MZEIhKzYYchpYO9Dfw7pzclECeuKhq5IjPjM1lmPUQ==}
 
   '@unocss/preset-wind@65.4.3':
     resolution: {integrity: sha512-KM13xIARNeZ/ZKJr33fZ89l79wgI+1Oo8VPJzmckLjbH9IGOhcH2GON7wVIxQqqqM9IM3vALEqw2KNdM6ontWw==}
@@ -2897,6 +2903,8 @@ snapshots:
 
   '@unocss/core@65.4.3': {}
 
+  '@unocss/core@65.5.0': {}
+
   '@unocss/extractor-arbitrary-variants@65.4.3':
     dependencies:
       '@unocss/core': 65.4.3
@@ -2962,6 +2970,11 @@ snapshots:
       '@unocss/core': 65.4.3
       ofetch: 1.4.1
 
+  '@unocss/preset-web-fonts@65.5.0':
+    dependencies:
+      '@unocss/core': 65.5.0
+      ofetch: 1.4.1
+
   '@unocss/preset-wind@65.4.3':
     dependencies:
       '@unocss/core': 65.4.3
@@ -2974,7 +2987,7 @@ snapshots:
 
   '@unocss/rule-utils@65.4.3':
     dependencies:
-      '@unocss/core': 65.4.3
+      '@unocss/core': 65.5.0
       magic-string: 0.30.17
 
   '@unocss/transformer-attributify-jsx@65.4.3':
