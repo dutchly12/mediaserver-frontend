@@ -55,8 +55,8 @@ importers:
         specifier: ^9.21.0
         version: 9.21.0(jiti@2.4.2)
       eslint-plugin-oxlint:
-        specifier: ^0.15.12
-        version: 0.15.12
+        specifier: ^0.15.13
+        version: 0.15.13
       eslint-plugin-vue:
         specifier: ^9.32.0
         version: 9.32.0(eslint@9.21.0(jiti@2.4.2))
@@ -1150,8 +1150,8 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
-  eslint-plugin-oxlint@0.15.12:
-    resolution: {integrity: sha512-eeyRvy7VkCfjHU3Ogq03jJILoV9cc2390OTYezM2RUG5uuEskgKZbJLQcOWpr0Iw7IAeA5ltEP6Mizzm30eCJw==}
+  eslint-plugin-oxlint@0.15.13:
+    resolution: {integrity: sha512-yTIxhdPILY44pjbUx/0s7W+yRBmqchDy6OlOGTCGmklcEglo3jtL1fWKxf1pFTZKSiHbeTfZqJzEmwBEtv9Wcw==}
 
   eslint-plugin-prettier@5.2.3:
     resolution: {integrity: sha512-qJ+y0FfCp/mQYQ/vWQ3s7eUlFEL4PyKfAJxsnYTJ4YT73nsJBWqmEpFryxV9OeUiqmsTsYJ5Y+KDNaeP31wrRw==}
@@ -3202,7 +3202,7 @@ snapshots:
     dependencies:
       eslint: 9.21.0(jiti@2.4.2)
 
-  eslint-plugin-oxlint@0.15.12:
+  eslint-plugin-oxlint@0.15.13:
     dependencies:
       jsonc-parser: 3.3.1
 
