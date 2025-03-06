@@ -7,7 +7,7 @@
     "node": "22.x",
     "pnpm": "10.x"
   },
-  "packageManager": "pnpm@10.3.0+sha512.ee592eda8815a8a293c206bb0917c4bb0ff274c50def7cbc17be05ec641fc2d1b02490ce660061356bd0d126a4d7eb2ec8830e6959fb8a447571c631d5a2442d",
+  "packageManager": "pnpm@10.6.0+sha512.df0136e797db0cfa7ec1084e77f3bdf81bacbae9066832fbf95cba4c2140ad05e64f316cde51ce3f99ea00a91ffc702d6aedd3c0f450f895e3e7c052fe573cd8",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
@@ -21,6 +21,7 @@
     "code:fix": "run-s lint:eslint lint:oxlint format"
   },
   "dependencies": {
+    "@rails/activestorage": "^8.0.100",
     "@unhead/vue": "^1.11.20",
     "axios": "^1.8.1",
     "pinia": "^3.0.1",
@@ -31,6 +32,7 @@
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",
     "@types/node": "^22.13.9",
+    "@types/rails__activestorage": "^7.1.1",
     "@unocss/preset-web-fonts": "^66.0.0",
     "@unocss/reset": "^66.0.0",
     "@vitejs/plugin-vue": "^5.2.1",
