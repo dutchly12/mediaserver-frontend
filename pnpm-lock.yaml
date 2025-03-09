@@ -39,9 +39,6 @@ importers:
       '@types/rails__activestorage':
         specifier: ^7.1.1
         version: 7.1.1
-      '@unocss/preset-web-fonts':
-        specifier: ^66.0.0
-        version: 66.0.0
       '@unocss/reset':
         specifier: ^66.0.0
         version: 66.0.0
