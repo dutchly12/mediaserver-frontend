@@ -1,5 +1,3 @@
-import type { CollectionVideo } from '@/types/model/video.ts';
-
 export interface ListCollection {
   id: string;
   name: string;
@@ -7,6 +5,4 @@ export interface ListCollection {
   updated_at: string;
 }
 
-export interface Collection extends ListCollection {
-  videos: CollectionVideo[];
-}
+export type Collection = ListCollection;

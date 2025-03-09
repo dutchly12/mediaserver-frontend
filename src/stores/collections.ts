@@ -11,10 +11,10 @@ export const useCollectionsStore = defineStore('collections', () => {
   const loadCollections = async () => {
     const { data } = await api.collections.list();
     collections.value = data;
-  }
+  };
 
   return {
     collections,
     loadCollections,
-  }
-})
+  };
+});

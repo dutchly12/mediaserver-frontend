@@ -20,11 +20,11 @@ export interface Api {
     info: () => Response<User>;
   };
   collections: {
-    list: () => Response<ListCollection[]>
-    one: (id: string) => Response<Collection>
-  }
+    list: () => Response<ListCollection[]>;
+    one: (id: string) => Response<Collection>;
+  };
   videos: {
-    one: (id: string) => Response<Video>
-  }
+    one: (id: string) => Response<Video>;
+  };
   isAxiosError: typeof isAxiosError;
 }

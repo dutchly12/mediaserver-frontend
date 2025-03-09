@@ -4,8 +4,10 @@ import { useRoute } from 'vue-router';
 
 const route = useRoute();
 
-const AuthenticationLayout = defineAsyncComponent(() => import('@/components/layouts/authentication.vue'));
-const DefaultLayout = defineAsyncComponent(() => import('@/components/layouts/default.vue'))
+const AuthenticationLayout = defineAsyncComponent(
+  () => import('@/components/layouts/authentication.vue'),
+);
+const DefaultLayout = defineAsyncComponent(() => import('@/components/layouts/default.vue'));
 
 const component = computed(() => {
   switch (route.meta.layout) {

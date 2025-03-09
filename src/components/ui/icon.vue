@@ -5,9 +5,9 @@ import type { IconName } from '@/types/assets/icons.ts';
 
 const props = defineProps<{
   name: IconName;
-}>()
+}>();
 
-const href = computed(() => `${main}#${props.name}`)
+const href = computed(() => `${main}#${props.name}`);
 </script>
 
 <template>

@@ -7,7 +7,7 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/collections/new.vue'),
     meta: {
       protected: true,
-    }
+    },
   },
   {
     path: '/collections/:id',
@@ -15,7 +15,7 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/collections/[id]/index.vue'),
     meta: {
       protected: true,
-    }
+    },
   },
   {
     path: '/collections/:id/edit',
@@ -23,8 +23,8 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/collections/[id]/edit.vue'),
     meta: {
       protected: true,
-    }
-  }
-]
+    },
+  },
+];
 
 export default routes;

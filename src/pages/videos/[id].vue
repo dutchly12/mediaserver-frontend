@@ -21,13 +21,13 @@ const loadVideo = async () => {
     video.value = data;
   } catch {}
   loading.value = false;
-}
+};
 
 loadVideo();
 
 useHead(() => ({
   title: video.value?.name,
-}))
+}));
 </script>
 
 <template>

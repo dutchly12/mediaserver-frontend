@@ -20,7 +20,7 @@ export const useApi = (): Api => {
       },
       collections: {
         list: () => axios('/v1/collections', { method: 'get' }),
-        one: (id) => axios(`/v1/collections/${id}`, { method: 'get' })
+        one: (id) => axios(`/v1/collections/${id}`, { method: 'get' }),
       },
       videos: {
         one: (id) => axios(`/v1/videos/${id}`, { method: 'get' }),
