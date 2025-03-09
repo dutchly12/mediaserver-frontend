@@ -18,7 +18,8 @@
     "lint:eslint": "eslint . --fix",
     "lint": "run-s lint:*",
     "format": "prettier --write .",
-    "code:fix": "run-s lint:eslint lint:oxlint format"
+    "code:fix": "run-s lint:eslint lint:oxlint format",
+    "generate:sprites": "tsx utils/sprites-generator.ts"
   },
   "dependencies": {
     "@rails/activestorage": "^8.0.100",
@@ -46,6 +47,8 @@
     "npm-run-all2": "^7.0.2",
     "oxlint": "^0.15.13",
     "prettier": "^3.5.3",
+    "svgstore": "^3.0.1",
+    "tsx": "^4.19.3",
     "typescript": "^5.8.2",
     "unocss": "^66.0.0",
     "vite": "^6.2.1",
