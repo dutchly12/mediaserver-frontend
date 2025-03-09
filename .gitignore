@@ -28,3 +28,8 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# Custom directories
+/src/assets/sprites
+
+# Custom files
