@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@rails/activestorage':
-        specifier: ^8.0.100
-        version: 8.0.100
+        specifier: ^8.0.200
+        version: 8.0.200
       '@unhead/vue':
         specifier: ^1.11.20
         version: 1.11.20(vue@3.5.13(typescript@5.8.2))
@@ -551,8 +551,8 @@ packages:
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
 
-  '@rails/activestorage@8.0.100':
-    resolution: {integrity: sha512-/fIFav9RFFzQKK3a91O2OOdnHxPx+mBIR6wZDxeH9bcbDf2dZqhVcr5DGRJuhkF8U7C3s0tYvYafscmkBNRlHQ==}
+  '@rails/activestorage@8.0.200':
+    resolution: {integrity: sha512-V7GnZXsAMPDWVOBv4/XpHwj5sOw5bWjidWCuUbK3Zx1xt2pOfFaeJDUG7fEWb1MwP4aW1oVVlGkJBdXVyvru0A==}
 
   '@rollup/pluginutils@5.1.4':
     resolution: {integrity: sha512-USm05zrsFxYLPdWWq+K3STlWiT/3ELn3RcV5hJMghpeAIhxfsUIg6mt12CBJBInWMV4VneoV7SfGv8xIwo2qNQ==}
@@ -2543,7 +2543,7 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
-  '@rails/activestorage@8.0.100':
+  '@rails/activestorage@8.0.200':
     dependencies:
       spark-md5: 3.0.2
 
