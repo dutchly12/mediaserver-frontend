@@ -22,7 +22,7 @@
     "generate:sprites": "tsx utils/sprites-generator.ts"
   },
   "dependencies": {
-    "@rails/activestorage": "^8.0.100",
+    "@rails/activestorage": "^8.0.200",
     "@unhead/vue": "^1.11.20",
     "axios": "^1.8.2",
     "pinia": "^3.0.1",
