@@ -1,6 +1,5 @@
 export enum StorageUploadStatus {
   QUEUED = 'queued',
-  PREPARING = 'preparing',
   UPLOADING = 'uploading',
   UPLOADED = 'uploaded',
   ERROR = 'error',

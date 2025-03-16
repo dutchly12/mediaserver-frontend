@@ -1,4 +1,4 @@
-import { computed, ref } from 'vue';
+import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 import {
   ActiveStorageUploader,
@@ -32,10 +32,6 @@ export const useStorageStore = defineStore('storage', () => {
     uploads.value[index] = {
       ...upload,
       ...event,
-      status:
-        upload.status === StorageUploadStatus.PREPARING
-          ? StorageUploadStatus.UPLOADING
-          : upload.status,
     };
   };
 
@@ -45,6 +41,7 @@ export const useStorageStore = defineStore('storage', () => {
     if (uploading || index < 0) return;
 
     uploading = true;
+
     const uploader = new ActiveStorageUploader(uploads.value[index].file, (event) =>
       handleProgressEvent(uploads.value[index].id, event),
     );
