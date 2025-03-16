@@ -6,3 +6,9 @@ export interface ListCollection {
 }
 
 export type Collection = ListCollection;
+
+export interface CollectionCreateData {
+  collection: {
+    name: string;
+  };
+}
