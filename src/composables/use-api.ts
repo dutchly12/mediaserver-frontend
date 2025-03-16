@@ -21,9 +21,13 @@ export const useApi = (): Api => {
       collections: {
         list: () => axios('/v1/collections', { method: 'get' }),
         one: (id) => axios(`/v1/collections/${id}`, { method: 'get' }),
+        create: (data) => axios('/v1/collections', { method: 'post', data }),
       },
       videos: {
+        list: (params) => axios(`/v1/videos`, { method: 'get', params }),
         one: (id) => axios(`/v1/videos/${id}`, { method: 'get' }),
+        screenshots: (id) => axios(`/v1/videos/${id}/screenshots`, { method: 'get' }),
+        create: (data) => axios(`/v1/videos`, { method: 'post', data }),
       },
       isAxiosError,
     };
