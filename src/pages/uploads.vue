@@ -15,7 +15,9 @@ const uploads = computed<UploadsUploadItem[]>(() =>
   storageStore.uploads.map((upload) => ({
     id: upload.id,
     title: upload.name,
-    uploaded: `${(upload.progress * 100).toFixed(2)}%`,
+    total: upload.total,
+    loaded: upload.loaded,
+    progress: upload.progress,
     status: upload.status,
   })),
 );

@@ -8,3 +8,16 @@ export const numberToTime = (value: number) => {
     .map((item) => String(item).padStart(2, '0'))
     .join(':');
 };
+
+export const formattedSize = (value: number) => {
+  switch (true) {
+    case !!Math.floor(value / 10 ** 9):
+      return `${(value / 10 ** 9).toFixed(2)}GB`;
+    case !!Math.floor((value % 10 ** 9) / 10 ** 6):
+      return `${((value % 10 ** 9) / 10 ** 6).toFixed(2)}MB`;
+    case !!Math.floor((value % 10 ** 6) / 10 ** 3):
+      return `${((value % 10 ** 6) / 10 ** 3).toFixed(2)}KB`;
+    default:
+      return `${String(value).padEnd(4, '0')}B`;
+  }
+};
