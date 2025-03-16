@@ -7,6 +7,17 @@ import UnoCSS from 'unocss/vite';
 
 // https://vite.dev/config/
 export default defineConfig({
+  build: {
+    assetsInlineLimit: 0,
+    emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[hash][extname]',
+        chunkFileNames: 'chunks/[hash].js',
+        entryFileNames: 'entries/[hash].js',
+      },
+    },
+  },
   plugins: [vue(), vueDevTools(), UnoCSS()],
   resolve: {
     alias: {
