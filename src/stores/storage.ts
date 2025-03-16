@@ -71,12 +71,12 @@ export const useStorageStore = defineStore('storage', () => {
     uploads.value.push({
       id,
       name,
+      file,
+      callback,
       total: 0,
       loaded: 0,
       progress: 0,
       status: StorageUploadStatus.QUEUED,
-      file,
-      callback,
     });
 
     processUpload();
