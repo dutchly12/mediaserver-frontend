@@ -8,9 +8,11 @@ const props = withDefaults(
     label?: string;
     placeholder?: string;
     type?: 'text' | 'number' | 'password' | 'email';
+    disabled?: boolean;
   }>(),
   {
     type: 'text',
+    disabled: false,
   },
 );
 
@@ -33,6 +35,7 @@ const computedId = computed(() => `${props.name}_${id}`);
       :id="computedId"
       :placeholder="props.placeholder"
       :type="props.type"
+      :disabled="props.disabled"
       class="px-3 py-1.5 font-base leading-6 font-normal border-1 border-solid border-gray rounded-1.5"
     />
   </div>

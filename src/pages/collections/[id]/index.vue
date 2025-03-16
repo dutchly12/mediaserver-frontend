@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useHead } from '@unhead/vue';
 import { useApi } from '@/composables/use-api.ts';
@@ -7,29 +7,44 @@ import UiText from '@/components/ui/text.vue';
 import PageCollectionIdUploader from '@/components/page/collections/id/uploader.vue';
 import PageCollectionsIdVideo from '@/components/page/collections/id/video.vue';
 import type { Collection } from '@/types/model/collection.ts';
+import type { ListVideo } from '@/types/model/video.ts';
 
 const route = useRoute();
 const api = useApi();
 
 const loading = ref(false);
 const collection = ref<Collection>();
+const videos = ref<ListVideo[]>([]);
+
+const routeId = computed(() => route.params.id as string);
 
 const loadCollection = async () => {
-  if (loading.value || typeof route.params.id !== 'string') return;
+  const { data } = await api.collections.one(routeId.value);
+  collection.value = data;
+};
+
+const loadVideos = async () => {
+  const { data } = await api.videos.list({ collection_id: routeId.value });
+  videos.value = data;
+};
+
+const loadData = async () => {
+  if (loading.value) return;
 
   loading.value = true;
   try {
-    const { data } = await api.collections.one(route.params.id);
-    collection.value = data;
+    await Promise.all([loadCollection(), loadVideos()]);
   } catch {}
   loading.value = false;
-}
+};
 
-loadCollection();
+loadData();
+
+watch(routeId, loadData);
 
 useHead(() => ({
-  title: collection.value?.name
-}))
+  title: collection.value?.name,
+}));
 </script>
 
 <template>
@@ -39,14 +54,11 @@ useHead(() => ({
         {{ collection?.name }}
       </UiText>
 
-    <div>
-      <RouterLink v-for="video in collection?.videos" :key="video.id" :to="{ name: 'videos-id', params: { id: video.id} }">
-        <img :src="video.preview" :alt="video.name" loading="lazy" />
-        <UiText>{{ video.name }}</UiText>
-      </RouterLink>
       <PageCollectionIdUploader :collection-id="routeId" />
     </div>
 
+    <div class="grid grid-cols-1 gap-2 md:grid-cols-3">
+      <PageCollectionsIdVideo v-for="video in videos" :key="video.id" :video />
     </div>
   </div>
 </template>

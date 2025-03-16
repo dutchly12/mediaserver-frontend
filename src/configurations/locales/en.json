@@ -21,6 +21,26 @@
         "title": "Main"
       }
     },
+    "collections": {
+      "new": {
+        "meta": {
+          "title": "New collection"
+        },
+        "title": "Create new collection"
+      }
+    },
+    "uploads": {
+      "meta": {
+        "title": "Uploads"
+      },
+      "title": "Uploads",
+      "form": {
+        "name": {
+          "label": "Name",
+          "placeholder": "Vacation"
+        }
+      }
+    },
     "authentication": {
       "sign_in": {
         "meta": {
