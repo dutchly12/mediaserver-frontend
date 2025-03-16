@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useHead } from '@unhead/vue';
 import { useApi } from '@/composables/use-api.ts';
@@ -12,12 +12,14 @@ const api = useApi();
 const loading = ref(false);
 const video = ref<Video>();
 
+const routeId = computed(() => route.params.id as string);
+
 const loadVideo = async () => {
-  if (loading.value || typeof route.params.id !== 'string') return;
+  if (loading.value) return;
 
   loading.value = true;
   try {
-    const { data } = await api.videos.one(route.params.id);
+    const { data } = await api.videos.one(routeId.value);
     video.value = data;
   } catch {}
   loading.value = false;
@@ -34,6 +36,11 @@ useHead(() => ({
   <div>
     <UiText variant="h3">{{ video?.name }}</UiText>
 
-    <video :src="video?.file" :poster="video?.preview" controls />
+    <video
+      :src="video?.file"
+      :poster="video?.preview ?? undefined"
+      controls
+      class="max-w-full max-h-[500px]"
+    />
   </div>
 </template>
