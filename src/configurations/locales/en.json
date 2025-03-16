@@ -3,6 +3,18 @@
     "title_template": "%s - Mediaserver",
     "title": "Mediaserver"
   },
+  "labels": {
+    "uploads": "Uploads",
+    "new_collection": "New collection",
+    "active": "Active",
+    "done": "Done",
+    "preparing": "Preparing",
+    "queued": "Queued",
+    "error": "Error"
+  },
+  "actions": {
+    "create": "Create"
+  },
   "pages": {
     "index": {
       "meta": {
