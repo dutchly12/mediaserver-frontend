@@ -57,7 +57,7 @@ useHead(() => ({
       <PageCollectionIdUploader :collection-id="routeId" />
     </div>
 
-    <div class="grid grid-cols-1 gap-2 md:grid-cols-3">
+    <div class="grid grid-cols-1 gap-2" md="grid-cols-3">
       <PageCollectionsIdVideo v-for="video in videos" :key="video.id" :video />
     </div>
   </div>
