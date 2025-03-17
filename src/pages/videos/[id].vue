@@ -44,7 +44,7 @@ useHead(() => ({
 
 <template>
   <div>
-    <UiText variant="h3">{{ video?.name }}</UiText>
+    <UiText variant="h3" class="mb-4">{{ video?.name }}</UiText>
 
     <div class="grid grid-cols-1 gap-4" md="grid-cols-[2fr_1fr]">
       <video
@@ -55,14 +55,14 @@ useHead(() => ({
       />
     </div>
 
-    <div class="mt-4 grid grid-cols-3 gap-4">
-      <img
+    <div class="mt-4 grid grid-cols-1 gap-4" md="grid-cols-3">
+      <div
         v-for="(screenshot, index) in screenshots"
         :key="screenshot.url"
-        :src="screenshot.url"
-        :alt="`screenshot-${index}`"
-        class="w-full"
-      />
+        class="w-full aspect-ratio-video"
+      >
+        <img :src="screenshot.url" :alt="`screenshot-${index}`" loading="lazy" class="w-full" />
+      </div>
     </div>
   </div>
 </template>

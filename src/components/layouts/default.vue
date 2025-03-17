@@ -6,7 +6,7 @@ import AppMenu from '@/components/app/menu.vue';
   <div>
     <AppMenu />
 
-    <div class="mt-14.5 mx-2" md="ml-62 mt-2">
+    <div class="mt-14.5 mx-2" md="ml-62 my-4">
       <slot />
     </div>
   </div>
