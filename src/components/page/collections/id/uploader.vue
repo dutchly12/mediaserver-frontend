@@ -36,6 +36,6 @@ const handleChange = (event: Event) => {
 <template>
   <div>
     <UiIcon name="cloud-upload" class="size-12 stroke-1.5 cursor-pointer" @click="handleClick" />
-    <input ref="input" type="file" multiple class="hidden" @change="handleChange" />
+    <input ref="input" type="file" multiple accept="video/mp4" class="hidden" @change="handleChange" />
   </div>
 </template>
