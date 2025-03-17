@@ -30,6 +30,7 @@ const formatterDuration = computed(
         {{ formatterDuration }}
       </div>
     </div>
-    <UiText>{{ video.name }}</UiText>
+
+    <UiText :title="video.name" class="truncate">{{ video.name }}</UiText>
   </RouterLink>
 </template>

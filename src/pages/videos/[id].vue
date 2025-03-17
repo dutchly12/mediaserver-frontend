@@ -5,12 +5,14 @@ import { useHead } from '@unhead/vue';
 import { useApi } from '@/composables/use-api.ts';
 import UiText from '@/components/ui/text.vue';
 import type { Video } from '@/types/model/video.ts';
+import type { Screenshot } from '@/types/model/screenshot.ts';
 
 const route = useRoute();
 const api = useApi();
 
 const loading = ref(false);
 const video = ref<Video>();
+const screenshots = ref<Screenshot[]>([]);
 
 const routeId = computed(() => route.params.id as string);
 
@@ -25,7 +27,15 @@ const loadVideo = async () => {
   loading.value = false;
 };
 
+const loadScreenshots = async () => {
+  try {
+    const { data } = await api.videos.screenshots(routeId.value);
+    screenshots.value = data;
+  } catch {}
+};
+
 loadVideo();
+loadScreenshots();
 
 useHead(() => ({
   title: video.value?.name,
@@ -36,11 +46,23 @@ useHead(() => ({
   <div>
     <UiText variant="h3">{{ video?.name }}</UiText>
 
-    <video
-      :src="video?.file"
-      :poster="video?.preview ?? undefined"
-      controls
-      class="max-w-full max-h-[500px]"
-    />
+    <div class="grid grid-cols-1 gap-4" md="grid-cols-[2fr_1fr]">
+      <video
+        :src="video?.file"
+        :poster="video?.preview ?? undefined"
+        controls
+        class="w-full aspect-ratio-video"
+      />
+    </div>
+
+    <div class="mt-4 grid grid-cols-3 gap-4">
+      <img
+        v-for="(screenshot, index) in screenshots"
+        :key="screenshot.url"
+        :src="screenshot.url"
+        :alt="`screenshot-${index}`"
+        class="w-full"
+      />
+    </div>
   </div>
 </template>
