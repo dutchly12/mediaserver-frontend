@@ -27,17 +27,17 @@ watch(
 <template>
   <div
     class="fixed left-0 top-0 w-screen h-12.5 px-2 flex justify-between items-center gap-4 border-solid border-gray-4 border-b bg-white"
-    md="w-60 h-screen py-2 flex-col items-start border-b-none border-r"
+    lg="w-70 h-screen py-2 flex-col items-start border-b-none border-r"
   >
     <RouterLink
       :to="{ name: 'index' }"
       class="block font-700 text-2xl self-center"
-      md="text-center"
+      lg="text-center"
     >
       {{ $t('meta.title') }}
     </RouterLink>
 
-    <UiButton variant="outlined" color="red" compact md="hidden" @click="switchMenu">
+    <UiButton variant="outlined" color="red" compact lg="hidden" @click="switchMenu">
       <UiIcon name="menu" size="1.5rem" />
     </UiButton>
 
@@ -55,7 +55,7 @@ watch(
         menuState ? 'flex' : 'hidden',
         'z-1000',
       ]"
-      md="static flex"
+      lg="static flex"
     >
       <div>
         <RouterLink
