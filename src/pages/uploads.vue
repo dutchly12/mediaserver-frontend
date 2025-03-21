@@ -64,7 +64,12 @@ useHead(() => ({
           leave-to-class="opacity-0 translate-x-[50%]"
           class="flex flex-col gap-2"
         >
-          <UploadsUpload v-for="upload in tab.items" :key="upload.id" :upload />
+          <UploadsUpload
+            v-for="upload in tab.items"
+            :key="upload.id"
+            :upload
+            @retry="() => storageStore.retry(upload.id)"
+          />
         </TransitionGroup>
       </template>
     </UiTabs>

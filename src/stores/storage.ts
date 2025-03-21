@@ -12,7 +12,7 @@ import {
 
 export const useStorageStore = defineStore('storage', () => {
   let uploading = false;
-  let iteration = 1;
+  let iteration = 0;
 
   const uploads = ref<StorageUpload[]>([]);
 
@@ -20,7 +20,7 @@ export const useStorageStore = defineStore('storage', () => {
     uploads.value.some((upload) => upload.status === StorageUploadStatus.UPLOADING),
   );
 
-  const getUploadId = () => iteration++;
+  const getUploadId = () => ++iteration;
 
   const handleProgressEvent = (id: number, event: ProgressHandlerEvent) => {
     const index = uploads.value.findIndex((upload) => upload.id === id);
@@ -56,8 +56,8 @@ export const useStorageStore = defineStore('storage', () => {
     } catch {
       uploads.value[index].status = StorageUploadStatus.ERROR;
     }
-
     uploading = false;
+
     processUpload();
   };
 

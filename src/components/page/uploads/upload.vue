@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { formattedSize } from '@/utils/formatters.ts';
+import UiIcon from '@/components/ui/icon.vue';
 import { StorageUploadStatus } from '@/types/stores/storage.ts';
 
 export interface UploadsUploadItem {
@@ -14,6 +15,10 @@ export interface UploadsUploadItem {
 }
 
 const props = defineProps<{ upload: UploadsUploadItem }>();
+
+const emits = defineEmits<{
+  retry: [value: void];
+}>();
 
 const { t } = useI18n();
 
@@ -43,6 +48,8 @@ const statusText = computed(() => {
       return formattedProgress.value;
   }
 });
+
+const isErrorStatus = computed(() => props.upload.status === StorageUploadStatus.ERROR);
 </script>
 
 <template>
@@ -58,13 +65,22 @@ const statusText = computed(() => {
     <div class="absolute z-2 w-full p-2 flex">
       {{ upload.title }}
 
-      <div class="ml-auto font-bold tabular-nums">
-        <template v-if="progressText">
-          {{ progressText }}
-          -
-        </template>
+      <div class="ml-auto flex items-center gap-2 font-bold tabular-nums cursor-pointer">
+        <UiIcon
+          v-if="isErrorStatus"
+          name="rotate-cw"
+          class="size-4"
+          @click="() => emits('retry')"
+        />
 
-        {{ statusText }}
+        <span>
+          <template v-if="progressText">
+            {{ progressText }}
+            -
+          </template>
+
+          {{ statusText }}
+        </span>
       </div>
     </div>
   </div>
