@@ -79,9 +79,24 @@ export const useStorageStore = defineStore('storage', () => {
     processUpload();
   };
 
+  const retry = (id: number) => {
+    const index = uploads.value.findIndex((upload) => upload.id === id)
+
+    if ((index < 0) || uploads.value[index].status !== StorageUploadStatus.ERROR) return;
+
+    uploads.value[index] = {
+      ...uploads.value[index],
+      progress: 0,
+      status: StorageUploadStatus.QUEUED
+    }
+
+    processUpload();
+  }
+
   return {
     uploads,
     hasActiveUpload,
     upload,
+    retry,
   };
 });
