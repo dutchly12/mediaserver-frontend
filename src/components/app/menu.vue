@@ -26,7 +26,7 @@ watch(
 
 <template>
   <div
-    class="fixed left-0 top-0 w-screen h-12.5 px-2 flex justify-between items-center gap-4 border-solid border-gray-4 border-b bg-white"
+    class="fixed left-0 top-0 z-1000 w-screen h-12.5 px-2 flex justify-between items-center gap-4 border-solid border-gray-4 border-b bg-white dark:bg-black"
     lg="w-70 h-screen py-2 flex-col items-start border-b-none border-r"
   >
     <RouterLink
@@ -51,9 +51,8 @@ watch(
         'grow',
         'flex-col',
         'justify-between',
-        'bg-white',
+        'bg-inherit',
         menuState ? 'flex' : 'hidden',
-        'z-1000',
       ]"
       lg="static flex"
     >

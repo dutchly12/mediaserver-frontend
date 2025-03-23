@@ -1,8 +1,10 @@
-import { defineConfig, presetUno, presetAttributify, presetWebFonts } from 'unocss';
+import { defineConfig, presetMini, presetAttributify, presetWebFonts } from 'unocss';
 
 export default defineConfig({
   presets: [
-    presetUno(),
+    presetMini({
+      dark: 'media',
+    }),
     presetAttributify(),
     presetWebFonts({
       provider: 'google',
