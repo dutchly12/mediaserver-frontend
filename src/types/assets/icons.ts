@@ -1,1 +1,1 @@
-export type IconName = 'cloud-upload' | 'menu' | 'rotate-cw';
+export type IconName = 'cloud-upload' | 'image-off' | 'menu' | 'rotate-cw';
