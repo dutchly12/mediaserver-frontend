@@ -49,12 +49,13 @@ watch(
         'bottom-0',
         'w-full',
         'grow',
+        'p-2',
         'flex-col',
         'justify-between',
         'bg-inherit',
         menuState ? 'flex' : 'hidden',
       ]"
-      lg="static flex"
+      lg="static p-0 flex"
     >
       <div>
         <RouterLink
