@@ -55,13 +55,13 @@ useHead(() => ({
       />
     </div>
 
-    <div class="mt-4 grid grid-cols-1 gap-4" lg="grid-cols-3">
+    <div class="mt-4 grid grid-cols-1 gap-4" md="grid-cols-3" lg="grid-cols-4">
       <div
         v-for="(screenshot, index) in screenshots"
         :key="screenshot.url"
         class="w-full aspect-ratio-video"
       >
-        <img :src="screenshot.url" :alt="`screenshot-${index}`" loading="lazy" class="w-full" />
+        <img :src="screenshot.url" :alt="`screenshot-${index}`" loading="lazy" class="h-max-full" />
       </div>
     </div>
   </div>
