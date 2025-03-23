@@ -37,8 +37,8 @@ watch(
       {{ $t('meta.title') }}
     </RouterLink>
 
-    <UiButton variant="outlined" color="red" compact lg="hidden" @click="switchMenu">
-      <UiIcon name="menu" size="1.5rem" />
+    <UiButton variant="outlined" compact lg="hidden" @click="switchMenu">
+      <UiIcon name="menu" size="1rem" />
     </UiButton>
 
     <div
