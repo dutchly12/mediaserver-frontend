@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",
-    "@types/node": "^22.13.10",
+    "@types/node": "^22.13.11",
     "@types/rails__activestorage": "^7.1.1",
     "@unocss/reset": "^66.0.0",
     "@vitejs/plugin-vue": "^5.2.3",
