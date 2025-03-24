@@ -55,7 +55,12 @@ useHead(() => ({
       />
     </div>
 
-    <div class="mt-4 grid grid-cols-1 gap-4" md="grid-cols-3" lg="grid-cols-4">
+    <div
+      v-if="screenshots.length"
+      class="mt-2 grid grid-cols-1 gap-2"
+      md="grid-cols-3"
+      lg="grid-cols-4"
+    >
       <div
         v-for="(screenshot, index) in screenshots"
         :key="screenshot.url"
