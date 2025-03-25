@@ -5,7 +5,7 @@ import { useHead } from '@unhead/vue';
 import { useApi } from '@/composables/use-api.ts';
 import UiText from '@/components/ui/text.vue';
 import PageCollectionIdUploader from '@/components/page/collections/id/uploader.vue';
-import PageCollectionsIdVideo from '@/components/page/collections/id/video.vue';
+import VideoPreview from '@/components/video/preview.vue';
 import type { Collection } from '@/types/model/collection.ts';
 import type { ListVideo } from '@/types/model/video.ts';
 
@@ -58,7 +58,7 @@ useHead(() => ({
     </div>
 
     <div class="grid grid-cols-1 gap-2" md="grid-cols-3" lg="grid-cols-4">
-      <PageCollectionsIdVideo v-for="video in videos" :key="video.id" :video />
+      <VideoPreview v-for="video in videos" :key="video.id" :video />
     </div>
   </div>
 </template>
