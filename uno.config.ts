@@ -1,8 +1,8 @@
-import { defineConfig, presetMini, presetAttributify, presetWebFonts } from 'unocss';
+import { defineConfig, presetWind3, presetAttributify, presetWebFonts } from 'unocss';
 
 export default defineConfig({
   presets: [
-    presetMini({
+    presetWind3({
       dark: 'media',
     }),
     presetAttributify(),
