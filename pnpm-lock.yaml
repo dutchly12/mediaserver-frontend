@@ -37,8 +37,8 @@ importers:
         specifier: ^22.14.1
         version: 22.14.1
       '@types/rails__activestorage':
-        specifier: ^7.1.1
-        version: 7.1.1
+        specifier: ^8.0.0
+        version: 8.0.0
       '@unocss/reset':
         specifier: ^66.0.0
         version: 66.0.0
@@ -851,8 +851,8 @@ packages:
   '@types/node@22.14.1':
     resolution: {integrity: sha512-u0HuPQwe/dHrItgHHpmw3N2fYCR6x4ivMNbPHRkBVP4CvN+kiRrKHWk3i8tXiO/joPwXLMYvF9TTF0eqgHIuOw==}
 
-  '@types/rails__activestorage@7.1.1':
-    resolution: {integrity: sha512-raNFQ08xlqHvSYkoJ1T8pPPeARj5EzV28L4zFNj09jVz0HprVAhLknl0a51lhXDeb6va2jAFXpwOeYSY6TAjUg==}
+  '@types/rails__activestorage@8.0.0':
+    resolution: {integrity: sha512-eq8s/jcmuE2KxDzniQyJrnNUwyh2oiSUWDIfE2JpKGvCKbajT9wmEye8pYmgkKWs7h2BdpNWXgJR7wH5zK5YEw==}
 
   '@typescript-eslint/eslint-plugin@8.30.1':
     resolution: {integrity: sha512-v+VWphxMjn+1t48/jO4t950D6KR8JaJuNXzi33Ve6P8sEmPr5k6CEXjdGwT6+LodVnEa91EQCtwjWNUCPweo+Q==}
@@ -3035,7 +3035,7 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/rails__activestorage@7.1.1': {}
+  '@types/rails__activestorage@8.0.0': {}
 
   '@typescript-eslint/eslint-plugin@8.30.1(@typescript-eslint/parser@8.30.1(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.3)':
     dependencies:
