@@ -18,13 +18,13 @@ export class ActiveStorageUploader implements DirectUploadDelegate {
     this.progressHandler = progressHandler;
   }
 
-  public upload(): Promise<string> {
+  public upload(): Promise<string | undefined> {
     return new Promise((resolve, reject) => {
       this.uploader.create((error, blob) => {
         if (error) {
           reject(error);
         } else {
-          resolve(blob.signed_id);
+          resolve(blob?.signed_id);
         }
       });
     });

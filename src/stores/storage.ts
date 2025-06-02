@@ -51,6 +51,11 @@ export const useStorageStore = defineStore('storage', () => {
 
       const signed_id = await uploader.upload();
 
+      if (!signed_id) {
+        uploads.value[index].status = StorageUploadStatus.ERROR;
+        return;
+      }
+
       uploads.value[index].status = StorageUploadStatus.UPLOADED;
       uploads.value[index].callback(signed_id, uploads.value[index].name);
     } catch {
