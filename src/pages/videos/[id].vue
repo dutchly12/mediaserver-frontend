@@ -64,9 +64,9 @@ useHead(() => ({
       <div
         v-for="(screenshot, index) in screenshots"
         :key="screenshot.url"
-        class="w-full aspect-ratio-video"
+        class="w-full flex justify-center"
       >
-        <img :src="screenshot.url" :alt="`screenshot-${index}`" loading="lazy" class="h-max-full" />
+        <img :src="screenshot.url" :alt="`screenshot-${index}`" loading="lazy" class="w-full" />
       </div>
     </div>
   </div>
