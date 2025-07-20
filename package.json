@@ -27,12 +27,12 @@
     "axios": "^1.10.0",
     "pinia": "^3.0.3",
     "vue": "^3.5.17",
-    "vue-i18n": "^11.1.9",
+    "vue-i18n": "^11.1.10",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.2",
-    "@types/node": "^24.0.13",
+    "@types/node": "^24.0.15",
     "@types/rails__activestorage": "^8.0.0",
     "@unocss/reset": "^66.3.3",
     "@vitejs/plugin-vue": "^6.0.0",
@@ -40,19 +40,19 @@
     "@vue/eslint-config-typescript": "^14.6.0",
     "@vue/tsconfig": "^0.7.0",
     "eslint": "^9.31.0",
-    "eslint-plugin-oxlint": "^1.6.0",
+    "eslint-plugin-oxlint": "^1.7.0",
     "eslint-plugin-vue": "^10.3.0",
     "jiti": "^2.4.2",
     "npm-run-all2": "^8.0.4",
-    "oxlint": "^1.6.0",
+    "oxlint": "^1.7.0",
     "prettier": "^3.6.2",
     "svgstore": "^3.0.1",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "unocss": "^66.3.3",
-    "vite": "^7.0.4",
+    "vite": "^7.0.5",
     "vite-plugin-vue-devtools": "^7.7.7",
-    "vue-tsc": "^3.0.1",
-    "wrangler": "^4.24.3"
+    "vue-tsc": "^3.0.3",
+    "wrangler": "^4.25.0"
   }
 }
