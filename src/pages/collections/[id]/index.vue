@@ -40,7 +40,10 @@ const loadData = async () => {
 
 loadData();
 
-watch(routeId, loadData);
+watch(routeId, () => {
+  videos.value = [];
+  loadData();
+});
 
 useHead(() => ({
   title: collection.value?.name,
