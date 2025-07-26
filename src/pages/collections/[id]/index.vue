@@ -41,6 +41,7 @@ const loadData = async () => {
 loadData();
 
 watch(routeId, () => {
+  collection.value = undefined;
   videos.value = [];
   loadData();
 });
