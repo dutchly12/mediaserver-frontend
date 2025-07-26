@@ -38,7 +38,7 @@ watch(
     </RouterLink>
 
     <UiButton variant="outlined" compact lg="hidden" @click="switchMenu">
-      <UiIcon name="menu" size="1rem" />
+      <UiIcon name="menu-2" size="1rem" />
     </UiButton>
 
     <div

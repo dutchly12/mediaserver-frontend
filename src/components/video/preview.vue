@@ -28,7 +28,7 @@ const formatterDuration = computed(
       />
 
       <div v-else class="flex justify-center items-center">
-        <UiIcon name="image-off" class="h-33% w-fit" />
+        <UiIcon name="photo-off" class="h-33% w-fit" />
       </div>
 
       <div v-if="formatterDuration" class="absolute right-0 bottom-0 px-1 bg-black text-white">

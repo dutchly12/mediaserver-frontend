@@ -68,7 +68,7 @@ const isErrorStatus = computed(() => props.upload.status === StorageUploadStatus
       <div class="ml-auto flex items-center gap-2 font-bold tabular-nums cursor-pointer">
         <UiIcon
           v-if="isErrorStatus"
-          name="rotate-cw"
+          name="rotate-clockwise"
           class="size-4"
           @click="() => emits('retry')"
         />
