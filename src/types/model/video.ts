@@ -5,7 +5,7 @@ export enum VideoStatus {
 }
 
 export interface ListVideoParams {
-  collection_id?: string;
+  person_id?: string;
 }
 
 export interface ListVideo {
@@ -27,7 +27,6 @@ export interface Video extends ListVideo {
 export interface VideoCreateRequest {
   video: {
     name: string;
-    collection_id: string;
     file: string;
   };
 }

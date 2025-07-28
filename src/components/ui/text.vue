@@ -38,7 +38,7 @@ const font = computed(() => {
     case 'lead':
       return 'text-2xl leading-[1.5] font-light';
     default:
-      return 'text-base leading-none font-medium';
+      return 'text-base font-medium';
   }
 });
 
