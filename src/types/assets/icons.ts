@@ -3,5 +3,6 @@ export type IconName =
   | 'menu-2'
   | 'photo-off'
   | 'rotate-clockwise'
+  | 'square-rounded-plus'
   | 'tag-filled'
   | 'user-filled';

@@ -27,7 +27,8 @@
       "index": {
         "meta": {
           "title": "People"
-        }
+        },
+        "title": "People"
       }
     },
     "tags": {

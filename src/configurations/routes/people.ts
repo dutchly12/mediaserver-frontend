@@ -6,6 +6,11 @@ const routes: RouteRecordRaw[] = [
     name: 'people',
     component: () => import('@/pages/people/index.vue'),
   },
+  {
+    path: '/people/:id',
+    name: 'people-id',
+    component: () => import('@/pages/people/[id].vue'),
+  },
 ];
 
 export default routes;

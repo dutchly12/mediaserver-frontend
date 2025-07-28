@@ -3,6 +3,8 @@ import { ref } from 'vue';
 import { useHead } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
 import { useApi } from '@/composables/use-api.ts';
+import UiText from '@/components/ui/text.vue';
+import UiIcon from '@/components/ui/icon.vue';
 import type { Person } from '@/types/model/person.ts';
 
 const { t } = useI18n();
@@ -30,5 +32,19 @@ useHead(() => ({
 </script>
 
 <template>
-  <div>people</div>
+  <div class="flex flex-col gap-4">
+    <div class="p-2 flex justify-between items-center">
+      <UiText variant="h2">
+        {{ $t('pages.people.index.title') }}
+      </UiText>
+
+      <UiIcon name="square-rounded-plus" class="size-10 cursor-pointer" />
+    </div>
+
+    <div class="px-2 flex flex-col gap-2">
+      <RouterLink v-for="person in people" :key="person.id" :to="{ name: 'people-id', params: { id: person.id } }">
+        {{ person.name }}
+      </RouterLink>
+    </div>
+  </div>
 </template>
