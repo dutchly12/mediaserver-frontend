@@ -10,7 +10,9 @@
     "done": "Done",
     "preparing": "Preparing",
     "queued": "Queued",
-    "error": "Error"
+    "error": "Error",
+    "people": "People",
+    "tags": "Tags"
   },
   "actions": {
     "create": "Create"
@@ -19,6 +21,20 @@
     "index": {
       "meta": {
         "title": "Main page"
+      }
+    },
+    "people": {
+      "index": {
+        "meta": {
+          "title": "People"
+        }
+      }
+    },
+    "tags": {
+      "index": {
+        "meta": {
+          "title": "Tags"
+        }
       }
     },
     "uploads": {

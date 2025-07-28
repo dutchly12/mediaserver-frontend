@@ -1,12 +1,28 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import UiButton from '@/components/ui/button.vue';
 import UiIcon from '@/components/ui/icon.vue';
+import type { IconName } from '@/types/assets/icons.ts';
 
 const route = useRoute();
+const { t } = useI18n();
 
 const menuState = ref(false);
+
+const menuItems = computed<{ title: string; routeName: string; icon: IconName }[]>(() => [
+  {
+    title: t('labels.people'),
+    routeName: 'people',
+    icon: 'user-filled',
+  },
+  {
+    title: t('labels.tags'),
+    routeName: 'tags',
+    icon: 'tag-filled',
+  },
+]);
 
 const switchMenu = () => {
   menuState.value = !menuState.value;
@@ -53,16 +69,18 @@ watch(
       ]"
       lg="static p-0 flex"
     >
-      <!--      <div>-->
-      <!--        <RouterLink-->
-      <!--          v-for="collection in collectionsStore.collections"-->
-      <!--          :key="collection.id"-->
-      <!--          :to="{ name: 'collections-id', params: { id: collection.id } }"-->
-      <!--          class="block py-2"-->
-      <!--        >-->
-      <!--          {{ collection.name }}-->
-      <!--        </RouterLink>-->
-      <!--      </div>-->
+      <div>
+        <RouterLink
+          v-for="item in menuItems"
+          :key="item.routeName"
+          :to="{ name: item.routeName }"
+          class="py-3 flex items-center gap-2"
+        >
+          <UiIcon :name="item.icon" class="size-6" />
+
+          <span>{{ item.title }}</span>
+        </RouterLink>
+      </div>
 
       <div class="w-full flex flex-col justify-center gap-2">
         <UiButton :to="{ name: 'uploads' }">
