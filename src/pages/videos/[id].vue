@@ -53,6 +53,13 @@ useHead(() => ({
         controls
         class="w-full aspect-ratio-video"
       />
+
+      <!--      <div class="p-4 border">-->
+      <!--        <div class="grid grid-cols-2">-->
+      <!--          <div>test</div>-->
+      <!--          <div>123</div>-->
+      <!--        </div>-->
+      <!--      </div>-->
     </div>
 
     <div

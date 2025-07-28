@@ -1,14 +1,10 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import { useCollectionsStore } from '@/stores/collections.ts';
 import UiButton from '@/components/ui/button.vue';
 import UiIcon from '@/components/ui/icon.vue';
 
 const route = useRoute();
-const collectionsStore = useCollectionsStore();
-
-collectionsStore.loadCollections();
 
 const menuState = ref(false);
 
@@ -57,22 +53,18 @@ watch(
       ]"
       lg="static p-0 flex"
     >
-      <div>
-        <RouterLink
-          v-for="collection in collectionsStore.collections"
-          :key="collection.id"
-          :to="{ name: 'collections-id', params: { id: collection.id } }"
-          class="block py-2"
-        >
-          {{ collection.name }}
-        </RouterLink>
-      </div>
+      <!--      <div>-->
+      <!--        <RouterLink-->
+      <!--          v-for="collection in collectionsStore.collections"-->
+      <!--          :key="collection.id"-->
+      <!--          :to="{ name: 'collections-id', params: { id: collection.id } }"-->
+      <!--          class="block py-2"-->
+      <!--        >-->
+      <!--          {{ collection.name }}-->
+      <!--        </RouterLink>-->
+      <!--      </div>-->
 
       <div class="w-full flex flex-col justify-center gap-2">
-        <UiButton color="blue" :to="{ name: 'collections-new' }">
-          {{ $t('labels.new_collection') }}
-        </UiButton>
-
         <UiButton :to="{ name: 'uploads' }">
           {{ $t('labels.uploads') }}
         </UiButton>

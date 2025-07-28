@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import main from '@/configurations/routes/main.ts';
-import collections from '@/configurations/routes/collections.ts';
 import authentication from '@/configurations/routes/authentication.ts';
 import videos from '@/configurations/routes/videos.ts';
 
@@ -9,7 +8,7 @@ import { useUserStore } from '@/stores/user.ts';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [...main, ...collections, ...authentication, ...videos],
+  routes: [...main, ...authentication, ...videos],
 });
 
 router.beforeEach((to) => {

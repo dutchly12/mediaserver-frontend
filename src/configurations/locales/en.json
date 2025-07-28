@@ -18,15 +18,7 @@
   "pages": {
     "index": {
       "meta": {
-        "title": "Main"
-      }
-    },
-    "collections": {
-      "new": {
-        "meta": {
-          "title": "New collection"
-        },
-        "title": "Create new collection"
+        "title": "Main page"
       }
     },
     "uploads": {

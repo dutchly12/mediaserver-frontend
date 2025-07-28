@@ -5,7 +5,6 @@ import type {
   AuthenticationRefreshRequest,
 } from '@/types/model/authentication.ts';
 import type { User } from '@/types/model/user.ts';
-import type { Collection, CollectionCreateData, ListCollection } from '@/types/model/collection.ts';
 import type { ListVideo, ListVideoParams, Video, VideoCreateRequest } from '@/types/model/video.ts';
 import type { Screenshot } from '@/types/model/screenshot.ts';
 
@@ -19,11 +18,6 @@ export interface Api {
   };
   user: {
     info: () => Response<User>;
-  };
-  collections: {
-    list: () => Response<ListCollection[]>;
-    one: (id: string) => Response<Collection>;
-    create: (data: CollectionCreateData) => Response<Collection>;
   };
   videos: {
     list: (params?: ListVideoParams) => Response<ListVideo[]>;
