@@ -18,7 +18,7 @@ const formatterDuration = computed(
     class="flex flex-col gap-2"
   >
     <div
-      class="relative w-full max-w-full flex justify-center align-middle aspect-ratio-video overflow-hidden bg-black"
+      class="relative w-full max-w-full flex justify-center align-middle aspect-video overflow-hidden bg-black"
     >
       <img
         v-if="props.video.preview"

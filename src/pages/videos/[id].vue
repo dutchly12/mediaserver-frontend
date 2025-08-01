@@ -51,7 +51,7 @@ useHead(() => ({
         :src="video?.file"
         :poster="video?.preview ?? undefined"
         controls
-        class="w-full aspect-ratio-video"
+        class="w-full aspect-video"
       />
 
       <!--      <div class="p-4 border">-->
