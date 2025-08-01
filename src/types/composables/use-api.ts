@@ -9,8 +9,15 @@ import type { ListVideo, ListVideoParams, Video, VideoCreateRequest } from '@/ty
 import type { Screenshot } from '@/types/model/screenshot.ts';
 import type { Person } from '@/types/model/person.ts';
 import type { Tag } from '@/types/model/tag.ts';
+import type { PaginationMeta } from '@/types/common.ts';
+
+interface PaginatedData<T> {
+  items: T[];
+  meta: PaginationMeta;
+}
 
 type Response<T> = Promise<AxiosResponse<T>>;
+type PaginatedResponse<T> = Promise<AxiosResponse<PaginatedData<T>>>;
 
 export interface Api {
   authentications: {
@@ -28,7 +35,7 @@ export interface Api {
     info: () => Response<User>;
   };
   videos: {
-    list: (params?: ListVideoParams) => Response<ListVideo[]>;
+    list: (params?: ListVideoParams) => PaginatedResponse<ListVideo>;
     one: (id: string) => Response<Video>;
     screenshots: (id: string) => Response<Screenshot[]>;
     create: (data: VideoCreateRequest) => Response<Video>;

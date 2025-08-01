@@ -5,20 +5,25 @@ import { useI18n } from 'vue-i18n';
 import { useApi } from '@/composables/use-api.ts';
 import VideoPreview from '@/components/video/preview.vue';
 import type { ListVideo } from '@/types/model/video.ts';
+import type { PaginationMeta } from '@/types/common.ts';
 
 const { t } = useI18n();
 const api = useApi();
 
 const loading = ref(false);
 const videos = ref<ListVideo[]>([]);
+const meta = ref<PaginationMeta>();
 
 const loadVideos = async () => {
   if (loading.value) return;
 
   loading.value = true;
   try {
-    const { data } = await api.videos.list();
-    videos.value = data;
+    const {
+      data: { items, meta: receivedMeta },
+    } = await api.videos.list();
+    videos.value.push(...items);
+    meta.value = receivedMeta;
   } catch {}
   loading.value = false;
 };

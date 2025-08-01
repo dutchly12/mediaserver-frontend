@@ -42,7 +42,11 @@ useHead(() => ({
     </div>
 
     <div class="px-2 flex flex-col gap-2">
-      <RouterLink v-for="person in people" :key="person.id" :to="{ name: 'people-id', params: { id: person.id } }">
+      <RouterLink
+        v-for="person in people"
+        :key="person.id"
+        :to="{ name: 'people-id', params: { id: person.id } }"
+      >
         {{ person.name }}
       </RouterLink>
     </div>
