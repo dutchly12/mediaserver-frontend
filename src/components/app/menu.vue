@@ -45,7 +45,7 @@ watch(
     </RouterLink>
 
     <UiButton variant="outlined" compact class="lg:hidden" @click="switchMenu">
-      <UiIcon name="menu-2" size="1rem" />
+      <UiIcon name="menu-2" class="size-4" />
     </UiButton>
 
     <div
