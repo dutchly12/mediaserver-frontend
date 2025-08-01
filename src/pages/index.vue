@@ -36,7 +36,7 @@ useHead(() => ({
 </script>
 
 <template>
-  <div class="grid grid-cols-1 gap-2" md="grid-cols-3" lg="grid-cols-4">
+  <div class="grid grid-cols-1 gap-2 md:grid-cols-3 lg:grid-cols-4">
     <VideoPreview v-for="video in videos" :key="video.id" :video />
   </div>
 </template>

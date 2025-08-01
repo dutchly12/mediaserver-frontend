@@ -46,7 +46,7 @@ useHead(() => ({
   <div>
     <UiText variant="h3" class="mb-4">{{ video?.name }}</UiText>
 
-    <div class="grid grid-cols-1 gap-4" lg="grid-cols-[2fr_1fr]">
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-[2fr_1fr]">
       <video
         :src="video?.file"
         :poster="video?.preview ?? undefined"
@@ -64,9 +64,7 @@ useHead(() => ({
 
     <div
       v-if="screenshots.length"
-      class="mt-2 grid grid-cols-1 gap-2"
-      md="grid-cols-3"
-      lg="grid-cols-4"
+      class="mt-2 grid grid-cols-1 gap-2 md:grid-cols-3 lg:grid-cols-4"
     >
       <div
         v-for="(screenshot, index) in screenshots"

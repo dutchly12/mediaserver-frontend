@@ -38,18 +38,13 @@ watch(
 
 <template>
   <div
-    class="fixed left-0 top-0 z-1000 w-screen h-12.5 px-2 flex justify-between items-center gap-4 border-solid border-gray-4 border-b bg-white dark:bg-black"
-    lg="w-70 h-screen py-2 flex-col items-start border-b-none border-r"
+    class="fixed left-0 top-0 z-1000 w-screen h-12.5 px-2 flex justify-between items-center gap-4 border-solid border-gray-4 border-b bg-white dark:bg-black lg:w-70 lg:h-screen lg:py-2 lg:flex-col lg:items-start lg:border-b-none lg:border-r"
   >
-    <RouterLink
-      :to="{ name: 'index' }"
-      class="block font-700 text-2xl self-center"
-      lg="text-center"
-    >
+    <RouterLink :to="{ name: 'index' }" class="block font-700 text-2xl self-center lg:text-center">
       {{ $t('meta.title') }}
     </RouterLink>
 
-    <UiButton variant="outlined" compact lg="hidden" @click="switchMenu">
+    <UiButton variant="outlined" compact class="lg:hidden" @click="switchMenu">
       <UiIcon name="menu-2" size="1rem" />
     </UiButton>
 
@@ -66,8 +61,10 @@ watch(
         'justify-between',
         'bg-inherit',
         menuState ? 'flex' : 'hidden',
+        'lg:static',
+        'pg:p-0',
+        'lg:flex',
       ]"
-      lg="static p-0 flex"
     >
       <div>
         <RouterLink
