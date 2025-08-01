@@ -14,8 +14,16 @@ import { useUserStore } from '@/stores/user.ts';
 
 const app = createApp(App).use(pinia);
 
-const userStore = useUserStore();
+const init = async () => {
+  const userStore = useUserStore();
 
-userStore.loadUser().finally(() => {
-  app.use(router).use(i18n).use(unhead).mount('#app');
-});
+  await userStore.loadUser();
+
+  app.use(router).use(i18n).use(unhead);
+
+  await router.isReady();
+
+  app.mount('#app');
+};
+
+init();
