@@ -35,7 +35,7 @@
     "@types/node": "^24.1.0",
     "@types/rails__activestorage": "^8.0.0",
     "@unocss/reset": "^66.3.3",
-    "@vitejs/plugin-vue": "^6.0.0",
+    "@vitejs/plugin-vue": "^6.0.1",
     "@vue/eslint-config-prettier": "^10.2.0",
     "@vue/eslint-config-typescript": "^14.6.0",
     "@vue/tsconfig": "^0.7.0",
