@@ -54,7 +54,7 @@ const isErrorStatus = computed(() => props.upload.status === StorageUploadStatus
 
 <template>
   <div
-    class="relative w-full h-10 border-1 rounded-2 bg-no-repeat"
+    class="relative w-full h-10 border-1 rounded-lg bg-no-repeat"
     :style="{ 'background-size': `100% ${formattedProgress}` }"
   >
     <div

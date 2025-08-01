@@ -27,7 +27,7 @@ onBeforeMount(() => {
           :class="
             tab.name === active_tab
               ? ['border-x', 'border-t', 'border-b-1', 'border-b-white']
-              : ['text-blue-5']
+              : ['text-blue-500']
           "
           class="mb-[-1px] px-4 py-2 rounded-t-2"
           @click="active_tab = tab.name"

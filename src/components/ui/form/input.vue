@@ -36,7 +36,7 @@ const computedId = computed(() => `${props.name}_${id}`);
       :placeholder="props.placeholder"
       :type="props.type"
       :disabled="props.disabled"
-      class="px-3 py-1.5 font-base leading-6 font-normal border-1 border-solid border-gray rounded-1.5"
+      class="px-3 py-1.5 font-base leading-6 font-normal border-1 border-solid border-gray-400 rounded-1.5"
     />
   </div>
 </template>
