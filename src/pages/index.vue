@@ -4,6 +4,7 @@ import { useHead } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
 import { useApi } from '@/composables/use-api.ts';
 import VideoPreview from '@/components/video/preview.vue';
+import UiPagination from '@/components/ui/pagination.vue';
 import type { ListVideo } from '@/types/model/video.ts';
 import type { PaginationMeta } from '@/types/common.ts';
 
@@ -14,19 +15,24 @@ const loading = ref(false);
 const videos = ref<ListVideo[]>([]);
 const meta = ref<PaginationMeta>();
 
-const loadVideos = async () => {
+const loadVideos = async (page?: number) => {
   if (loading.value) return;
 
   loading.value = true;
   try {
     const {
       data: { items, meta: receivedMeta },
-    } = await api.videos.list();
-    videos.value.push(...items);
+    } = await api.videos.list({ page });
+    videos.value = items;
     meta.value = receivedMeta;
   } catch {}
   loading.value = false;
 };
+
+const setPage = (page: number) => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  loadVideos(page);
+}
 
 loadVideos();
 
@@ -36,7 +42,13 @@ useHead(() => ({
 </script>
 
 <template>
-  <div class="grid grid-cols-1 gap-2 md:grid-cols-3 lg:grid-cols-4">
-    <VideoPreview v-for="video in videos" :key="video.id" :video />
+  <div >
+    <div class="grid grid-cols-1 gap-2 md:grid-cols-3 lg:grid-cols-4">
+      <VideoPreview v-for="video in videos" :key="video.id" :video />
+    </div>
+
+    <div v-if="meta" class="flex justify-center">
+      <UiPagination :model-value="meta.page" :meta="meta" @update:model-value="setPage" />
+    </div>
   </div>
 </template>

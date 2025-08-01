@@ -6,6 +6,7 @@ export enum VideoStatus {
 
 export interface ListVideoParams {
   person_id?: string;
+  page?: number;
 }
 
 export interface ListVideo {
