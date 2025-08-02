@@ -38,7 +38,7 @@ watch(
 
 <template>
   <div
-    class="fixed left-0 top-0 z-1000 w-screen h-12.5 px-2 flex justify-between items-center gap-4 border-solid border-gray-400 border-b bg-white dark:bg-black lg:w-70 lg:h-screen lg:py-2 lg:flex-col lg:items-start lg:border-b-none lg:border-r"
+    class="fixed left-0 top-0 z-1000 w-screen h-12.5 px-2 flex justify-between items-center gap-4 border-solid border-gray-400 border-b bg-white dark:bg-black lg:w-70 lg:h-screen lg:py-2 lg:flex-col lg:items-start lg:border-b-0 lg:border-r"
   >
     <RouterLink :to="{ name: 'index' }" class="block font-bold text-2xl self-center lg:text-center">
       {{ $t('meta.title') }}
