@@ -11,7 +11,7 @@ useHead(() => ({
     dir: 'ltr',
   },
   bodyAttrs: {
-    class: 'color-black bg-white dark:color-white dark:bg-black',
+    class: 'text-black bg-white dark:text-white dark:bg-black',
   },
   titleTemplate: t('meta.title_template'),
 }));
