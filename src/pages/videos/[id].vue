@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router';
 import { useHead } from '@unhead/vue';
 import { useApi } from '@/composables/use-api.ts';
 import UiText from '@/components/ui/text.vue';
+import VideoPlayer from '@/components/video/player.vue';
 import type { Video } from '@/types/model/video.ts';
 import type { Screenshot } from '@/types/model/screenshot.ts';
 
@@ -47,12 +48,7 @@ useHead(() => ({
     <UiText variant="h3" class="mb-4">{{ video?.name }}</UiText>
 
     <div class="grid grid-cols-1 gap-4 lg:grid-cols-[2fr_1fr]">
-      <video
-        :src="video?.file"
-        :poster="video?.preview ?? undefined"
-        controls
-        class="w-full aspect-video"
-      />
+      <VideoPlayer :video />
 
       <!--      <div class="p-4 border">-->
       <!--        <div class="grid grid-cols-2">-->
