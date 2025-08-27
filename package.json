@@ -48,7 +48,7 @@
     "prettier": "^3.6.2",
     "sass": "^1.91.0",
     "svgstore": "^3.0.1",
-    "tailwindcss": "^4.1.11",
+    "tailwindcss": "^4.1.12",
     "tsx": "^4.20.3",
     "typescript": "^5.9.2",
     "vite": "^7.0.6",
