@@ -22,7 +22,7 @@
     "generate:sprites": "tsx utils/sprites-generator.ts"
   },
   "dependencies": {
-    "@rails/activestorage": "^8.0.200",
+    "@rails/activestorage": "^8.0.201",
     "@unhead/vue": "^2.0.14",
     "axios": "^1.11.0",
     "pinia": "^3.0.3",
@@ -34,7 +34,7 @@
     "@tailwindcss/vite": "^4.1.12",
     "@tsconfig/node24": "^24.0.1",
     "@types/node": "^24.1.0",
-    "@types/rails__activestorage": "^8.0.0",
+    "@types/rails__activestorage": "^8.0.1",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/eslint-config-prettier": "^10.2.0",
     "@vue/eslint-config-typescript": "^14.6.0",
