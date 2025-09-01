@@ -53,6 +53,7 @@ useHead(() => ({
             <FormControl>
               <Input
                 v-bind="componentField"
+                v-model="form.email"
                 :placeholder="$t('pages.authentication.sign_in.form.email.placeholder')"
                 type="email"
               />
@@ -71,6 +72,7 @@ useHead(() => ({
             <FormControl>
               <Input
                 v-bind="componentField"
+                v-model="form.password"
                 :placeholder="$t('pages.authentication.sign_in.form.password.placeholder')"
                 type="password"
               />

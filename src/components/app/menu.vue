@@ -81,7 +81,7 @@ watch(
 
       <div class="w-full flex flex-col justify-center gap-2">
         <RouterLink :to="{ name: 'uploads' }">
-          <Button>
+          <Button class="w-full cursor-pointer">
             {{ $t('labels.uploads') }}
           </Button>
         </RouterLink>

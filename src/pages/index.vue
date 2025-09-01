@@ -6,8 +6,15 @@ import { useI18n } from 'vue-i18n';
 import { useApi } from '@/composables/use-api.ts';
 import { usePagination } from '@/composables/use-pagination.ts';
 import VideoPreview from '@/components/video/preview.vue';
-import UiPagination from '@/components/ui/pagination.vue';
 import type { ListVideo } from '@/types/model/video.ts';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationFirst,
+  PaginationLast,
+} from '@/components/ui/pagination';
 
 const route = useRoute();
 const router = useRouter();
@@ -50,8 +57,31 @@ useHead(() => ({
       <VideoPreview v-for="video in videos" :key="video.id" :video />
     </div>
 
-    <div v-if="meta" class="flex justify-center">
-      <UiPagination :model-value="meta.page" :meta="meta" @update:model-value="setPage" />
-    </div>
+    <Pagination
+      v-slot="{ page }"
+      :items-per-page="meta.limit"
+      :total="meta.count"
+      show-edges
+      class="mt-4"
+      @update:page="setPage"
+    >
+      <PaginationContent v-slot="{ items }">
+        <PaginationFirst />
+
+        <template v-for="(item, index) in items" :key="index">
+          <PaginationItem
+            v-if="item.type === 'page'"
+            :value="item.value"
+            :is-active="item.value === page"
+          >
+            {{ item.value }}
+          </PaginationItem>
+
+          <PaginationEllipsis v-else />
+        </template>
+
+        <PaginationLast />
+      </PaginationContent>
+    </Pagination>
   </div>
 </template>
