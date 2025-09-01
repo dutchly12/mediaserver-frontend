@@ -2,7 +2,7 @@
 import { ref, computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import UiButton from '@/components/ui/button.vue';
+import { Button } from '@/components/ui/button';
 import UiIcon from '@/components/ui/icon.vue';
 import type { IconName } from '@/types/assets/icons.ts';
 
@@ -44,9 +44,9 @@ watch(
       {{ $t('meta.title') }}
     </RouterLink>
 
-    <UiButton variant="outlined" compact class="lg:hidden" @click="switchMenu">
+    <Button variant="outline" size="icon" class="lg:hidden" @click="switchMenu">
       <UiIcon name="menu-2" class="size-4" />
-    </UiButton>
+    </Button>
 
     <div
       :class="[
@@ -80,9 +80,11 @@ watch(
       </div>
 
       <div class="w-full flex flex-col justify-center gap-2">
-        <UiButton :to="{ name: 'uploads' }">
-          {{ $t('labels.uploads') }}
-        </UiButton>
+        <RouterLink :to="{ name: 'uploads' }">
+          <Button>
+            {{ $t('labels.uploads') }}
+          </Button>
+        </RouterLink>
       </div>
     </div>
   </div>
