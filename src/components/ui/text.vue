@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
-type TextVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'lead' | 'body';
+type TextVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'lead' | 'large' | 'small' | 'muted' | 'body';
 
 const props = withDefaults(
   defineProps<{
@@ -16,29 +16,31 @@ const props = withDefaults(
 );
 
 const component = computed(
-  () => props.tag ?? (/^h[1-6]$/.test(props.variant) ? props.variant : 'div'),
+  () => props.tag ?? (/^h[1-4]$/.test(props.variant) ? props.variant : 'div'),
 );
 
 const font = computed(() => {
-  const headingClasses = `leading-[1.2] font-medium`;
+  const headingClasses = `scroll-m-20 tracking-tight`;
 
   switch (props.variant) {
     case 'h1':
-      return `text-5xl ${headingClasses}`;
+      return `text-4xl font-extrabold lg:text-5xl ${headingClasses}`
     case 'h2':
-      return `text-4xl ${headingClasses}`;
+      return `text-3xl font-semibold ${headingClasses}`
     case 'h3':
-      return `text-3xl ${headingClasses}`;
+      return `text-2xl font-semibold ${headingClasses}`
     case 'h4':
-      return `text-2xl ${headingClasses}`;
-    case 'h5':
-      return `text-base ${headingClasses}`;
-    case 'h6':
-      return `text-5xl ${headingClasses}`;
+      return `text-xl font-semibold ${headingClasses}`
     case 'lead':
-      return 'text-2xl leading-[1.5] font-light';
+      return 'text-xl text-muted-foreground';
+    case 'large':
+      return 'text-lg font-semibold';
+    case 'small':
+      return 'text-sm font-medium leading-none'
+    case 'muted':
+      return 'text-sm text-muted-foreground'
     default:
-      return 'text-base font-medium';
+      return 'leading-7';
   }
 });
 
