@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { ImageOff } from 'lucide-vue-next';
 import { numberToTime } from '@/utils/formatters.ts';
-import UiIcon from '@/components/ui/icon.vue';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 import UiText from '@/components/ui/text.vue';
 import type { ListVideo } from '@/types/model/video.ts';
 
@@ -15,27 +16,30 @@ const formatterDuration = computed(
 <template>
   <RouterLink
     :to="{ name: 'videos-id', params: { id: props.video.id } }"
-    class="flex flex-col gap-2"
+    class="flex flex-col gap-1"
   >
-    <div
-      class="relative w-full max-w-full flex justify-center align-middle aspect-video overflow-hidden bg-black"
-    >
+    <AspectRatio :ratio="16 / 9" class="bg-black">
       <img
         v-if="props.video.preview"
         :src="props.video.preview"
         :alt="props.video.name"
         loading="lazy"
+        class="object-cover w-full h-full"
       />
 
-      <div v-else class="flex justify-center items-center">
-        <UiIcon name="photo-off" class="h-[30%] w-fit text-white" />
+      <div v-else class="object-cover w-full h-full flex justify-center items-center">
+        <ImageOff class="h-[30%] w-fit aspect-square text-white" />
       </div>
 
-      <div v-if="formatterDuration" class="absolute right-0 bottom-0 px-1 bg-black text-white">
+      <UiText
+        v-if="formatterDuration"
+        variant="lead"
+        class="absolute right-0 bottom-0 px-1 bg-black text-white"
+      >
         {{ formatterDuration }}
-      </div>
-    </div>
+      </UiText>
+    </AspectRatio>
 
-    <UiText :title="video.name" class="truncate">{{ video.name }}</UiText>
+    <UiText :title="video.name" variant="muted" class="truncate">{{ video.name }}</UiText>
   </RouterLink>
 </template>

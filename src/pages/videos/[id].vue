@@ -3,8 +3,9 @@ import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useHead } from '@unhead/vue';
 import { useApi } from '@/composables/use-api.ts';
-import UiText from '@/components/ui/text.vue';
+import { numberToTime } from '@/utils/formatters.ts';
 import VideoPlayer from '@/components/video/player.vue';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import type { Video } from '@/types/model/video.ts';
 import type { Screenshot } from '@/types/model/screenshot.ts';
 
@@ -16,6 +17,9 @@ const video = ref<Video>();
 const screenshots = ref<Screenshot[]>([]);
 
 const routeId = computed(() => route.params.id as string);
+const formatterDuration = computed(
+  () => video.value?.duration && numberToTime(video.value.duration),
+);
 
 const loadVideo = async () => {
   if (loading.value) return;
@@ -44,23 +48,26 @@ useHead(() => ({
 </script>
 
 <template>
-  <div>
-    <UiText variant="h3" class="mb-4">{{ video?.name }}</UiText>
-
+  <div class="flex flex-col gap-4">
     <div class="grid grid-cols-1 gap-4 lg:grid-cols-[2fr_1fr]">
       <VideoPlayer :video />
 
-      <!--      <div class="p-4 border">-->
-      <!--        <div class="grid grid-cols-2">-->
-      <!--          <div>test</div>-->
-      <!--          <div>123</div>-->
-      <!--        </div>-->
-      <!--      </div>-->
+      <Card>
+        <CardHeader>
+          <CardTitle>
+            {{ video?.name }}
+          </CardTitle>
+
+          <CardDescription>
+            {{ formatterDuration }}
+          </CardDescription>
+        </CardHeader>
+      </Card>
     </div>
 
     <div
       v-if="screenshots.length"
-      class="mt-2 grid grid-cols-1 gap-2 md:grid-cols-3 lg:grid-cols-4"
+      class="grid grid-cols-1 gap-2 md:grid-cols-3 lg:grid-cols-4"
     >
       <div
         v-for="(screenshot, index) in screenshots"

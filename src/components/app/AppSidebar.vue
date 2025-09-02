@@ -20,21 +20,23 @@ import {
 const route = useRoute();
 const { t } = useI18n();
 
-const menuItems = computed(() => [
-  {
-    title: t('labels.people'),
-    routeName: 'people',
-    icon: Users,
-  },
-  {
-    title: t('labels.tags'),
-    routeName: 'tags',
-    icon: TagsIcon,
-  },
-].map((item) => ({
-  ...item,
-  active: route.name?.toString().startsWith(item.routeName),
-})));
+const menuItems = computed(() =>
+  [
+    {
+      title: t('labels.people'),
+      routeName: 'people',
+      icon: Users,
+    },
+    {
+      title: t('labels.tags'),
+      routeName: 'tags',
+      icon: TagsIcon,
+    },
+  ].map((item) => ({
+    ...item,
+    active: route.name?.toString().startsWith(item.routeName),
+  })),
+);
 </script>
 
 <template>

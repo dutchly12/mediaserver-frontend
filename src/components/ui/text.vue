@@ -24,21 +24,21 @@ const font = computed(() => {
 
   switch (props.variant) {
     case 'h1':
-      return `text-4xl font-extrabold lg:text-5xl ${headingClasses}`
+      return `text-4xl font-extrabold lg:text-5xl ${headingClasses}`;
     case 'h2':
-      return `text-3xl font-semibold ${headingClasses}`
+      return `text-3xl font-semibold ${headingClasses}`;
     case 'h3':
-      return `text-2xl font-semibold ${headingClasses}`
+      return `text-2xl font-semibold ${headingClasses}`;
     case 'h4':
-      return `text-xl font-semibold ${headingClasses}`
+      return `text-xl font-semibold ${headingClasses}`;
     case 'lead':
       return 'text-xl text-muted-foreground';
     case 'large':
       return 'text-lg font-semibold';
     case 'small':
-      return 'text-sm font-medium leading-none'
+      return 'text-sm font-medium leading-none';
     case 'muted':
-      return 'text-sm text-muted-foreground'
+      return 'text-sm text-muted-foreground';
     default:
       return 'leading-7';
   }
