@@ -1,15 +1,27 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useHead } from '@unhead/vue';
 import { useApi } from '@/composables/use-api.ts';
-import { numberToTime } from '@/utils/formatters.ts';
+import { formatDate, numberToTime } from '@/utils/formatters.ts';
 import VideoPlayer from '@/components/video/player.vue';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Text from '@/components/ui/Text.vue';
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Pencil } from 'lucide-vue-next';
 import type { Video } from '@/types/model/video.ts';
 import type { Screenshot } from '@/types/model/screenshot.ts';
 
 const route = useRoute();
+const { t } = useI18n();
 const api = useApi();
 
 const loading = ref(false);
@@ -19,6 +31,20 @@ const screenshots = ref<Screenshot[]>([]);
 const routeId = computed(() => route.params.id as string);
 const formatterDuration = computed(
   () => video.value?.duration && numberToTime(video.value.duration),
+);
+
+const contentItems = computed(
+  () =>
+    video.value && [
+      {
+        title: t('labels.size'),
+        value: `${video.value.width}x${video.value.height}`,
+      },
+      {
+        title: t('labels.uploaded'),
+        value: formatDate(video.value.created_at),
+      },
+    ],
 );
 
 const loadVideo = async () => {
@@ -61,14 +87,26 @@ useHead(() => ({
           <CardDescription>
             {{ formatterDuration }}
           </CardDescription>
+
+          <CardAction>
+            <Button variant="secondary" size="icon">
+              <Pencil />
+            </Button>
+          </CardAction>
         </CardHeader>
+
+        <CardContent class="grid grid-cols-[auto_1fr] items-center gap-2">
+          <template v-for="item in contentItems" :key="item.title">
+            <Text variant="muted"> {{ item.title }}: </Text>
+            <Text variant="small">
+              {{ item.value }}
+            </Text>
+          </template>
+        </CardContent>
       </Card>
     </div>
 
-    <div
-      v-if="screenshots.length"
-      class="grid grid-cols-1 gap-2 md:grid-cols-3 lg:grid-cols-4"
-    >
+    <div v-if="screenshots.length" class="grid grid-cols-1 gap-2 md:grid-cols-3 lg:grid-cols-4">
       <div
         v-for="(screenshot, index) in screenshots"
         :key="screenshot.url"

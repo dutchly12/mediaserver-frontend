@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n';
 import { useHead } from '@unhead/vue';
 import { useStorageStore } from '@/stores/storage.ts';
 import { StorageUploadStatus } from '@/types/stores/storage.ts';
-import UiText from '@/components/ui/text.vue';
+import Text from '@/components/ui/Text.vue';
 import UploadsUploader from '@/components/page/uploads/uploader.vue';
 import UiTabs, { type Tab } from '@/components/ui/tabs.vue';
 import UploadsUpload, { type UploadsUploadItem } from '@/components/page/uploads/upload.vue';
@@ -53,9 +53,9 @@ useHead(() => ({
 <template>
   <div class="flex flex-col gap-4">
     <div class="p-2 flex justify-between items-center">
-      <UiText variant="h2">
+      <Text variant="h2">
         {{ $t('pages.uploads.title') }}
-      </UiText>
+      </Text>
 
       <UploadsUploader />
     </div>

@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { useHead } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
 import { useUserStore } from '@/stores/user.ts';
-import UiText from '@/components/ui/text.vue';
+import Text from '@/components/ui/Text.vue';
 import { Form } from 'vee-validate';
 import { Button } from '@/components/ui/button';
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
@@ -38,9 +38,9 @@ useHead(() => ({
 
 <template>
   <div>
-    <UiText variant="h1" align="center" class="mb-4">
+    <Text variant="h1" align="center" class="mb-4">
       {{ $t('pages.authentication.sign_in.title') }}
-    </UiText>
+    </Text>
 
     <div class="p-6 rounded-xl border-solid border-1 border-gray">
       <Form class="flex flex-col gap-4" @submit="signIn">

@@ -6,6 +6,7 @@ import { Separator } from '@/components/ui/separator';
 <template>
   <header class="h-16 px-4 border-b flex items-center gap-2 bg-background">
     <SidebarTrigger class="-ml-1" />
+
     <Separator orientation="vertical" class="mr-2 h-4" />
   </header>
 </template>

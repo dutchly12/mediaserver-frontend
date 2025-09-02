@@ -13,7 +13,9 @@
     "error": "Error",
     "people": "People",
     "tags": "Tags",
-    "pages": "Pages"
+    "pages": "Pages",
+    "size": "Size",
+    "uploaded": "Uploaded"
   },
   "actions": {
     "create": "Create",

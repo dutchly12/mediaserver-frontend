@@ -1,3 +1,13 @@
+export const formatDate = (date: string) => {
+  const receivedDate = new Date(date);
+
+  return new Intl.DateTimeFormat('en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  }).format(receivedDate);
+};
+
 export const numberToTime = (value: number) => {
   const hours = Math.floor(value / 3600);
   const minutes = Math.floor((value % 3600) / 60);
