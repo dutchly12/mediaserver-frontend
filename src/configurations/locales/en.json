@@ -12,10 +12,12 @@
     "queued": "Queued",
     "error": "Error",
     "people": "People",
-    "tags": "Tags"
+    "tags": "Tags",
+    "pages": "Pages"
   },
   "actions": {
-    "create": "Create"
+    "create": "Create",
+    "toggle_sidebar": "Toggle Sidebar"
   },
   "pages": {
     "index": {

@@ -1,13 +1,21 @@
 <script setup lang="ts">
-import AppMenu from '@/components/app/menu.vue';
+import AppSidebar from '@/components/app/AppSidebar.vue';
+import AppHeader from '@/components/app/AppHeader.vue';
+import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 </script>
 
 <template>
-  <div>
-    <AppMenu />
+  <SidebarProvider>
+    <AppSidebar />
 
-    <div class="mt-14.5 mx-2 lg:ml-72 lg:my-4">
-      <slot />
-    </div>
-  </div>
+    <SidebarInset>
+      <div>
+        <AppHeader />
+
+        <main class="relative py-8 px-4">
+          <slot />
+        </main>
+      </div>
+    </SidebarInset>
+  </SidebarProvider>
 </template>

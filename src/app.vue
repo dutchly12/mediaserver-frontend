@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
+import { useColorMode } from '@vueuse/core';
 import LayoutsController from '@/components/layouts/controller.vue';
 
 const { locale, t } = useI18n();
+const mode = useColorMode();
+
+mode.value = 'auto';
 
 useHead(() => ({
   htmlAttrs: {
     lang: locale,
     dir: 'ltr',
-  },
-  bodyAttrs: {
-    class: 'text-black bg-white dark:text-white dark:bg-black',
   },
   titleTemplate: t('meta.title_template'),
 }));
