@@ -33,8 +33,8 @@ const formatterDuration = computed(
 
       <Text
         v-if="formatterDuration"
-        variant="lead"
-        class="absolute right-0 bottom-0 px-1 bg-black text-white"
+        variant="small"
+        class="absolute right-0 bottom-0 p-1 bg-black text-white"
       >
         {{ formatterDuration }}
       </Text>
