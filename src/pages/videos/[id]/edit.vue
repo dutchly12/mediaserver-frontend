@@ -3,7 +3,7 @@ import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useHead } from '@unhead/vue';
-import { toast } from 'vue-sonner'
+import { toast } from 'vue-sonner';
 import { useApi } from '@/composables/use-api.ts';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import {
@@ -75,11 +75,11 @@ const updateVideo = async () => {
     await api.videos.update(routeId.value, { video: form.value });
     toast.success(t('pages.videos.id.edit.notifications.main_info_changed'), {
       closeButton: true,
-    })
+    });
   } catch {
     toast.error(t('notifications.server_error'), {
       closeButton: true,
-    })
+    });
   }
   loading.value = false;
 };
@@ -93,11 +93,11 @@ const updatePreview = async (screenshot: Screenshot) => {
     screenshots.value = data;
     toast.success(t('pages.videos.id.edit.notifications.preview_updated'), {
       closeButton: true,
-    })
+    });
   } catch {
     toast.error(t('notifications.server_error'), {
       closeButton: true,
-    })
+    });
   }
   loading.value = false;
 };

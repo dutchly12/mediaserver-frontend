@@ -2,7 +2,7 @@
 import { useHead } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
 import { useColorMode } from '@vueuse/core';
-import { Toaster } from '@/components/ui/sonner'
+import { Toaster } from '@/components/ui/sonner';
 import LayoutsController from '@/components/layouts/controller.vue';
 
 const { locale, t } = useI18n();
