@@ -1,3 +1,6 @@
+import type { Tag } from '@/types/model/tag.ts';
+import type { Person } from '@/types/model/person.ts';
+
 export enum VideoStatus {
   UNPROCESSED = 'unprocessed',
   PROCESSING = 'processing',
@@ -24,6 +27,8 @@ export interface ListVideo {
 
 export interface Video extends ListVideo {
   file: string;
+  tags: Tag[];
+  people: Person[];
 }
 
 export interface VideoCreateRequest {

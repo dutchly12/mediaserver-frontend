@@ -19,6 +19,7 @@ import { Button } from '@/components/ui/button';
 import { Pencil } from 'lucide-vue-next';
 import type { Video } from '@/types/model/video.ts';
 import type { Screenshot } from '@/types/model/screenshot.ts';
+import { Badge } from '@/components/ui/badge';
 
 const route = useRoute();
 const { t } = useI18n();
@@ -100,10 +101,30 @@ useHead(() => ({
         <CardContent class="grid grid-cols-[auto_1fr] items-center gap-2">
           <template v-for="item in contentItems" :key="item.title">
             <Text variant="muted"> {{ item.title }}: </Text>
-            <Text variant="small">
-              {{ item.value }}
-            </Text>
+            <Text variant="small"> {{ item.value }} </Text>
           </template>
+
+          <Text variant="muted"> {{ $t('labels.people') }}: </Text>
+          <div v-if="video?.people.length" class="flex flex-wrap gap-2">
+            <RouterLink
+              v-for="person in video?.people"
+              :key="person.id"
+              :to="{ name: 'people-id', params: { id: person.id } }"
+            >
+              <Text variant="small" class="text-blue-500 hover:text-blue-800 transition-colors">
+                {{ person.name }}
+              </Text>
+            </RouterLink>
+          </div>
+          <Text v-else variant="small"> - </Text>
+
+          <Text variant="muted"> {{ $t('labels.tags') }}: </Text>
+          <div v-if="video?.tags.length" class="flex flex-wrap gap-2">
+            <Badge v-for="tag in video?.tags" :key="tag.id" variant="outline">
+              {{ tag.name }}
+            </Badge>
+          </div>
+          <Text v-else variant="small"> - </Text>
         </CardContent>
       </Card>
     </div>
