@@ -21,6 +21,9 @@
     "create": "Create",
     "toggle_sidebar": "Toggle Sidebar"
   },
+  "notifications": {
+    "server_error": "Unexpected server error"
+  },
   "pages": {
     "index": {
       "meta": {
@@ -90,6 +93,10 @@
               "placeholder": "Video name"
             },
             "action": "Save video"
+          },
+          "notifications": {
+            "main_info_changed": "Video's information was updated",
+            "preview_updated": "Video's preview was updated"
           }
         }
       }

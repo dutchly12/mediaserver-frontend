@@ -3,6 +3,7 @@ import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useHead } from '@unhead/vue';
+import { toast } from 'vue-sonner'
 import { useApi } from '@/composables/use-api.ts';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import {
@@ -69,18 +70,36 @@ const init = async () => {
 const updateVideo = async () => {
   if (loading.value) return;
 
+  loading.value = true;
   try {
     await api.videos.update(routeId.value, { video: form.value });
-  } catch {}
+    toast.success(t('pages.videos.id.edit.notifications.main_info_changed'), {
+      closeButton: true,
+    })
+  } catch {
+    toast.error(t('notifications.server_error'), {
+      closeButton: true,
+    })
+  }
+  loading.value = false;
 };
 
 const updatePreview = async (screenshot: Screenshot) => {
   if (screenshot.main) return;
 
+  loading.value = true;
   try {
     const { data } = await api.videos.update_preview(routeId.value, { preview_id: screenshot.id });
     screenshots.value = data;
-  } catch {}
+    toast.success(t('pages.videos.id.edit.notifications.preview_updated'), {
+      closeButton: true,
+    })
+  } catch {
+    toast.error(t('notifications.server_error'), {
+      closeButton: true,
+    })
+  }
+  loading.value = false;
 };
 
 init();
@@ -121,6 +140,7 @@ useHead(() => ({
                   <FormControl>
                     <Input
                       :placeholder="$t('pages.videos.id.edit.form.name.placeholder')"
+                      :disabled="loading"
                       v-bind="componentField"
                     />
                   </FormControl>
@@ -131,7 +151,7 @@ useHead(() => ({
             </CardContent>
 
             <CardFooter>
-              <Button type="submit">
+              <Button :disabled="loading" type="submit">
                 {{ $t('pages.videos.id.edit.form.action') }}
               </Button>
             </CardFooter>
