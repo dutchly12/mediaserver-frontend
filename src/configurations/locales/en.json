@@ -72,6 +72,27 @@
           "action": "Sign-in"
         }
       }
+    },
+    "videos": {
+      "id": {
+        "edit": {
+          "meta": {
+            "title": "Edit video"
+          },
+          "title": "Edit Video",
+          "tabs": {
+            "main": "Main",
+            "preview": "Preview"
+          },
+          "form": {
+            "name": {
+              "label": "Name",
+              "placeholder": "Video name"
+            },
+            "action": "Save video"
+          }
+        }
+      }
     }
   }
 }

@@ -5,9 +5,15 @@ import { useHead } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
 import { useUserStore } from '@/stores/user.ts';
 import Text from '@/components/ui/Text.vue';
-import { Form } from 'vee-validate';
 import { Button } from '@/components/ui/button';
-import { FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 
 const router = useRouter();

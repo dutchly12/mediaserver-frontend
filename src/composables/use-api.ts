@@ -27,6 +27,8 @@ export const useApi = (): Api => {
       videos: {
         list: (params) => axios(`/v1/videos`, { method: 'get', params }),
         one: (id) => axios(`/v1/videos/${id}`, { method: 'get' }),
+        update: (id, data) => axios(`/v1/videos/${id}`, { method: 'patch', data }),
+        update_preview: (id, data) => axios(`/v1/videos/${id}/preview`, { method: 'put', data }),
         screenshots: (id) => axios(`/v1/videos/${id}/screenshots`, { method: 'get' }),
         create: (data) => axios(`/v1/videos`, { method: 'post', data }),
       },

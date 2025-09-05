@@ -89,9 +89,11 @@ useHead(() => ({
           </CardDescription>
 
           <CardAction>
-            <Button variant="secondary" size="icon">
-              <Pencil />
-            </Button>
+            <RouterLink :to="{ name: 'videos-id-edit', params: { id: routeId } }">
+              <Button variant="secondary" size="icon">
+                <Pencil />
+              </Button>
+            </RouterLink>
           </CardAction>
         </CardHeader>
 

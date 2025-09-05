@@ -5,7 +5,14 @@ import type {
   AuthenticationRefreshRequest,
 } from '@/types/model/authentication.ts';
 import type { User } from '@/types/model/user.ts';
-import type { ListVideo, ListVideoParams, Video, VideoCreateRequest } from '@/types/model/video.ts';
+import type {
+  ListVideo,
+  ListVideoParams,
+  Video,
+  VideoCreateRequest,
+  VideoPreviewUpdateRequest,
+  VideoUpdateRequest,
+} from '@/types/model/video.ts';
 import type { Screenshot } from '@/types/model/screenshot.ts';
 import type { Person } from '@/types/model/person.ts';
 import type { Tag } from '@/types/model/tag.ts';
@@ -37,6 +44,8 @@ export interface Api {
   videos: {
     list: (params?: ListVideoParams) => PaginatedResponse<ListVideo>;
     one: (id: string) => Response<Video>;
+    update: (id: string, data: VideoUpdateRequest) => Response<Video>;
+    update_preview: (id: string, data: VideoPreviewUpdateRequest) => Response<Screenshot[]>;
     screenshots: (id: string) => Response<Screenshot[]>;
     create: (data: VideoCreateRequest) => Response<Video>;
   };

@@ -58,11 +58,13 @@ useHead(() => ({
     </div>
 
     <Pagination
-      v-slot="{ page }"
+      v-if="videos.length"
+      :page="meta.page"
       :items-per-page="meta.limit"
       :total="meta.count"
       show-edges
       class="mt-4"
+      v-slot="{ page }"
       @update:page="setPage"
     >
       <PaginationContent v-slot="{ items }">

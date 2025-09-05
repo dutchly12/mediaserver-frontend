@@ -32,3 +32,13 @@ export interface VideoCreateRequest {
     file: string;
   };
 }
+
+export interface VideoUpdateRequest {
+  video: {
+    name: string;
+  };
+}
+
+export interface VideoPreviewUpdateRequest {
+  preview_id: string;
+}

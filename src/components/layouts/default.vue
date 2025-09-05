@@ -6,11 +6,11 @@ import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 
 <template>
   <SidebarProvider>
-    <AppSidebar />
+    <AppSidebar class="" />
 
     <SidebarInset>
       <div>
-        <AppHeader class="sticky top-0 shrink-0 z-1000" />
+        <AppHeader class="sticky top-0 shrink-0" />
 
         <main class="py-4 px-4">
           <slot />
