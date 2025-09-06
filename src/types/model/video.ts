@@ -40,7 +40,9 @@ export interface VideoCreateRequest {
 
 export interface VideoUpdateRequest {
   video: {
-    name: string;
+    name?: string;
+    person_ids?: string[];
+    tag_ids?: string[];
   };
 }
 

@@ -15,7 +15,8 @@
     "tags": "Tags",
     "pages": "Pages",
     "size": "Size",
-    "uploaded": "Uploaded"
+    "uploaded": "Uploaded",
+    "nothing_found": "Nothing found"
   },
   "actions": {
     "create": "Create",
@@ -91,6 +92,14 @@
             "name": {
               "label": "Name",
               "placeholder": "Video name"
+            },
+            "people": {
+              "label": "People",
+              "placeholder": "Select video's people"
+            },
+            "tags": {
+              "label": "Tags",
+              "placeholder": "Select video's tags"
             },
             "action": "Save video"
           },
