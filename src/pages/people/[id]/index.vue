@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useHead } from '@unhead/vue';
 import { useApi } from '@/composables/use-api.ts';
 import { usePagination } from '@/composables/use-pagination.ts';
+import Text from '@/components/ui/Text.vue';
 import VideoPreview from '@/components/video/preview.vue';
 import {
   Pagination,
@@ -13,6 +15,9 @@ import {
   PaginationLast,
 } from '@/components/ui/pagination';
 import type { ListVideo } from '@/types/model/video.ts';
+import type { Person } from '@/types/model/person.ts';
+import { Button } from '@/components/ui/button';
+import { Settings2 } from 'lucide-vue-next';
 
 const route = useRoute();
 const router = useRouter();
@@ -20,22 +25,30 @@ const api = useApi();
 const { meta, setMeta } = usePagination(loadVideos);
 
 const loading = ref(false);
-const videos = ref<ListVideo[]>();
+const person = ref<Person>();
+const videos = ref<ListVideo[]>([]);
 
 const personId = computed(() => route.params.id as string);
 
-async function loadVideos() {
-  if (loading.value) return;
+async function loadPerson() {
+  try {
+    const { data } = await api.people.one(personId.value);
+    person.value = data;
+  } catch {}
+}
 
-  loading.value = true;
+async function loadVideos() {
   try {
     const {
       data: { meta: receivedMeta, items },
-    } = await api.videos.list({ page: meta.value.page, limit: meta.value.limit, person_ids: [personId.value] });
+    } = await api.videos.list({
+      page: meta.value.page,
+      limit: meta.value.limit,
+      person_ids: [personId.value],
+    });
     setMeta(receivedMeta);
     videos.value = items;
   } catch {}
-  loading.value = false;
 }
 
 function setPage(page: number) {
@@ -43,11 +56,35 @@ function setPage(page: number) {
   router.push({ ...route, query: { ...route.query, page } });
 }
 
-loadVideos();
+async function init() {
+  if (loading.value) return;
+
+  loading.value = true;
+  await Promise.all([loadPerson(), loadVideos()]);
+  loading.value = false;
+}
+
+init();
+
+useHead(() => ({
+  title: person.value?.name,
+}));
 </script>
 
 <template>
   <div>
+    <div class="mb-4 flex justify-between items-center">
+      <Text variant="h2">
+        {{ person?.name }}
+      </Text>
+
+      <RouterLink :to="{ name: 'people-id-edit', params: { id: personId } }">
+        <Button variant="outline" size="icon">
+          <Settings2 />
+        </Button>
+      </RouterLink>
+    </div>
+
     <div class="grid grid-cols-1 gap-2 md:grid-cols-3 lg:grid-cols-4">
       <VideoPreview v-for="video in videos" :key="video.id" :video />
     </div>

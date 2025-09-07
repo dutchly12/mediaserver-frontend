@@ -20,7 +20,8 @@
   },
   "actions": {
     "create": "Create",
-    "toggle_sidebar": "Toggle Sidebar"
+    "toggle_sidebar": "Toggle Sidebar",
+    "update": "Update"
   },
   "notifications": {
     "server_error": "Unexpected server error"
@@ -37,6 +38,38 @@
           "title": "People"
         },
         "title": "People"
+      },
+      "new": {
+        "meta": {
+          "title": "New person"
+        },
+        "title": "Add new person",
+        "form": {
+          "name": {
+            "label": "Name",
+            "placeholder": "Jane Doe"
+          }
+        },
+        "notifications": {
+          "created": "Person entry was created!"
+        }
+      },
+      "id": {
+        "edit": {
+          "meta": {
+            "title": "Edit {name}"
+          },
+          "title": "Edit person entry",
+          "form": {
+            "name": {
+              "label": "Name",
+              "placeholder": "Jane Doe"
+            }
+          },
+          "notifications": {
+            "updated": "Person entry was updated!"
+          }
+        }
       }
     },
     "tags": {
@@ -104,8 +137,8 @@
             "action": "Save video"
           },
           "notifications": {
-            "main_info_changed": "Video's information was updated",
-            "preview_updated": "Video's preview was updated"
+            "main_info_changed": "Video's information was updated!",
+            "preview_updated": "Video's preview was updated!"
           }
         }
       }

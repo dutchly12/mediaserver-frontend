@@ -17,6 +17,9 @@ export const useApi = (): Api => {
       },
       people: {
         list: () => axios('/v1/people', { method: 'get' }),
+        one: (id) => axios(`/v1/people/${id}`, { method: 'get' }),
+        create: (data) => axios('/v1/people', { method: 'post', data }),
+        update: (id, data) => axios(`/v1/people/${id}`, { method: 'patch', data }),
       },
       tags: {
         list: () => axios('/v1/tags', { method: 'get' }),

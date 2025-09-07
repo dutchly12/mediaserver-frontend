@@ -4,3 +4,11 @@ export interface Person {
   created_at: string;
   updated_at: string;
 }
+
+export interface PersonCreateRequestData {
+  person: {
+    name: string;
+  };
+}
+
+export type PersonUpdateRequestData = PersonCreateRequestData;

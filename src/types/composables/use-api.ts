@@ -14,7 +14,11 @@ import type {
   VideoUpdateRequest,
 } from '@/types/model/video.ts';
 import type { Screenshot } from '@/types/model/screenshot.ts';
-import type { Person } from '@/types/model/person.ts';
+import type {
+  Person,
+  PersonCreateRequestData,
+  PersonUpdateRequestData,
+} from '@/types/model/person.ts';
 import type { Tag } from '@/types/model/tag.ts';
 import type { PaginationMeta } from '@/types/common.ts';
 
@@ -34,6 +38,9 @@ export interface Api {
   };
   people: {
     list: () => Response<Person[]>;
+    one: (id: string) => Response<Person>;
+    create: (data: PersonCreateRequestData) => Response<Person>;
+    update: (id: string, data: PersonUpdateRequestData) => Response<Person>;
   };
   tags: {
     list: () => Response<Tag[]>;
