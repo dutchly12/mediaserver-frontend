@@ -9,14 +9,6 @@ const routes: RouteRecordRaw[] = [
       protected: true,
     },
   },
-  {
-    path: '/uploads',
-    name: 'uploads',
-    component: () => import('@/pages/uploads.vue'),
-    meta: {
-      protected: true,
-    },
-  },
 ];
 
 export default routes;

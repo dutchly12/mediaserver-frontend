@@ -9,29 +9,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  type_check:
-    name: check types
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: pnpm
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Install dependencies
-        run: pnpm type:check
-
   publish:
     if: ${{ github.actor != 'dependabot[bot]' }}
     name: build & publish
@@ -60,7 +37,7 @@ jobs:
         run: pnpm generate:sprites
 
       - name: Build project
-        run: pnpm build-only
+        run: pnpm build
         env:
           VITE_BASE_API_URL: ${{ vars.VITE_BASE_API_URL }}
 

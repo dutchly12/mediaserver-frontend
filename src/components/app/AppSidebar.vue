@@ -2,11 +2,10 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { TagsIcon, Users, UploadCloud } from 'lucide-vue-next';
+import { TagsIcon, Users } from 'lucide-vue-next';
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -73,21 +72,6 @@ const menuItems = computed(() =>
         </SidebarGroupContent>
       </SidebarGroup>
     </SidebarContent>
-
-    <SidebarFooter>
-      <SidebarGroupContent>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton :is-active="route.name === 'uploads'" as-child>
-              <RouterLink :to="{ name: 'uploads' }">
-                <UploadCloud />
-                <span>{{ $t('labels.uploads') }}</span>
-              </RouterLink>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarGroupContent>
-    </SidebarFooter>
 
     <SidebarRail />
   </Sidebar>
