@@ -1,23 +1,22 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useHead } from '@unhead/vue';
 import { useApi } from '@/composables/use-api.ts';
 import { useForm } from 'vee-validate';
-import { toast } from 'vue-sonner';
 import Text from '@/components/ui/Text.vue';
 import { FormControl, FormItem, FormLabel, FormMessage, FormField } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import type { Person, PersonUpdateRequestData } from '@/types/model/person.ts';
+import { toast } from 'vue-sonner';
+import type { TagCreateRequestData } from '@/types/model/tag.ts';
 
-type PersonForm = PersonUpdateRequestData['person'];
+type TagForm = TagCreateRequestData['tag'];
 
-const route = useRoute();
 const router = useRouter();
 const { t } = useI18n();
-const { handleSubmit, setFieldValue } = useForm<PersonForm>({
+const { handleSubmit } = useForm<TagForm>({
   initialValues: {
     name: '',
   },
@@ -25,35 +24,19 @@ const { handleSubmit, setFieldValue } = useForm<PersonForm>({
 const api = useApi();
 
 const loading = ref(false);
-const person = ref<Person>();
 
-const personId = computed(() => route.params.id as string);
-
-const loadPerson = async () => {
+const saveTag = handleSubmit(async (tag, { setErrors }) => {
   if (loading.value) return;
 
   loading.value = true;
   try {
-    const { data } = await api.people.one(personId.value);
-    person.value = data;
+    const { data } = await api.tags.create({ tag });
 
-    setFieldValue('name', data.name);
-  } catch {}
-  loading.value = false;
-};
-
-const updatePerson = handleSubmit(async (person, { setErrors }) => {
-  if (loading.value) return;
-
-  loading.value = true;
-  try {
-    const { data } = await api.people.update(personId.value, { person });
-
-    toast.success(t('pages.people.id.edit.notifications.updated'), {
+    toast.success(t('pages.tags.new.notifications.created'), {
       closeButton: true,
     });
 
-    await router.push({ name: 'people-id', params: { id: data.id } });
+    await router.push({ name: 'tags-id', params: { id: data.id } });
   } catch (e) {
     if (api.isAxiosError(e) && e.response?.status === 422) {
       setErrors(e.response.data.fields);
@@ -64,29 +47,27 @@ const updatePerson = handleSubmit(async (person, { setErrors }) => {
   loading.value = false;
 });
 
-loadPerson();
-
 useHead(() => ({
-  title: t('pages.people.id.edit.meta.title', { name: person.value?.name }),
+  title: t('pages.tags.new.meta.title'),
 }));
 </script>
 
 <template>
   <div>
     <Text variant="h2" class="mb-4">
-      {{ $t('pages.people.id.edit.title') }}
+      {{ $t('pages.tags.new.title') }}
     </Text>
 
-    <form @submit="updatePerson" class="max-w-[500px] flex flex-col gap-4">
+    <form @submit="saveTag" class="max-w-[500px] flex flex-col gap-4">
       <FormField name="name" v-slot="{ componentField }">
         <FormItem>
           <FormLabel>
-            {{ $t('pages.people.id.edit.form.name.label') }}
+            {{ $t('pages.tags.new.form.name.label') }}
           </FormLabel>
 
           <FormControl>
             <Input
-              :placeholder="t('pages.people.id.edit.form.name.placeholder')"
+              :placeholder="t('pages.tags.new.form.name.placeholder')"
               :disabled="loading"
               v-bind="componentField"
             />
@@ -97,7 +78,7 @@ useHead(() => ({
       </FormField>
 
       <Button :disabled="loading" type="submit" class="self-baseline">
-        {{ $t('actions.update') }}
+        {{ $t('actions.create') }}
       </Button>
     </form>
   </div>

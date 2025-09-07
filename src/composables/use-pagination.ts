@@ -27,6 +27,7 @@ export const usePagination = (callback: () => Promise<unknown>) => {
     (_, oldValue) => {
       meta.value.limit = routeLimit.value;
       meta.value.page = routePage.value;
+
       if (oldValue) callback();
     },
     { immediate: true },

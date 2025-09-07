@@ -76,6 +76,39 @@
       "index": {
         "meta": {
           "title": "Tags"
+        },
+        "title": "Tags"
+      },
+      "new": {
+        "meta": {
+          "title": "New tag"
+        },
+        "title": "Add new tag",
+        "form": {
+          "name": {
+            "label": "Name",
+            "placeholder": "Colored"
+          }
+        },
+        "notifications": {
+          "created": "Tag entry was created!"
+        }
+      },
+      "id": {
+        "edit": {
+          "meta": {
+            "title": "Edit {name}"
+          },
+          "title": "Edit tag entry",
+          "form": {
+            "name": {
+              "label": "Name",
+              "placeholder": "Colored"
+            }
+          },
+          "notifications": {
+            "updated": "Tag entry was updated!"
+          }
         }
       }
     },

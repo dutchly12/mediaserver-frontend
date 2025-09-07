@@ -23,6 +23,9 @@ export const useApi = (): Api => {
       },
       tags: {
         list: () => axios('/v1/tags', { method: 'get' }),
+        one: (id) => axios(`/v1/tags/${id}`, { method: 'get' }),
+        create: (data) => axios('/v1/tags', { method: 'post', data }),
+        update: (id, data) => axios(`/v1/tags/${id}`, { method: 'patch', data }),
       },
       user: {
         info: () => axios('/v1/user', { method: 'get' }),

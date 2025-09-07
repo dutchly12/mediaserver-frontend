@@ -19,7 +19,7 @@ import type {
   PersonCreateRequestData,
   PersonUpdateRequestData,
 } from '@/types/model/person.ts';
-import type { Tag } from '@/types/model/tag.ts';
+import type { Tag, TagCreateRequestData, TagUpdateRequestData } from '@/types/model/tag.ts';
 import type { PaginationMeta } from '@/types/common.ts';
 
 interface PaginatedData<T> {
@@ -44,6 +44,9 @@ export interface Api {
   };
   tags: {
     list: () => Response<Tag[]>;
+    one: (id: string) => Response<Tag>;
+    create: (data: TagCreateRequestData) => Response<Tag>;
+    update: (id: string, data: TagUpdateRequestData) => Response<Tag>;
   };
   user: {
     info: () => Response<User>;
