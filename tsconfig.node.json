@@ -6,8 +6,7 @@
     "cypress.config.*",
     "nightwatch.conf.*",
     "playwright.config.*",
-    "eslint.config.*",
-    "utils"
+    "eslint.config.*"
   ],
   "compilerOptions": {
     "noEmit": true,

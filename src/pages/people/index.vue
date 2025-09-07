@@ -4,7 +4,8 @@ import { useHead } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
 import { useApi } from '@/composables/use-api.ts';
 import Text from '@/components/ui/Text.vue';
-import UiIcon from '@/components/ui/icon.vue';
+import { Button } from '@/components/ui/button';
+import { Plus } from 'lucide-vue-next';
 import type { Person } from '@/types/model/person.ts';
 
 const { t } = useI18n();
@@ -38,7 +39,9 @@ useHead(() => ({
         {{ $t('pages.people.index.title') }}
       </Text>
 
-      <UiIcon name="square-rounded-plus" class="size-10 cursor-pointer" />
+      <Button variant="outline" size="icon">
+        <Plus />
+      </Button>
     </div>
 
     <div class="px-2 flex flex-col gap-2">
