@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>people-id</div>
+  <div>people-id-edit</div>
 </template>

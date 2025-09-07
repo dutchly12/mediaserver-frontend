@@ -39,9 +39,11 @@ useHead(() => ({
         {{ $t('pages.people.index.title') }}
       </Text>
 
-      <Button variant="outline" size="icon">
-        <Plus />
-      </Button>
+      <RouterLink :to="{ name: 'people-new' }">
+        <Button variant="outline" size="icon">
+          <Plus />
+        </Button>
+      </RouterLink>
     </div>
 
     <div class="px-2 flex flex-col gap-2">

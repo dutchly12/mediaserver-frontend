@@ -10,9 +10,25 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
+    path: '/people/new',
+    name: 'people-new',
+    component: () => import('@/pages/people/new.vue'),
+    meta: {
+      protected: true,
+    },
+  },
+  {
     path: '/people/:id',
     name: 'people-id',
-    component: () => import('@/pages/people/[id].vue'),
+    component: () => import('@/pages/people/[id]/index.vue'),
+    meta: {
+      protected: true,
+    },
+  },
+  {
+    path: '/people/:id/edit',
+    name: 'people-id-edit',
+    component: () => import('@/pages/people/[id]/edit.vue'),
     meta: {
       protected: true,
     },

@@ -8,7 +8,8 @@ export enum VideoStatus {
 }
 
 export interface ListVideoParams {
-  person_id?: string;
+  person_ids?: string[];
+  tag_ids?: string[];
   page?: number;
   limit?: number;
 }
