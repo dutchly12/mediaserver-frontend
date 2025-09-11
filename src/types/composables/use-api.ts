@@ -12,6 +12,8 @@ import type {
   Video,
   VideoCreateRequest,
   VideoPreviewUpdateRequest,
+  VideoProgressUpdateRequest,
+  VideoProgressUpdateResponse,
   VideoUpdateRequest,
 } from '@/types/model/video.ts';
 import type { Screenshot } from '@/types/model/screenshot.ts';
@@ -58,6 +60,10 @@ export interface Api {
     random: () => Response<RandomVideoId>;
     update: (id: string, data: VideoUpdateRequest) => Response<Video>;
     update_preview: (id: string, data: VideoPreviewUpdateRequest) => Response<Screenshot[]>;
+    update_progress: (
+      id: string,
+      data: VideoProgressUpdateRequest,
+    ) => Response<VideoProgressUpdateResponse>;
     screenshots: (id: string) => Response<Screenshot[]>;
     create: (data: VideoCreateRequest) => Response<Video>;
   };

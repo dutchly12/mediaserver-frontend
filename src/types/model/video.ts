@@ -23,6 +23,7 @@ export interface ListVideo {
   width: number | null;
   height: number | null;
   duration: number | null;
+  progress: number;
   preview: string | null;
 }
 
@@ -49,6 +50,14 @@ export interface VideoUpdateRequest {
 
 export interface VideoPreviewUpdateRequest {
   preview_id: string;
+}
+
+export interface VideoProgressUpdateRequest {
+  progress: number;
+}
+
+export interface VideoProgressUpdateResponse {
+  progress: number;
 }
 
 export interface RandomVideoId {

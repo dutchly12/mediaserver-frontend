@@ -26,6 +26,7 @@ const { t } = useI18n();
 const api = useApi();
 
 const loading = ref(false);
+const progressUpdateLoading = ref(false);
 const video = ref<Video>();
 const screenshots = ref<Screenshot[]>([]);
 
@@ -66,6 +67,17 @@ const loadScreenshots = async () => {
   } catch {}
 };
 
+const handleVideoProgress = async (progress: number) => {
+  if (!video.value || progressUpdateLoading.value) return;
+
+  progressUpdateLoading.value = true;
+  try {
+    const { data } = await api.videos.update_progress(video.value.id, { progress });
+    video.value.progress = data.progress;
+  } catch {}
+  progressUpdateLoading.value = false;
+};
+
 loadVideo();
 loadScreenshots();
 
@@ -77,7 +89,7 @@ useHead(() => ({
 <template>
   <div class="flex flex-col gap-4">
     <div class="grid grid-cols-1 gap-4 lg:grid-cols-[2fr_1fr]">
-      <VideoPlayer :video />
+      <VideoPlayer :video @progress="handleVideoProgress" />
 
       <Card>
         <CardHeader>
