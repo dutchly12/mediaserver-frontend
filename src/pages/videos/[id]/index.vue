@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useHead } from '@unhead/vue';
 import { useApi } from '@/composables/use-api.ts';
-import { formatDate, numberToTime } from '@/utils/formatters.ts';
+import { formatDate, numberToTime } from '@/lib/formatters.ts';
 import VideoPlayer from '@/components/video/player.vue';
 import Text from '@/components/ui/Text.vue';
 import {
