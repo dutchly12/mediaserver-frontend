@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { TagsIcon, Users } from 'lucide-vue-next';
+import { TagsIcon, Users, Shuffle } from 'lucide-vue-next';
 import {
   Sidebar,
   SidebarContent,
@@ -30,6 +30,11 @@ const menuItems = computed(() =>
       title: t('labels.tags'),
       routeName: 'tags',
       icon: TagsIcon,
+    },
+    {
+      title: t('labels.random_video'),
+      routeName: 'videos-random',
+      icon: Shuffle,
     },
   ].map((item) => ({
     ...item,

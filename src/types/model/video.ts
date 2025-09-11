@@ -50,3 +50,7 @@ export interface VideoUpdateRequest {
 export interface VideoPreviewUpdateRequest {
   preview_id: string;
 }
+
+export interface RandomVideoId {
+  id: string;
+}

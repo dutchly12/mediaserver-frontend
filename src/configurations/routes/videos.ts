@@ -2,6 +2,14 @@ import type { RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
   {
+    path: '/videos/random',
+    name: 'videos-random',
+    component: () => import('@/pages/videos/random.vue'),
+    meta: {
+      protected: true,
+    },
+  },
+  {
     path: '/videos/:id',
     name: 'videos-id',
     component: () => import('@/pages/videos/[id]/index.vue'),

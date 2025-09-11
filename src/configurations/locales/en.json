@@ -16,7 +16,8 @@
     "pages": "Pages",
     "size": "Size",
     "uploaded": "Uploaded",
-    "nothing_found": "Nothing found"
+    "nothing_found": "Nothing found",
+    "random_video": "Random video"
   },
   "actions": {
     "create": "Create",

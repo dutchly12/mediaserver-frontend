@@ -8,6 +8,7 @@ import type { User } from '@/types/model/user.ts';
 import type {
   ListVideo,
   ListVideoParams,
+  RandomVideoId,
   Video,
   VideoCreateRequest,
   VideoPreviewUpdateRequest,
@@ -54,6 +55,7 @@ export interface Api {
   videos: {
     list: (params?: ListVideoParams) => PaginatedResponse<ListVideo>;
     one: (id: string) => Response<Video>;
+    random: () => Response<RandomVideoId>;
     update: (id: string, data: VideoUpdateRequest) => Response<Video>;
     update_preview: (id: string, data: VideoPreviewUpdateRequest) => Response<Screenshot[]>;
     screenshots: (id: string) => Response<Screenshot[]>;
