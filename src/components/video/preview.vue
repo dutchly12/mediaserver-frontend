@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { ImageOff } from 'lucide-vue-next';
-import { numberToTime } from '@/lib/formatters.ts';
+import { numberToTime } from '@/lib/formatters';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import Text from '@/components/ui/Text.vue';
-import type { ListVideo } from '@/types/model/video.ts';
+import type { ListVideo } from '@/types/model/video';
 
 const props = defineProps<{ video: ListVideo }>();
 

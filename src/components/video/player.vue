@@ -2,7 +2,7 @@
 import { ref, computed, watch, useTemplateRef } from 'vue';
 
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-import type { Video } from '@/types/model/video.ts';
+import type { Video } from '@/types/model/video';
 
 const props = defineProps<{
   video?: Video;

@@ -1,5 +1,5 @@
-import type { Tag } from '@/types/model/tag.ts';
-import type { Person } from '@/types/model/person.ts';
+import type { Tag } from '@/types/model/tag';
+import type { Person } from '@/types/model/person';
 
 export enum VideoStatus {
   UNPROCESSED = 'unprocessed',

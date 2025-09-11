@@ -3,8 +3,8 @@ import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useHead } from '@unhead/vue';
-import { useApi } from '@/composables/use-api.ts';
-import { formatDate, numberToTime } from '@/lib/formatters.ts';
+import { useApi } from '@/composables/use-api';
+import { formatDate, numberToTime } from '@/lib/formatters';
 import VideoPlayer from '@/components/video/player.vue';
 import Text from '@/components/ui/Text.vue';
 import {
@@ -17,8 +17,8 @@ import {
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Pencil } from 'lucide-vue-next';
-import type { Video } from '@/types/model/video.ts';
-import type { Screenshot } from '@/types/model/screenshot.ts';
+import type { Video } from '@/types/model/video';
+import type { Screenshot } from '@/types/model/screenshot';
 import { Badge } from '@/components/ui/badge';
 
 const route = useRoute();

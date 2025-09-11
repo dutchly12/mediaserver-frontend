@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import { useApi } from '@/composables/use-api.ts';
+import { useApi } from '@/composables/use-api';
 
 const router = useRouter();
 const api = useApi();

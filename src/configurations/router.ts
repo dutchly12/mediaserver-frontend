@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import authentication from '@/configurations/routes/authentication.ts';
-import main from '@/configurations/routes/main.ts';
-import people from '@/configurations/routes/people.ts';
-import tags from '@/configurations/routes/tags.ts';
-import videos from '@/configurations/routes/videos.ts';
+import authentication from '@/configurations/routes/authentication';
+import main from '@/configurations/routes/main';
+import people from '@/configurations/routes/people';
+import tags from '@/configurations/routes/tags';
+import videos from '@/configurations/routes/videos';
 
-import { useUserStore } from '@/stores/user.ts';
+import { useUserStore } from '@/stores/user';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

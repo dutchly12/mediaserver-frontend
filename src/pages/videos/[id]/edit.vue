@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useHead } from '@unhead/vue';
 import { toast } from 'vue-sonner';
-import { useApi } from '@/composables/use-api.ts';
+import { useApi } from '@/composables/use-api';
 import Text from '@/components/ui/Text.vue';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import {
@@ -26,10 +26,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import type { Screenshot } from '@/types/model/screenshot.ts';
-import type { Tag } from '@/types/model/tag.ts';
-import type { Person } from '@/types/model/person.ts';
-import type { Video } from '@/types/model/video.ts';
+import type { Screenshot } from '@/types/model/screenshot';
+import type { Tag } from '@/types/model/tag';
+import type { Person } from '@/types/model/person';
+import type { Video } from '@/types/model/video';
 
 const route = useRoute();
 const { t } = useI18n();

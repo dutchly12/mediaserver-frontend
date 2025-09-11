@@ -1,12 +1,12 @@
 import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
-import { useApi } from '@/composables/use-api.ts';
+import { useApi } from '@/composables/use-api';
 import {
   TokenType,
   type TokensPair,
   type AuthenticationCreationRequest,
-} from '@/types/model/authentication.ts';
-import type { User } from '@/types/model/user.ts';
+} from '@/types/model/authentication';
+import type { User } from '@/types/model/user';
 
 export const useUserStore = defineStore('user', () => {
   const api = useApi();

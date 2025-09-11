@@ -1,6 +1,6 @@
 import { ref, computed, watch, readonly } from 'vue';
 import { useRoute } from 'vue-router';
-import type { PaginationMeta } from '@/types/common.ts';
+import type { PaginationMeta } from '@/types/common';
 
 const DEFAULT_META: PaginationMeta = {
   count: 0,

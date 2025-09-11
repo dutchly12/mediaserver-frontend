@@ -1,6 +1,6 @@
 import { isAxiosError } from 'axios';
-import { useAxios } from '@/composables/use-axios.ts';
-import type { Api } from '@/types/composables/use-api.ts';
+import { useAxios } from '@/composables/use-axios';
+import type { Api } from '@/types/composables/use-api';
 
 let instance: Api;
 

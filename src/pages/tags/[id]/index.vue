@@ -2,12 +2,12 @@
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useHead } from '@unhead/vue';
-import { useApi } from '@/composables/use-api.ts';
+import { useApi } from '@/composables/use-api';
 import Text from '@/components/ui/Text.vue';
 import VideoList from '@/components/video/list.vue';
 import { Button } from '@/components/ui/button';
 import { Settings2 } from 'lucide-vue-next';
-import type { Tag } from '@/types/model/tag.ts';
+import type { Tag } from '@/types/model/tag';
 
 const route = useRoute();
 const api = useApi();

@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useHead } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
-import { useUserStore } from '@/stores/user.ts';
+import { useUserStore } from '@/stores/user';
 import Text from '@/components/ui/Text.vue';
 import { Button } from '@/components/ui/button';
 import {

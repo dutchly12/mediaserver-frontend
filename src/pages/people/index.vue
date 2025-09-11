@@ -2,11 +2,11 @@
 import { ref } from 'vue';
 import { useHead } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
-import { useApi } from '@/composables/use-api.ts';
+import { useApi } from '@/composables/use-api';
 import Text from '@/components/ui/Text.vue';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-vue-next';
-import type { Person } from '@/types/model/person.ts';
+import type { Person } from '@/types/model/person';
 
 const { t } = useI18n();
 const api = useApi();

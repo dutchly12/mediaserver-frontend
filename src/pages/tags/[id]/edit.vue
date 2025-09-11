@@ -3,14 +3,14 @@ import { ref, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useHead } from '@unhead/vue';
-import { useApi } from '@/composables/use-api.ts';
+import { useApi } from '@/composables/use-api';
 import { useForm } from 'vee-validate';
 import { toast } from 'vue-sonner';
 import Text from '@/components/ui/Text.vue';
 import { FormControl, FormItem, FormLabel, FormMessage, FormField } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import type { Tag, TagUpdateRequestData } from '@/types/model/tag.ts';
+import type { Tag, TagUpdateRequestData } from '@/types/model/tag';
 
 type TagForm = TagUpdateRequestData['tag'];
 

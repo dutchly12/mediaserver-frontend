@@ -3,8 +3,8 @@ import type {
   AuthenticationCreationRequest,
   AuthenticationCreationResponse,
   AuthenticationRefreshRequest,
-} from '@/types/model/authentication.ts';
-import type { User } from '@/types/model/user.ts';
+} from '@/types/model/authentication';
+import type { User } from '@/types/model/user';
 import type {
   ListVideo,
   ListVideoParams,
@@ -15,15 +15,15 @@ import type {
   VideoProgressUpdateRequest,
   VideoProgressUpdateResponse,
   VideoUpdateRequest,
-} from '@/types/model/video.ts';
-import type { Screenshot } from '@/types/model/screenshot.ts';
+} from '@/types/model/video';
+import type { Screenshot } from '@/types/model/screenshot';
 import type {
   Person,
   PersonCreateRequestData,
   PersonUpdateRequestData,
-} from '@/types/model/person.ts';
-import type { Tag, TagCreateRequestData, TagUpdateRequestData } from '@/types/model/tag.ts';
-import type { PaginationMeta } from '@/types/common.ts';
+} from '@/types/model/person';
+import type { Tag, TagCreateRequestData, TagUpdateRequestData } from '@/types/model/tag';
+import type { PaginationMeta } from '@/types/common';
 
 interface PaginatedData<T> {
   items: T[];

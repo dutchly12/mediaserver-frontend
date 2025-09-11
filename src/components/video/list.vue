@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, watch, useTemplateRef } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useApi } from '@/composables/use-api.ts';
-import { usePagination } from '@/composables/use-pagination.ts';
+import { useApi } from '@/composables/use-api';
+import { usePagination } from '@/composables/use-pagination';
 import VideoPreview from '@/components/video/preview.vue';
 import {
   Pagination,
@@ -12,7 +12,7 @@ import {
   PaginationItem,
   PaginationLast,
 } from '@/components/ui/pagination';
-import type { ListVideo } from '@/types/model/video.ts';
+import type { ListVideo } from '@/types/model/video';
 
 const props = defineProps<{
   params?: {

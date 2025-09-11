@@ -1,5 +1,5 @@
 import axios, { isAxiosError, type AxiosInstance } from 'axios';
-import { useUserStore } from '@/stores/user.ts';
+import { useUserStore } from '@/stores/user';
 
 let instance: AxiosInstance;
 
