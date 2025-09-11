@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, useTemplateRef } from 'vue';
-
+import { computed, ref, useTemplateRef, watch } from 'vue';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import type { Video } from '@/types/model/video';
 
@@ -17,14 +16,12 @@ let interval: number | null = null;
 const started = ref(false);
 const videoPlayer = useTemplateRef<HTMLVideoElement>('video');
 
-const showProgressBar = computed(() => !started.value && !!props.video?.progress);
-const progressWidth = computed(() => {
+const progressPercent = computed(() => {
   if (!props.video?.duration) return 0;
 
-  const percent = (props.video.progress / props.video.duration) * 100;
-
-  return `${percent}%`;
+  return (props.video.progress / props.video.duration) * 100;
 });
+const showProgressBar = computed(() => !started.value && !props.video?.viewed);
 
 const saveProgress = async () => {
   if (!videoPlayer.value) return;
@@ -75,7 +72,7 @@ watch(() => props.video, handleVideoUpdate);
       @pause="handlePlayerPause"
     />
     <div v-if="showProgressBar" class="absolute left-0 bottom-0 h-1 w-full">
-      <div :style="{ width: progressWidth }" class="h-full bg-teal-200"></div>
+      <div :style="{ width: `${progressPercent}%` }" class="h-full bg-teal-200"></div>
     </div>
   </AspectRatio>
 </template>

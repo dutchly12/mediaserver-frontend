@@ -8,13 +8,12 @@ import type { ListVideo } from '@/types/model/video';
 
 const props = defineProps<{ video: ListVideo }>();
 
-const progressWidth = computed(() => {
+const progressPercent = computed(() => {
   if (!props.video.progress || !props.video.duration) return 0;
 
-  const percent = (props.video.progress / props.video.duration) * 100;
-
-  return `${percent}%`;
+  return (props.video.progress / props.video.duration) * 100;
 });
+const showProgressBar = computed(() => props.video.progress && !props.video.viewed);
 
 const formatterDuration = computed(
   () => props.video.duration && numberToTime(props.video.duration),
@@ -26,7 +25,13 @@ const formatterDuration = computed(
     :to="{ name: 'videos-id', params: { id: props.video.id } }"
     class="flex flex-col gap-1"
   >
-    <AspectRatio :ratio="16 / 9" class="bg-black">
+    <AspectRatio
+      :ratio="16 / 9"
+      :class="{
+        'bg-black': true,
+        'opacity-10 transition-opacity hover:opacity-100': props.video.viewed,
+      }"
+    >
       <img
         v-if="props.video.preview"
         :src="props.video.preview"
@@ -47,8 +52,8 @@ const formatterDuration = computed(
         {{ formatterDuration }}
       </Text>
 
-      <div v-if="props.video.progress" class="absolute left-0 bottom-0 h-1 w-full z-2">
-        <div :style="{ width: progressWidth }" class="h-full bg-teal-200"></div>
+      <div v-if="showProgressBar" class="absolute left-0 bottom-0 h-1 w-full z-2">
+        <div :style="{ width: `${progressPercent}%` }" class="h-full bg-teal-200"></div>
       </div>
     </AspectRatio>
 

@@ -17,14 +17,15 @@ export interface ListVideoParams {
 export interface ListVideo {
   id: string;
   name: string;
-  status: VideoStatus;
-  created_at: string;
-  updated_at: string;
   width: number | null;
   height: number | null;
   duration: number | null;
   progress: number;
+  viewed: boolean;
   preview: string | null;
+  status: VideoStatus;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface Video extends ListVideo {
@@ -58,6 +59,7 @@ export interface VideoProgressUpdateRequest {
 
 export interface VideoProgressUpdateResponse {
   progress: number;
+  viewed: boolean;
 }
 
 export interface RandomVideoId {
