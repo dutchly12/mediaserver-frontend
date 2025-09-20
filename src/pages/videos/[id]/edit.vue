@@ -4,8 +4,8 @@ import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useHead } from '@unhead/vue';
 import { toast } from 'vue-sonner';
+import { useLayout } from '@/composables/use-layout';
 import { useApi } from '@/composables/use-api';
-import Text from '@/components/ui/Text.vue';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import {
   Form,
@@ -138,6 +138,10 @@ const updatePreview = async (screenshot: Screenshot) => {
 
 init();
 
+useLayout(() => ({
+  title: t('pages.videos.id.edit.title'),
+}));
+
 useHead(() => ({
   title: t('pages.videos.id.edit.meta.title'),
 }));
@@ -145,10 +149,6 @@ useHead(() => ({
 
 <template>
   <div>
-    <Text variant="h2" class="mb-4">
-      {{ $t('pages.videos.id.edit.title') }}
-    </Text>
-
     <Tabs default-value="main" unmount-on-hide>
       <TabsList>
         <TabsTrigger v-for="tab in tabs" :key="tab.value" :value="tab.value">

@@ -2,9 +2,8 @@
 import { ref } from 'vue';
 import { useHead } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
+import { useLayout } from '@/composables/use-layout';
 import { useApi } from '@/composables/use-api';
-import Text from '@/components/ui/Text.vue';
-import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-vue-next';
 import type { Person } from '@/types/model/person';
 
@@ -27,33 +26,31 @@ const loadPeople = async () => {
 
 loadPeople();
 
+useLayout(() => ({
+  title: t('pages.people.index.title'),
+  actions: [
+    {
+      key: 'new',
+      type: 'link',
+      icon: Plus,
+      to: { name: 'people-new' },
+    },
+  ],
+}));
+
 useHead(() => ({
   title: t('pages.people.index.meta.title'),
 }));
 </script>
 
 <template>
-  <div class="flex flex-col gap-4">
-    <div class="p-2 flex justify-between items-center">
-      <Text variant="h2">
-        {{ $t('pages.people.index.title') }}
-      </Text>
-
-      <RouterLink :to="{ name: 'people-new' }">
-        <Button variant="outline" size="icon">
-          <Plus />
-        </Button>
-      </RouterLink>
-    </div>
-
-    <div class="px-2 flex flex-col gap-2">
-      <RouterLink
-        v-for="person in people"
-        :key="person.id"
-        :to="{ name: 'people-id', params: { id: person.id } }"
-      >
-        {{ person.name }}
-      </RouterLink>
-    </div>
+  <div class="px-2 flex flex-col gap-2">
+    <RouterLink
+      v-for="person in people"
+      :key="person.id"
+      :to="{ name: 'people-id', params: { id: person.id } }"
+    >
+      {{ person.name }}
+    </RouterLink>
   </div>
 </template>

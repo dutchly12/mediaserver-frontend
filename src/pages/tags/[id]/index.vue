@@ -2,11 +2,10 @@
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useHead } from '@unhead/vue';
+import { useLayout } from '@/composables/use-layout';
 import { useApi } from '@/composables/use-api';
-import Text from '@/components/ui/Text.vue';
-import VideoList from '@/components/video/list.vue';
-import { Button } from '@/components/ui/button';
 import { Settings2 } from 'lucide-vue-next';
+import VideoList from '@/components/video/list.vue';
 import type { Tag } from '@/types/model/tag';
 
 const route = useRoute();
@@ -30,25 +29,23 @@ async function loadTag() {
 
 loadTag();
 
+useLayout(() => ({
+  title: tag.value?.name,
+  actions: [
+    {
+      key: 'edit',
+      icon: Settings2,
+      type: 'link',
+      to: { name: 'tags-id-edit', params: { id: tagId.value } },
+    },
+  ],
+}));
+
 useHead(() => ({
   title: tag.value?.name,
 }));
 </script>
 
 <template>
-  <div class="flex flex-col gap-4">
-    <div class="flex justify-between items-center">
-      <Text variant="h2">
-        {{ tag?.name }}
-      </Text>
-
-      <RouterLink :to="{ name: 'tags-id-edit', params: { id: tagId } }">
-        <Button variant="outline" size="icon">
-          <Settings2 />
-        </Button>
-      </RouterLink>
-    </div>
-
-    <VideoList :params="{ tag_ids: [tagId] }" />
-  </div>
+  <VideoList :params="{ tag_ids: [tagId] }" />
 </template>

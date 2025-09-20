@@ -3,10 +3,10 @@ import { ref, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useHead } from '@unhead/vue';
-import { useApi } from '@/composables/use-api';
 import { useForm } from 'vee-validate';
 import { toast } from 'vue-sonner';
-import Text from '@/components/ui/Text.vue';
+import { useLayout } from '@/composables/use-layout';
+import { useApi } from '@/composables/use-api';
 import { FormControl, FormItem, FormLabel, FormMessage, FormField } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -66,39 +66,37 @@ const updateTag = handleSubmit(async (tag, { setErrors }) => {
 
 loadTag();
 
+useLayout(() => ({
+  title: t('pages.tags.id.edit.title'),
+}));
+
 useHead(() => ({
   title: t('pages.tags.id.edit.meta.title', { name: tag.value?.name }),
 }));
 </script>
 
 <template>
-  <div>
-    <Text variant="h2" class="mb-4">
-      {{ $t('pages.tags.id.edit.title') }}
-    </Text>
+  <form @submit="updateTag" class="max-w-[500px] flex flex-col gap-4">
+    <FormField name="name" v-slot="{ componentField }">
+      <FormItem>
+        <FormLabel>
+          {{ $t('pages.tags.id.edit.form.name.label') }}
+        </FormLabel>
 
-    <form @submit="updateTag" class="max-w-[500px] flex flex-col gap-4">
-      <FormField name="name" v-slot="{ componentField }">
-        <FormItem>
-          <FormLabel>
-            {{ $t('pages.tags.id.edit.form.name.label') }}
-          </FormLabel>
+        <FormControl>
+          <Input
+            :placeholder="t('pages.tags.id.edit.form.name.placeholder')"
+            :disabled="loading"
+            v-bind="componentField"
+          />
+        </FormControl>
 
-          <FormControl>
-            <Input
-              :placeholder="t('pages.tags.id.edit.form.name.placeholder')"
-              :disabled="loading"
-              v-bind="componentField"
-            />
-          </FormControl>
+        <FormMessage />
+      </FormItem>
+    </FormField>
 
-          <FormMessage />
-        </FormItem>
-      </FormField>
-
-      <Button :disabled="loading" type="submit" class="self-baseline">
-        {{ $t('actions.update') }}
-      </Button>
-    </form>
-  </div>
+    <Button :disabled="loading" type="submit" class="self-baseline">
+      {{ $t('actions.update') }}
+    </Button>
+  </form>
 </template>

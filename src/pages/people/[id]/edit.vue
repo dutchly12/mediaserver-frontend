@@ -3,10 +3,10 @@ import { ref, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useHead } from '@unhead/vue';
+import { useLayout } from '@/composables/use-layout';
 import { useApi } from '@/composables/use-api';
 import { useForm } from 'vee-validate';
 import { toast } from 'vue-sonner';
-import Text from '@/components/ui/Text.vue';
 import { FormControl, FormItem, FormLabel, FormMessage, FormField } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -66,6 +66,10 @@ const updatePerson = handleSubmit(async (person, { setErrors }) => {
 
 loadPerson();
 
+useLayout(() => ({
+  title: t('pages.people.id.edit.title'),
+}));
+
 useHead(() => ({
   title: t('pages.people.id.edit.meta.title', { name: person.value?.name }),
 }));
@@ -73,10 +77,6 @@ useHead(() => ({
 
 <template>
   <div>
-    <Text variant="h2" class="mb-4">
-      {{ $t('pages.people.id.edit.title') }}
-    </Text>
-
     <form @submit="updatePerson" class="max-w-[500px] flex flex-col gap-4">
       <FormField name="name" v-slot="{ componentField }">
         <FormItem>

@@ -31,7 +31,8 @@
     "index": {
       "meta": {
         "title": "Main page"
-      }
+      },
+      "title": "All videos"
     },
     "people": {
       "index": {

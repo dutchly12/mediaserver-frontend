@@ -2,11 +2,10 @@
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useHead } from '@unhead/vue';
+import { useLayout } from '@/composables/use-layout';
 import { useApi } from '@/composables/use-api';
-import Text from '@/components/ui/Text.vue';
-import VideoList from '@/components/video/list.vue';
-import { Button } from '@/components/ui/button';
 import { Settings2 } from 'lucide-vue-next';
+import VideoList from '@/components/video/list.vue';
 import type { Person } from '@/types/model/person';
 
 const route = useRoute();
@@ -30,25 +29,23 @@ async function loadPerson() {
 
 loadPerson();
 
+useLayout(() => ({
+  title: person.value?.name,
+  actions: [
+    {
+      key: 'edit',
+      icon: Settings2,
+      type: 'link',
+      to: { name: 'people-id-edit', params: { id: personId.value } },
+    },
+  ],
+}));
+
 useHead(() => ({
   title: person.value?.name,
 }));
 </script>
 
 <template>
-  <div class="flex flex-col gap-4">
-    <div class="flex justify-between items-center">
-      <Text variant="h2">
-        {{ person?.name }}
-      </Text>
-
-      <RouterLink :to="{ name: 'people-id-edit', params: { id: personId } }">
-        <Button variant="outline" size="icon">
-          <Settings2 />
-        </Button>
-      </RouterLink>
-    </div>
-
-    <VideoList :params="{ person_ids: [personId] }" />
-  </div>
+  <VideoList :params="{ person_ids: [personId] }" />
 </template>
