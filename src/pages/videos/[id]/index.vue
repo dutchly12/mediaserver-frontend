@@ -68,7 +68,7 @@ const loadScreenshots = async () => {
 };
 
 const handleVideoProgress = async (progress: number) => {
-  if (!video.value || progressUpdateLoading.value) return;
+  if (!video.value || video.value.viewed || progressUpdateLoading.value) return;
 
   progressUpdateLoading.value = true;
   try {
