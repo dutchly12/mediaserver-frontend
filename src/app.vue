@@ -15,7 +15,7 @@ useHead(() => ({
     lang: locale,
     dir: 'ltr',
   },
-  titleTemplate: t('meta.title_template'),
+  titleTemplate: (title) => t(title ? 'meta.title_template' : 'meta.title', { title }),
 }));
 </script>
 

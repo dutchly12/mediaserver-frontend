@@ -1,21 +1,14 @@
 {
   "meta": {
-    "title_template": "%s - Mediaserver",
+    "title_template": "{title} - Mediaserver",
     "title": "Mediaserver"
   },
   "labels": {
-    "uploads": "Uploads",
-    "new_collection": "New collection",
     "active": "Active",
-    "done": "Done",
-    "preparing": "Preparing",
-    "queued": "Queued",
-    "error": "Error",
     "people": "People",
     "tags": "Tags",
     "pages": "Pages",
     "size": "Size",
-    "uploaded": "Uploaded",
     "nothing_found": "Nothing found",
     "random_video": "Random video"
   },
@@ -111,18 +104,6 @@
           "notifications": {
             "updated": "Tag entry was updated!"
           }
-        }
-      }
-    },
-    "uploads": {
-      "meta": {
-        "title": "Uploads"
-      },
-      "title": "Uploads",
-      "form": {
-        "name": {
-          "label": "Name",
-          "placeholder": "Vacation"
         }
       }
     },
