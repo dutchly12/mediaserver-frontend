@@ -14,7 +14,9 @@ const app = createApp(App).use(pinia);
 const init = async () => {
   const userStore = useUserStore();
 
-  await userStore.loadUser();
+  try {
+    await userStore.loadUser();
+  } catch {}
 
   app.use(router).use(i18n).use(unhead);
 
