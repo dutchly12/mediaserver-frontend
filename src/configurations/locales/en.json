@@ -10,7 +10,8 @@
     "pages": "Pages",
     "size": "Size",
     "nothing_found": "Nothing found",
-    "random_video": "Random video"
+    "random_video": "Random video",
+    "uploaded": "Uploaded"
   },
   "actions": {
     "create": "Create",
