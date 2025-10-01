@@ -11,7 +11,8 @@
     "size": "Size",
     "nothing_found": "Nothing found",
     "random_video": "Random video",
-    "uploaded": "Uploaded"
+    "uploaded": "Uploaded",
+    "viewed": "Viewed"
   },
   "actions": {
     "create": "Create",

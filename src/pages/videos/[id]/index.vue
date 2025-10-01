@@ -16,7 +16,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Pencil } from 'lucide-vue-next';
+import { Check, Pencil } from 'lucide-vue-next';
 import type { Video } from '@/types/model/video';
 import type { Screenshot } from '@/types/model/screenshot';
 import { Badge } from '@/components/ui/badge';
@@ -131,7 +131,12 @@ useHead(() => ({
           <Text v-else variant="small"> - </Text>
 
           <Text variant="muted"> {{ $t('labels.tags') }}: </Text>
-          <div v-if="video?.tags.length" class="flex flex-wrap gap-2">
+          <div v-if="video?.viewed || video?.tags.length" class="flex flex-wrap gap-2">
+            <Badge v-if="video.viewed">
+              <Check />
+              {{ $t('labels.viewed') }}
+            </Badge>
+
             <Badge v-for="tag in video?.tags" :key="tag.id" variant="outline">
               {{ tag.name }}
             </Badge>
