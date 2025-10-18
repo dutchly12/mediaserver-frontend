@@ -9,6 +9,7 @@ import { useLayout } from '@/composables/use-layout';
 import { useApi } from '@/composables/use-api';
 import { FormControl, FormItem, FormLabel, FormMessage, FormField } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { FileInput } from '@/components/ui/file-input';
 import { Button } from '@/components/ui/button';
 import type { PersonCreateRequestData } from '@/types/model/person';
 
@@ -19,6 +20,7 @@ const { t } = useI18n();
 const { handleSubmit } = useForm<PersonForm>({
   initialValues: {
     name: '',
+    picture: undefined,
   },
 });
 const api = useApi();
@@ -30,7 +32,13 @@ const savePerson = handleSubmit(async (person, { setErrors }) => {
 
   loading.value = true;
   try {
-    const { data } = await api.people.create({ person });
+    const formData = new FormData();
+    formData.append('person[name]', person.name);
+    if (person.picture) {
+      formData.append('person[picture]', person.picture);
+    }
+
+    const { data } = await api.people.create(formData);
 
     toast.success(t('pages.people.new.notifications.created'), {
       closeButton: true,
@@ -70,6 +78,20 @@ useHead(() => ({
             :disabled="loading"
             v-bind="componentField"
           />
+        </FormControl>
+
+        <FormMessage />
+      </FormItem>
+    </FormField>
+
+    <FormField name="picture" v-slot="{ componentField }">
+      <FormItem>
+        <FormLabel>
+          {{ $t('pages.people.new.form.picture.label') }}
+        </FormLabel>
+
+        <FormControl>
+          <FileInput :disabled="loading" v-bind="componentField" />
         </FormControl>
 
         <FormMessage />

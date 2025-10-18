@@ -42,8 +42,8 @@ export interface Api {
   people: {
     list: () => Response<Person[]>;
     one: (id: string) => Response<Person>;
-    create: (data: PersonCreateRequestData) => Response<Person>;
-    update: (id: string, data: PersonUpdateRequestData) => Response<Person>;
+    create: (data: PersonCreateRequestData | FormData) => Response<Person>;
+    update: (id: string, data: PersonUpdateRequestData | FormData) => Response<Person>;
   };
   tags: {
     list: () => Response<Tag[]>;

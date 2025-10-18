@@ -9,6 +9,7 @@ import { useForm } from 'vee-validate';
 import { toast } from 'vue-sonner';
 import { FormControl, FormItem, FormLabel, FormMessage, FormField } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { FileInput } from '@/components/ui/file-input';
 import { Button } from '@/components/ui/button';
 import type { Person, PersonUpdateRequestData } from '@/types/model/person';
 
@@ -20,6 +21,7 @@ const { t } = useI18n();
 const { handleSubmit, setFieldValue } = useForm<PersonForm>({
   initialValues: {
     name: '',
+    picture: undefined,
   },
 });
 const api = useApi();
@@ -47,7 +49,13 @@ const updatePerson = handleSubmit(async (person, { setErrors }) => {
 
   loading.value = true;
   try {
-    const { data } = await api.people.update(personId.value, { person });
+    const formData = new FormData();
+    formData.append('person[name]', person.name);
+    if (person.picture) {
+      formData.append('person[picture]', person.picture);
+    }
+
+    const { data } = await api.people.update(personId.value, formData);
 
     toast.success(t('pages.people.id.edit.notifications.updated'), {
       closeButton: true,
@@ -90,6 +98,20 @@ useHead(() => ({
               :disabled="loading"
               v-bind="componentField"
             />
+          </FormControl>
+
+          <FormMessage />
+        </FormItem>
+      </FormField>
+
+      <FormField name="picture" v-slot="{ componentField }">
+        <FormItem>
+          <FormLabel>
+            {{ $t('pages.people.id.edit.form.picture.label') }}
+          </FormLabel>
+
+          <FormControl>
+            <FileInput :disabled="loading" v-bind="componentField" />
           </FormControl>
 
           <FormMessage />

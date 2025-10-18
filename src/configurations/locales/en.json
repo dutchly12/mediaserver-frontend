@@ -19,6 +19,12 @@
     "toggle_sidebar": "Toggle Sidebar",
     "update": "Update"
   },
+  "components": {
+    "file_input": {
+      "choose_file": "Choose File",
+      "no_file_chosen": "No file chosen"
+    }
+  },
   "notifications": {
     "server_error": "Unexpected server error"
   },
@@ -45,6 +51,9 @@
           "name": {
             "label": "Name",
             "placeholder": "Jane Doe"
+          },
+          "picture": {
+            "label": "Picture"
           }
         },
         "notifications": {
@@ -61,6 +70,9 @@
             "name": {
               "label": "Name",
               "placeholder": "Jane Doe"
+            },
+            "picture": {
+              "label": "Picture"
             }
           },
           "notifications": {
