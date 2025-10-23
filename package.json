@@ -13,10 +13,12 @@
     "build": "run-p type:check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
-    "type:check": "vue-tsc --build",
-    "lint": "eslint . --fix",
-    "format": "prettier . --write",
-    "code:fix": "run-s lint format"
+    "types:check": "vue-tsc --build",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format:check": "prettier . --check",
+    "format:fix": "prettier . --write",
+    "code:fix": "run-s lint:fix format:fix"
   },
   "dependencies": {
     "@unhead/vue": "^2.0.19",
