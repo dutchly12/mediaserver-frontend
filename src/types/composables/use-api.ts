@@ -1,5 +1,6 @@
 import type { AxiosResponse, isAxiosError } from 'axios';
 import type {
+  Authentication,
   AuthenticationCreationRequest,
   AuthenticationCreationResponse,
   AuthenticationRefreshRequest,
@@ -35,6 +36,7 @@ type PaginatedResponse<T> = Promise<AxiosResponse<PaginatedData<T>>>;
 
 export interface Api {
   authentications: {
+    list: () => Response<Authentication[]>;
     create: (data: AuthenticationCreationRequest) => Response<AuthenticationCreationResponse>;
     refresh: (data: AuthenticationRefreshRequest) => Response<AuthenticationCreationResponse>;
     destroy: () => Response<void>;

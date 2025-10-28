@@ -10,6 +10,7 @@ export const useApi = (): Api => {
 
     instance = {
       authentications: {
+        list: () => axios('/v1/authentications', { method: 'get' }),
         create: (data) => axios('/v1/authentications', { method: 'post', data, __noRefresh: true }),
         refresh: (data) =>
           axios('/v1/authentications/refresh', { method: 'post', data, __noRefresh: true }),
