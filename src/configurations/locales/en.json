@@ -195,7 +195,15 @@
         "meta": {
           "title": "Account sessions"
         },
-        "title": "Account sessions"
+        "title": "Account sessions",
+        "statuses": {
+          "inactive": "Inactive",
+          "active": "Active",
+          "revoked": "Revoked",
+          "expired": "Expired"
+        },
+        "created": "Created",
+        "last_activity": "Last activity"
       }
     }
   }

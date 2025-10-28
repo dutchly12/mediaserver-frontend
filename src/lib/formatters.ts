@@ -31,3 +31,28 @@ export const formattedSize = (value: number) => {
       return `${String(value).padEnd(4, '0')}B`;
   }
 };
+
+export const formatRelativeTime = (value: string, locale: string) => {
+  const date = new Date(value);
+  const now = new Date();
+  const diff = (+date - +now) / 1000;
+
+  const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
+
+  const divisions: { amount: number; unit: Intl.RelativeTimeFormatUnit }[] = [
+    { amount: 60, unit: 'second' },
+    { amount: 60, unit: 'minute' },
+    { amount: 24, unit: 'hour' },
+    { amount: 30, unit: 'day' },
+    { amount: 12, unit: 'month' },
+    { amount: Infinity, unit: 'year' },
+  ];
+
+  let duration = diff;
+  for (const division of divisions) {
+    if (Math.abs(duration) < division.amount) {
+      return rtf.format(Math.round(duration), division.unit);
+    }
+    duration /= division.amount;
+  }
+};
