@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import authentication from '@/configurations/routes/authentication';
 import main from '@/configurations/routes/main';
 import people from '@/configurations/routes/people';
+import profile from '@/configurations/routes/profile';
 import tags from '@/configurations/routes/tags';
 import videos from '@/configurations/routes/videos';
 
@@ -10,7 +11,7 @@ import { useUserStore } from '@/stores/user';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [...authentication, ...main, ...people, ...tags, ...videos],
+  routes: [...authentication, ...main, ...people, ...profile, ...tags, ...videos],
 });
 
 router.beforeEach((to) => {

@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { computed, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { TagsIcon, Users, Shuffle } from 'lucide-vue-next';
+import { TagsIcon, Users, User2, ChevronUp, Shuffle } from 'lucide-vue-next';
+import { useUserStore } from '@/stores/user';
+
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -15,9 +18,19 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from '@/components/ui/sidebar';
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from '@/components/ui/dropdown-menu';
 
 const route = useRoute();
+const router = useRouter();
 const { t } = useI18n();
+const userStore = useUserStore();
+
+const loading = ref(false);
 
 const menuItems = computed(() =>
   [
@@ -41,6 +54,17 @@ const menuItems = computed(() =>
     active: route.name?.toString().startsWith(item.routeName),
   })),
 );
+
+const handleSignOutClick = async () => {
+  if (loading.value) return;
+
+  loading.value = true;
+  try {
+    await userStore.signOut();
+    await router.push({ name: 'authentication-sign-in' });
+  } catch {}
+  loading.value = false;
+};
 </script>
 
 <template>
@@ -77,6 +101,32 @@ const menuItems = computed(() =>
         </SidebarGroupContent>
       </SidebarGroup>
     </SidebarContent>
+
+    <SidebarFooter>
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <SidebarMenuButton>
+                <User2 />
+                {{ userStore.user?.email }}
+                <ChevronUp class="ml-auto" />
+              </SidebarMenuButton>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent side="top" class="w-[15rem]">
+              <DropdownMenuItem as-child>
+                <RouterLink :to="{ name: 'profile' }">
+                  <span>{{ $t('labels.profile') }}</span>
+                </RouterLink>
+              </DropdownMenuItem>
+              <DropdownMenuItem variant="destructive" @click="handleSignOutClick">
+                <span>{{ $t('actions.sign_out') }}</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </SidebarMenuItem>
+      </SidebarMenu>
+    </SidebarFooter>
 
     <SidebarRail />
   </Sidebar>

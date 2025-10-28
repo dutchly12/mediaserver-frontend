@@ -12,12 +12,17 @@
     "nothing_found": "Nothing found",
     "random_video": "Random video",
     "uploaded": "Uploaded",
-    "viewed": "Viewed"
+    "viewed": "Viewed",
+    "profile": "Profile",
+    "main": "Main",
+    "password": "Password",
+    "sessions": "Sessions"
   },
   "actions": {
     "create": "Create",
     "toggle_sidebar": "Toggle Sidebar",
-    "update": "Update"
+    "update": "Update",
+    "sign_out": "Sign out"
   },
   "components": {
     "file_input": {
@@ -171,6 +176,26 @@
             "preview_updated": "Video's preview was updated!"
           }
         }
+      }
+    },
+    "profile": {
+      "main": {
+        "meta": {
+          "title": "Profile settings"
+        },
+        "title": "Profile settings"
+      },
+      "password": {
+        "meta": {
+          "title": "Password settings"
+        },
+        "title": "Password settings"
+      },
+      "sessions": {
+        "meta": {
+          "title": "Account sessions"
+        },
+        "title": "Account sessions"
       }
     }
   }
