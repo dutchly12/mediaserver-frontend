@@ -40,15 +40,9 @@ const stopInterval = () => {
   if (interval === null) return;
 
   clearInterval(interval);
+  interval = null;
+
   saveProgress();
-};
-
-const handlePlayerStart = () => {
-  startInterval();
-};
-
-const handlePlayerPause = () => {
-  stopInterval();
 };
 
 const handleVideoUpdate = (video?: Video) => {
@@ -57,7 +51,7 @@ const handleVideoUpdate = (video?: Video) => {
   videoPlayer.value.currentTime = video.progress;
 };
 
-watch(() => props.video, handleVideoUpdate);
+watch(() => props.video, handleVideoUpdate, { immediate: true });
 </script>
 
 <template>
@@ -68,8 +62,8 @@ watch(() => props.video, handleVideoUpdate);
       :poster="props.video?.preview ?? undefined"
       controls
       class="object-cover w-full h-full"
-      @play="handlePlayerStart"
-      @pause="handlePlayerPause"
+      @play="startInterval"
+      @pause="stopInterval"
     />
     <div v-if="showProgressBar" class="absolute left-0 bottom-0 h-1 w-full">
       <div :style="{ width: `${progressPercent}%` }" class="h-full bg-teal-200"></div>

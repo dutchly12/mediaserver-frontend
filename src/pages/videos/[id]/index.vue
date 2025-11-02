@@ -74,6 +74,7 @@ const handleVideoProgress = async (progress: number) => {
   try {
     const { data } = await api.videos.update_progress(video.value.id, { progress });
     video.value.progress = data.progress;
+    video.value.viewed = data.viewed;
   } catch {}
   progressUpdateLoading.value = false;
 };
