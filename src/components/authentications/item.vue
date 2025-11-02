@@ -34,8 +34,8 @@ const isActive = computed(() => props.authentication.status === AuthenticationSt
 
     <div class="flex flex-col gap-1 text-sm">
       <div>
-        <span>{{ $t('pages.profile.sessions.last_activity') }}: </span>
-        <span>{{ formatRelativeTime(props.authentication.updated_at, $i18n.locale) }}</span>
+        <span>{{ $t('pages.profile.sessions.active') }}: </span>
+        <span>{{ formatRelativeTime(props.authentication.last_active_at, $i18n.locale) }}</span>
       </div>
       <div>
         <span>{{ $t('pages.profile.sessions.created') }}: </span>
