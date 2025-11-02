@@ -203,7 +203,7 @@
           "expired": "Expired"
         },
         "created": "Created",
-        "last_activity": "Last activity"
+        "active": "Active"
       }
     }
   }

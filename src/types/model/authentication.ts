@@ -32,6 +32,7 @@ export interface Authentication {
   id: string;
   status: AuthenticationStatus;
   created_at: string;
+  last_active_at: string;
   updated_at: string;
   current: boolean;
   user_agent: {
