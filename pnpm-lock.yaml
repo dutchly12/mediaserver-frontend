@@ -55,8 +55,8 @@ importers:
         specifier: ^4.1.15
         version: 4.1.15(vite@7.1.11(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.92.1)(terser@5.44.0)(tsx@4.20.5)(yaml@2.8.1))
       '@tsconfig/node24':
-        specifier: ^24.0.0
-        version: 24.0.0
+        specifier: ^24.0.1
+        version: 24.0.1
       '@types/node':
         specifier: ^24.9.2
         version: 24.9.2
@@ -2051,8 +2051,8 @@ packages:
     peerDependencies:
       vue: ^2.7.0 || ^3.0.0
 
-  '@tsconfig/node24@24.0.0':
-    resolution: {integrity: sha512-3/6Cr4dELEAucgPIr6ufY7yBYMi4ttZFOewABADNZ+bm4DUZl4dup2VBcBeP1ejj3QblrWVWux/1XcRv/ZVikA==}
+  '@tsconfig/node24@24.0.1':
+    resolution: {integrity: sha512-3+IXshza3bIrT0tbHBr9CixQDVf4iBf0HTR0hCYowhpLqkzJjswu3UY8aZWjRXZep31kYB+o2SQeD8KwIoUHYw==}
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -7661,7 +7661,7 @@ snapshots:
       '@tanstack/virtual-core': 3.13.12
       vue: 3.5.21(typescript@5.9.3)
 
-  '@tsconfig/node24@24.0.0': {}
+  '@tsconfig/node24@24.0.1': {}
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
