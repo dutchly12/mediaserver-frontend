@@ -21,7 +21,7 @@
     "code:fix": "run-s lint:fix format:fix"
   },
   "dependencies": {
-    "@unhead/vue": "^2.0.18",
+    "@unhead/vue": "^2.0.19",
     "@vee-validate/zod": "^4.15.0",
     "@vueuse/core": "^13.9.0",
     "axios": "^1.13.1",
