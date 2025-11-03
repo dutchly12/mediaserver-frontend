@@ -12,8 +12,8 @@ importers:
         specifier: ^2.0.19
         version: 2.0.19(vue@3.5.21(typescript@5.9.3))
       '@vee-validate/zod':
-        specifier: ^4.15.0
-        version: 4.15.0(vue@3.5.21(typescript@5.9.3))(zod@4.1.11)
+        specifier: ^4.15.1
+        version: 4.15.1(vue@3.5.21(typescript@5.9.3))(zod@4.1.11)
       '@vueuse/core':
         specifier: ^13.9.0
         version: 13.9.0(vue@3.5.21(typescript@5.9.3))
@@ -2149,8 +2149,8 @@ packages:
     peerDependencies:
       vue: '>=3.5.18'
 
-  '@vee-validate/zod@4.15.0':
-    resolution: {integrity: sha512-MpvIKiyg9X5yD8bJW0no2AU7wtR2T5mrvD9tuPRiie951sU2n6QKgMV38qKKOiqFBCxsMSjIuLLLV3V5kVE4nQ==}
+  '@vee-validate/zod@4.15.1':
+    resolution: {integrity: sha512-329Z4TDBE5Vx0FdbA8S4eR9iGCFFUNGbxjpQ20ff5b5wGueScjocUIx9JHPa79LTG06RnlUR4XogQsjN4tecKA==}
     peerDependencies:
       zod: ^3.24.0
 
@@ -5045,9 +5045,6 @@ packages:
   tailwind-merge@3.3.0:
     resolution: {integrity: sha512-fyW/pEfcQSiigd5SNn0nApUOxx0zB/dm6UDU/rEwc2c3sX2smWUNbapHv+QRqLGVp9GWX3THIa7MUGPo+YkDzQ==}
 
-  tailwindcss@4.1.15:
-    resolution: {integrity: sha512-k2WLnWkYFkdpRv+Oby3EBXIyQC8/s1HOFMBUViwtAh6Z5uAozeUSMQlIsn/c6Q2iJzqG6aJT3wdPaRNj70iYxQ==}
-
   tailwindcss@4.1.16:
     resolution: {integrity: sha512-pONL5awpaQX4LN5eiv7moSiSPd/DLDzKVRJz8Q9PgzmAdd1R4307GQS2ZpfiN7ZmekdQrfhZZiSE5jkLR4WNaA==}
 
@@ -5362,6 +5359,11 @@ packages:
 
   vee-validate@4.15.0:
     resolution: {integrity: sha512-PGJh1QCFwCBjbHu5aN6vB8macYVWrajbDvgo1Y/8fz9n/RVIkLmZCJDpUgu7+mUmCOPMxeyq7vXUOhbwAqdXcA==}
+    peerDependencies:
+      vue: ^3.4.26
+
+  vee-validate@4.15.1:
+    resolution: {integrity: sha512-DkFsiTwEKau8VIxyZBGdO6tOudD+QoUBPuHj3e6QFqmbfCRj1ArmYWue9lEp6jLSWBIw4XPlDLjFIZNLdRAMSg==}
     peerDependencies:
       vue: ^3.4.26
 
@@ -7788,10 +7790,10 @@ snapshots:
       unhead: 2.0.19
       vue: 3.5.21(typescript@5.9.3)
 
-  '@vee-validate/zod@4.15.0(vue@3.5.21(typescript@5.9.3))(zod@4.1.11)':
+  '@vee-validate/zod@4.15.1(vue@3.5.21(typescript@5.9.3))(zod@4.1.11)':
     dependencies:
       type-fest: 4.41.0
-      vee-validate: 4.15.0(vue@3.5.21(typescript@5.9.3))
+      vee-validate: 4.15.1(vue@3.5.21(typescript@5.9.3))
       zod: 4.1.11
     transitivePeerDependencies:
       - vue
@@ -11249,8 +11251,6 @@ snapshots:
 
   tailwind-merge@3.3.0: {}
 
-  tailwindcss@4.1.15: {}
-
   tailwindcss@4.1.16: {}
 
   tapable@2.3.0: {}
@@ -11585,6 +11585,12 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   vee-validate@4.15.0(vue@3.5.21(typescript@5.9.3)):
+    dependencies:
+      '@vue/devtools-api': 7.7.7
+      type-fest: 4.41.0
+      vue: 3.5.21(typescript@5.9.3)
+
+  vee-validate@4.15.1(vue@3.5.21(typescript@5.9.3)):
     dependencies:
       '@vue/devtools-api': 7.7.7
       type-fest: 4.41.0
