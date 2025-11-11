@@ -15,5 +15,5 @@ useHead(() => ({
 </script>
 
 <template>
-  <div>password</div>
+  <div>Password section</div>
 </template>

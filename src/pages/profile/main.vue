@@ -15,5 +15,5 @@ useHead(() => ({
 </script>
 
 <template>
-  <div>main</div>
+  <div>Main section</div>
 </template>
