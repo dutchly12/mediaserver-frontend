@@ -1,7 +1,8 @@
 {
   "meta": {
     "title_template": "{title} - Mediaserver",
-    "title": "Mediaserver"
+    "title": "Mediaserver",
+    "new_version": "New app version available"
   },
   "labels": {
     "active": "Active",
