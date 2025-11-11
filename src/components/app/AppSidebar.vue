@@ -3,6 +3,7 @@ import { computed, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { TagsIcon, Users, User2, ChevronUp, Shuffle } from 'lucide-vue-next';
+import { useRegisterSW } from 'virtual:pwa-register/vue';
 import { useUserStore } from '@/stores/user';
 
 import {
@@ -24,10 +25,13 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from '@/components/ui/dropdown-menu';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
 
 const route = useRoute();
 const router = useRouter();
 const { t } = useI18n();
+const { needRefresh: needRefreshServiceWorker, updateServiceWorker } = useRegisterSW();
 const userStore = useUserStore();
 
 const loading = ref(false);
@@ -104,6 +108,17 @@ const handleSignOutClick = async () => {
 
     <SidebarFooter>
       <SidebarMenu>
+        <SidebarMenuItem v-if="needRefreshServiceWorker">
+          <Alert>
+            <AlertTitle>{{ $t('meta.new_version') }}</AlertTitle>
+            <AlertDescription>
+              <Button size="sm" @click="updateServiceWorker">
+                {{ $t('actions.update') }}
+              </Button>
+            </AlertDescription>
+          </Alert>
+        </SidebarMenuItem>
+
         <SidebarMenuItem>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
