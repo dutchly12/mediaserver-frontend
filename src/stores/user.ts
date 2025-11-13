@@ -15,6 +15,7 @@ export const useUserStore = defineStore('user', () => {
   const accessToken = useLocalstorageRef<string>(TokenType.ACCESS_TOKEN);
   const refreshToken = useLocalstorageRef<string>(TokenType.REFRESH_TOKEN);
   const refreshing = useLocalstorageRef<boolean>('refreshing');
+  const onlyUnviewedVideos = useLocalstorageRef<boolean>('only_unviewed');
   const user = ref<User>();
 
   const isAuthorized = computed(() => !!refreshToken.value);
@@ -64,6 +65,7 @@ export const useUserStore = defineStore('user', () => {
     accessToken,
     refreshToken,
     refreshing,
+    onlyUnviewedVideos,
     user,
     isAuthorized,
     loadUser,
