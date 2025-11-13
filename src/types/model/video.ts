@@ -8,6 +8,7 @@ export enum VideoStatus {
 }
 
 export interface ListVideoParams {
+  unviewed?: boolean;
   person_ids?: string[];
   tag_ids?: string[];
   page?: number;

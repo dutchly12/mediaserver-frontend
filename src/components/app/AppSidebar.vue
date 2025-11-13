@@ -24,9 +24,12 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
 
 const route = useRoute();
 const router = useRouter();
@@ -130,10 +133,22 @@ const handleSignOutClick = async () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent side="top" class="w-[15rem]">
               <DropdownMenuItem as-child>
+                <div class="flex justify-between items-center">
+                  <Label for="only-viewed-viewed-switch">
+                    {{ $t('labels.only_unviewed_videos') }}
+                  </Label>
+                  <Switch v-model="userStore.onlyUnviewedVideos" id="only-viewed-viewed-switch" />
+                </div>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem as-child>
                 <RouterLink :to="{ name: 'profile' }">
                   <span>{{ $t('labels.profile') }}</span>
                 </RouterLink>
               </DropdownMenuItem>
+
+              <DropdownMenuSeparator />
+
               <DropdownMenuItem variant="destructive" @click="handleSignOutClick">
                 <span>{{ $t('actions.sign_out') }}</span>
               </DropdownMenuItem>

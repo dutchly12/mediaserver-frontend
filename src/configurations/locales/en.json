@@ -17,7 +17,8 @@
     "profile": "Profile",
     "main": "Main",
     "password": "Password",
-    "sessions": "Sessions"
+    "sessions": "Sessions",
+    "only_unviewed_videos": "Only unviewed videos"
   },
   "actions": {
     "create": "Create",

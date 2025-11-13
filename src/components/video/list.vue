@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch, useTemplateRef } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useUserStore } from '@/stores/user';
 import { useApi } from '@/composables/use-api';
 import { usePagination } from '@/composables/use-pagination';
 import VideoPreview from '@/components/video/preview.vue';
@@ -23,6 +24,7 @@ const props = defineProps<{
 
 const route = useRoute();
 const router = useRouter();
+const userStore = useUserStore();
 const api = useApi();
 const { meta, setMeta } = usePagination(loadVideos);
 
@@ -38,6 +40,7 @@ async function loadVideos() {
     const {
       data: { items, meta: receiverMeta },
     } = await api.videos.list({
+      unviewed: userStore.onlyUnviewedVideos ?? false,
       person_ids: props.params?.person_ids,
       tag_ids: props.params?.tag_ids,
       limit: meta.value.limit,
@@ -55,7 +58,10 @@ function setPage(page: number) {
   router.push({ ...route, query: { ...route.query, page } });
 }
 
-watch(() => props.params, loadVideos, { immediate: true, deep: true });
+watch(() => [props.params, userStore.onlyUnviewedVideos], loadVideos, {
+  immediate: true,
+  deep: true,
+});
 </script>
 
 <template>
