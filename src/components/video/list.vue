@@ -8,10 +8,11 @@ import VideoPreview from '@/components/video/preview.vue';
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationFirst,
   PaginationItem,
   PaginationLast,
+  PaginationNext,
+  PaginationPrevious,
 } from '@/components/ui/pagination';
 import type { ListVideo } from '@/types/model/video';
 
@@ -54,6 +55,8 @@ async function loadVideos() {
 }
 
 function setPage(page: number) {
+  if (page === meta.value.page) return;
+
   topEdge.value?.scrollIntoView({ behavior: 'smooth' });
   router.push({ ...route, query: { ...route.query, page } });
 }
@@ -73,29 +76,22 @@ watch(() => [props.params, userStore.onlyUnviewedVideos], loadVideos, {
     </div>
 
     <Pagination
-      v-if="videos?.length"
+      v-if="meta.pages > 1"
       :page="meta.page"
       :items-per-page="meta.limit"
       :total="meta.count"
-      show-edges
-      v-slot="{ page }"
+      v-slot="{ page, pageCount }"
       @update:page="setPage"
     >
-      <PaginationContent v-slot="{ items }">
+      <PaginationContent>
         <PaginationFirst />
+        <PaginationPrevious />
 
-        <template v-for="(item, index) in items" :key="index">
-          <PaginationItem
-            v-if="item.type === 'page'"
-            :value="item.value"
-            :is-active="item.value === page"
-          >
-            {{ item.value }}
-          </PaginationItem>
+        <PaginationItem :value="page" size="lg">
+          {{ $t('labels.a_of_b', { a: page, b: pageCount }) }}
+        </PaginationItem>
 
-          <PaginationEllipsis v-else />
-        </template>
-
+        <PaginationNext />
         <PaginationLast />
       </PaginationContent>
     </Pagination>

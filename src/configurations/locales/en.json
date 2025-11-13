@@ -18,7 +18,8 @@
     "main": "Main",
     "password": "Password",
     "sessions": "Sessions",
-    "only_unviewed_videos": "Only unviewed videos"
+    "only_unviewed_videos": "Only unviewed videos",
+    "a_of_b": "{a} of {b}"
   },
   "actions": {
     "create": "Create",
