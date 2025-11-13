@@ -3,8 +3,6 @@ import { useUserStore } from '@/stores/user';
 
 let instance: AxiosInstance;
 
-let refresh: null | Promise<void> = null;
-
 export const useAxios = (): AxiosInstance => {
   if (!instance) {
     const userStore = useUserStore();
@@ -14,8 +12,8 @@ export const useAxios = (): AxiosInstance => {
     });
 
     instance.interceptors.request.use((config) => {
-      if (userStore.tokens.access_token)
-        config.headers.set('Authorization', `Bearer ${userStore.tokens.access_token}`);
+      if (userStore.accessToken)
+        config.headers.set('Authorization', `Bearer ${userStore.accessToken}`);
 
       return config;
     });
@@ -31,24 +29,29 @@ export const useAxios = (): AxiosInstance => {
           !error.config?.__refreshed &&
           error.response?.status === 401
         ) {
-          if (!refresh) {
-            refresh = userStore
-              .refresh()
-              .catch(() => console.error('Tokens refresh failed'))
-              .finally(() => (refresh = null));
-          }
+          if (userStore.refreshing) {
+            await new Promise<void>((resolve) => {
+              if (!userStore.refreshing) return resolve();
 
-          await refresh;
+              const unsubscribe = userStore.$subscribe((_, state) => {
+                if (state.refreshing) return;
+
+                unsubscribe();
+                resolve();
+              });
+            });
+          } else {
+            await userStore.refresh();
+          }
 
           if (userStore.isAuthorized) {
             const { config } = error;
             if (!config) return Promise.reject(error);
 
             config.__refreshed = true;
-            config.headers.set('Authorization', `Bearer ${userStore.tokens.access_token}`);
+            config.headers.set('Authorization', `Bearer ${userStore.accessToken}`);
+
             return axios(config);
-          } else {
-            return Promise.reject(error);
           }
         }
 
