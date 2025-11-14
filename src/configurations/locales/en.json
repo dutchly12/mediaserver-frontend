@@ -16,7 +16,7 @@
     "viewed": "Viewed",
     "profile": "Profile",
     "main": "Main",
-    "password": "Password",
+    "security": "Security",
     "sessions": "Sessions",
     "only_unviewed_videos": "Only unviewed videos",
     "a_of_b": "{a} of {b}"
@@ -188,11 +188,11 @@
         },
         "title": "Profile settings"
       },
-      "password": {
+      "security": {
         "meta": {
-          "title": "Password settings"
+          "title": "Security settings"
         },
-        "title": "Password settings"
+        "title": "Security settings"
       },
       "sessions": {
         "meta": {

@@ -6,14 +6,14 @@ import { useHead } from '@unhead/vue';
 const { t } = useI18n();
 
 useLayout(() => ({
-  title: t('pages.profile.password.title'),
+  title: t('pages.profile.security.title'),
 }));
 
 useHead(() => ({
-  title: t('pages.profile.password.meta.title'),
+  title: t('pages.profile.security.meta.title'),
 }));
 </script>
 
 <template>
-  <div>Password section</div>
+  <div>Security section</div>
 </template>
