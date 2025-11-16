@@ -16,6 +16,10 @@ export const useApi = (): Api => {
           axios('/v1/authentications/refresh', { method: 'post', data, __noRefresh: true }),
         destroy: () => axios('/v1/authentications/sign-out', { method: 'delete' }),
       },
+      passkeys: {
+        options: () => axios('/v1/passkeys/options', { method: 'post' }),
+        store: (data) => axios('/v1/passkeys', { method: 'post', data }),
+      },
       people: {
         list: () => axios('/v1/people', { method: 'get' }),
         one: (id) => axios(`/v1/people/${id}`, { method: 'get' }),
