@@ -39,11 +39,13 @@ export interface Api {
   authentications: {
     list: () => Response<Authentication[]>;
     create: (data: AuthenticationCreationRequest) => Response<AuthenticationCreationResponse>;
+    passkey_options: () => Response<any>;
+    create_with_passkey: (data: any) => Response<AuthenticationCreationResponse>;
     refresh: (data: AuthenticationRefreshRequest) => Response<AuthenticationCreationResponse>;
     destroy: () => Response<void>;
   };
-  passkeys: {
-    options: () => Response<PasskeyCreateOptions>;
+  passkey: {
+    options: () => Response<PublicKeyCredentialCreationOptionsJSON>;
     store: (data: PasskeyCreateRequestData) => Response<void>;
   };
   people: {

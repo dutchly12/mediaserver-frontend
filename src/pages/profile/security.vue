@@ -3,7 +3,6 @@ import { useI18n } from 'vue-i18n';
 import { useLayout } from '@/composables/use-layout';
 import { useHead } from '@unhead/vue';
 import { useApi } from '@/composables/use-api';
-import { parseWebauthnOptions, prepareWebauthnCredential } from '@/lib/webauthn';
 import { Button } from '@/components/ui/button';
 
 const { t } = useI18n();
@@ -11,16 +10,18 @@ const api = useApi();
 
 const createPasskey = async () => {
   try {
-    const { data } = await api.passkeys.options();
+    const { data: options } = await api.passkey.options();
 
-    const credential = await navigator.credentials.create({ publicKey: parseWebauthnOptions(data) });
-    if (!credential) return;
+    const publicKey = PublicKeyCredential.parseCreationOptionsFromJSON(options);
+    if (!publicKey) return;
 
-    // @ts-expect-error typescript DOM's wrong type declaration
-    const attestation = prepareWebauthnCredential(credential);
+    const attestation = (await navigator.credentials.create({ publicKey })) as PublicKeyCredential;
+    if (!attestation) return;
 
-    await api.passkeys.store({ attestation });
-  } catch {}
+    await api.passkey.store({ attestation: attestation.toJSON() });
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 useLayout(() => ({
@@ -35,6 +36,6 @@ useHead(() => ({
 <template>
   <div>
     Security section
-    <Button @click="createPasskey"> options </Button>
+    <Button @click="createPasskey">Create Passkey</Button>
   </div>
 </template>

@@ -132,7 +132,7 @@
     "authentication": {
       "sign_in": {
         "meta": {
-          "title": "Sign-in"
+          "title": "Sign in"
         },
         "title": "Authentication",
         "form": {
@@ -144,8 +144,9 @@
             "label": "Password",
             "placeholder": "password"
           },
-          "action": "Sign-in"
-        }
+          "action": "Sign in"
+        },
+        "sign_in_with_passkey": "Sign in with passkey"
       }
     },
     "videos": {

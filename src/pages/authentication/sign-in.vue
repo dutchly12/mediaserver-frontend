@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import SignInWithPasskey from '@/components/authentication/sign-in-with-passkey.vue';
 
 const router = useRouter();
 const { t } = useI18n();
@@ -48,7 +49,7 @@ useHead(() => ({
       {{ $t('pages.authentication.sign_in.title') }}
     </Text>
 
-    <div class="p-6 rounded-xl border-solid border-1 border-gray">
+    <div class="p-6 rounded-xl border-solid border-1 border-gray flex flex-col gap-4">
       <Form class="flex flex-col gap-4" @submit="signIn">
         <FormField name="email" v-slot="{ componentField }">
           <FormItem>
@@ -92,6 +93,8 @@ useHead(() => ({
           {{ $t('pages.authentication.sign_in.form.action') }}
         </Button>
       </Form>
+
+      <SignInWithPasskey />
     </div>
   </div>
 </template>
