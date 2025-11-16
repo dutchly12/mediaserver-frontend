@@ -25,7 +25,7 @@ import type {
 } from '@/types/model/person';
 import type { Tag, TagCreateRequestData, TagUpdateRequestData } from '@/types/model/tag';
 import type { PaginationMeta } from '@/types/common';
-import type { PasskeyCreateOptions, PasskeyCreateRequestData } from '@/types/model/passkey';
+import type { PasskeyCreateRequestData } from '@/types/model/passkey';
 
 interface PaginatedData<T> {
   items: T[];
