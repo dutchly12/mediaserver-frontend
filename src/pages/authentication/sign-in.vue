@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useHead } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
+import { KeySquare } from 'lucide-vue-next';
 import { useUserStore } from '@/stores/user';
 import Text from '@/components/ui/Text.vue';
 import { Button } from '@/components/ui/button';
@@ -15,7 +16,6 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import SignInWithPasskey from '@/components/authentication/sign-in-with-passkey.vue';
 
 const router = useRouter();
 const { t } = useI18n();
@@ -32,7 +32,7 @@ const signIn = async () => {
 
   loading.value = true;
   try {
-    await userStore.signIn(form.value);
+    await userStore.signInBase(form.value);
     await router.push({ name: 'index' });
   } catch {}
   loading.value = false;
@@ -94,7 +94,10 @@ useHead(() => ({
         </Button>
       </Form>
 
-      <SignInWithPasskey />
+      <Button variant="outline" @click="userStore.signInPasskey">
+        <KeySquare />
+        {{ $t('pages.authentication.sign_in.sign_in_with_passkey') }}
+      </Button>
     </div>
   </div>
 </template>

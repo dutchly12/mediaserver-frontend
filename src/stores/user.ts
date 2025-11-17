@@ -32,11 +32,26 @@ export const useUserStore = defineStore('user', () => {
     user.value = data;
   };
 
-  const signIn = async (form: AuthenticationCreationRequest) => {
+  const signInBase = async (form: AuthenticationCreationRequest) => {
     const { data } = await api.authentications.base.create(form);
     updateTokens(data);
 
     await loadUser();
+  };
+
+  const signInPasskey = async () => {
+    const { data: options } = await api.authentications.passkey.options();
+
+    const publicKey = PublicKeyCredential.parseRequestOptionsFromJSON(options);
+
+    const credential = (await navigator.credentials.get({ publicKey })) as PublicKeyCredential;
+
+    if (!credential) return;
+
+    await api.authentications.passkey.create({
+      assertion: credential.toJSON(),
+      challenge: options.challenge,
+    });
   };
 
   const refresh = async () => {
@@ -69,7 +84,8 @@ export const useUserStore = defineStore('user', () => {
     user,
     isAuthorized,
     loadUser,
-    signIn,
+    signInBase,
+    signInPasskey,
     refresh,
     signOut,
   };
