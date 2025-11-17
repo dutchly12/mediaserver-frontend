@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 const api = useApi();
 
 const signInWithPasskey = async () => {
-  const { data: options } = await api.authentications.passkey_options();
+  const { data: options } = await api.authentications.passkey.options();
 
   const publicKey = PublicKeyCredential.parseRequestOptionsFromJSON(options);
 
@@ -14,7 +14,7 @@ const signInWithPasskey = async () => {
 
   if (!credential) return;
 
-  await api.authentications.create_with_passkey({
+  await api.authentications.passkey.create({
     assertion: credential.toJSON(),
     challenge: options.challenge,
   });

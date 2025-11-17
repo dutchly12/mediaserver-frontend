@@ -33,7 +33,7 @@ export const useUserStore = defineStore('user', () => {
   };
 
   const signIn = async (form: AuthenticationCreationRequest) => {
-    const { data } = await api.authentications.create(form);
+    const { data } = await api.authentications.base.create(form);
     updateTokens(data);
 
     await loadUser();
