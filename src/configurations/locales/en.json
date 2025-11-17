@@ -193,7 +193,8 @@
         "meta": {
           "title": "Security settings"
         },
-        "title": "Security settings"
+        "title": "Security settings",
+        "create_passkey": "Create Passkey"
       },
       "sessions": {
         "meta": {

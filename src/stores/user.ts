@@ -76,6 +76,22 @@ export const useUserStore = defineStore('user', () => {
     updateTokens();
   };
 
+  const createPasskey = async () => {
+    try {
+      const { data: options } = await api.passkey.options();
+
+      const publicKey = PublicKeyCredential.parseCreationOptionsFromJSON(options);
+      if (!publicKey) return;
+
+      const attestation = (await navigator.credentials.create({ publicKey })) as PublicKeyCredential;
+      if (!attestation) return;
+
+      await api.passkey.store({ attestation: attestation.toJSON() });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return {
     accessToken,
     refreshToken,
@@ -88,5 +104,6 @@ export const useUserStore = defineStore('user', () => {
     signInPasskey,
     refresh,
     signOut,
+    createPasskey
   };
 });

@@ -1,28 +1,12 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
-import { useLayout } from '@/composables/use-layout';
 import { useHead } from '@unhead/vue';
-import { useApi } from '@/composables/use-api';
+import { useLayout } from '@/composables/use-layout';
+import { useUserStore } from '@/stores/user';
 import { Button } from '@/components/ui/button';
 
 const { t } = useI18n();
-const api = useApi();
-
-const createPasskey = async () => {
-  try {
-    const { data: options } = await api.passkey.options();
-
-    const publicKey = PublicKeyCredential.parseCreationOptionsFromJSON(options);
-    if (!publicKey) return;
-
-    const attestation = (await navigator.credentials.create({ publicKey })) as PublicKeyCredential;
-    if (!attestation) return;
-
-    await api.passkey.store({ attestation: attestation.toJSON() });
-  } catch (err) {
-    console.error(err);
-  }
-};
+const userStore = useUserStore();
 
 useLayout(() => ({
   title: t('pages.profile.security.title'),
@@ -35,7 +19,8 @@ useHead(() => ({
 
 <template>
   <div>
-    Security section
-    <Button @click="createPasskey">Create Passkey</Button>
+    <Button @click="userStore.createPasskey">
+      {{ $t('pages.profile.security.create_passkey') }}
+    </Button>
   </div>
 </template>
