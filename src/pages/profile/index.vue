@@ -23,8 +23,8 @@ const tabs = computed(() =>
       value: 'profile-main',
     },
     {
-      label: 'labels.password',
-      value: 'profile-password',
+      label: 'labels.security',
+      value: 'profile-security',
     },
     {
       label: 'labels.sessions',

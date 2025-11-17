@@ -16,7 +16,7 @@
     "viewed": "Viewed",
     "profile": "Profile",
     "main": "Main",
-    "password": "Password",
+    "security": "Security",
     "sessions": "Sessions",
     "only_unviewed_videos": "Only unviewed videos",
     "a_of_b": "{a} of {b}"
@@ -132,7 +132,7 @@
     "authentication": {
       "sign_in": {
         "meta": {
-          "title": "Sign-in"
+          "title": "Sign in"
         },
         "title": "Authentication",
         "form": {
@@ -144,8 +144,9 @@
             "label": "Password",
             "placeholder": "password"
           },
-          "action": "Sign-in"
-        }
+          "action": "Sign in"
+        },
+        "sign_in_with_passkey": "Sign in with passkey"
       }
     },
     "videos": {
@@ -188,11 +189,12 @@
         },
         "title": "Profile settings"
       },
-      "password": {
+      "security": {
         "meta": {
-          "title": "Password settings"
+          "title": "Security settings"
         },
-        "title": "Password settings"
+        "title": "Security settings",
+        "create_passkey": "Create Passkey"
       },
       "sessions": {
         "meta": {

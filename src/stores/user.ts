@@ -32,8 +32,26 @@ export const useUserStore = defineStore('user', () => {
     user.value = data;
   };
 
-  const signIn = async (form: AuthenticationCreationRequest) => {
-    const { data } = await api.authentications.create(form);
+  const signInBase = async (form: AuthenticationCreationRequest) => {
+    const { data } = await api.authentications.base.create(form);
+    updateTokens(data);
+
+    await loadUser();
+  };
+
+  const signInPasskey = async () => {
+    const { data: options } = await api.authentications.passkey.options();
+
+    const publicKey = PublicKeyCredential.parseRequestOptionsFromJSON(options);
+
+    const credential = (await navigator.credentials.get({ publicKey })) as PublicKeyCredential;
+
+    if (!credential) return;
+
+    const { data } = await api.authentications.passkey.create({
+      assertion: credential.toJSON(),
+      challenge: options.challenge,
+    });
     updateTokens(data);
 
     await loadUser();
@@ -61,6 +79,24 @@ export const useUserStore = defineStore('user', () => {
     updateTokens();
   };
 
+  const createPasskey = async () => {
+    try {
+      const { data: options } = await api.passkey.options();
+
+      const publicKey = PublicKeyCredential.parseCreationOptionsFromJSON(options);
+      if (!publicKey) return;
+
+      const attestation = (await navigator.credentials.create({
+        publicKey,
+      })) as PublicKeyCredential;
+      if (!attestation) return;
+
+      await api.passkey.store({ attestation: attestation.toJSON() });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return {
     accessToken,
     refreshToken,
@@ -69,8 +105,10 @@ export const useUserStore = defineStore('user', () => {
     user,
     isAuthorized,
     loadUser,
-    signIn,
+    signInBase,
+    signInPasskey,
     refresh,
     signOut,
+    createPasskey,
   };
 });

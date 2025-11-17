@@ -11,10 +11,23 @@ export const useApi = (): Api => {
     instance = {
       authentications: {
         list: () => axios('/v1/authentications', { method: 'get' }),
-        create: (data) => axios('/v1/authentications', { method: 'post', data, __noRefresh: true }),
         refresh: (data) =>
           axios('/v1/authentications/refresh', { method: 'post', data, __noRefresh: true }),
         destroy: () => axios('/v1/authentications/sign-out', { method: 'delete' }),
+        base: {
+          create: (data) =>
+            axios('/v1/authentications/base', { method: 'post', data, __noRefresh: true }),
+        },
+        passkey: {
+          options: () =>
+            axios('/v1/authentications/passkey/options', { method: 'post', __noRefresh: true }),
+          create: (data) =>
+            axios('/v1/authentications/passkey', { method: 'post', data, __noRefresh: true }),
+        },
+      },
+      passkey: {
+        options: () => axios('/v1/passkey/options', { method: 'post' }),
+        store: (data) => axios('/v1/passkey', { method: 'post', data }),
       },
       people: {
         list: () => axios('/v1/people', { method: 'get' }),

@@ -37,9 +37,19 @@ type PaginatedResponse<T> = Promise<AxiosResponse<PaginatedData<T>>>;
 export interface Api {
   authentications: {
     list: () => Response<Authentication[]>;
-    create: (data: AuthenticationCreationRequest) => Response<AuthenticationCreationResponse>;
     refresh: (data: AuthenticationRefreshRequest) => Response<AuthenticationCreationResponse>;
     destroy: () => Response<void>;
+    base: {
+      create: (data: AuthenticationCreationRequest) => Response<AuthenticationCreationResponse>;
+    };
+    passkey: {
+      options: () => Response<PublicKeyCredentialRequestOptionsJSON>;
+      create: (data: PublicKeyCredentialJSON) => Response<AuthenticationCreationResponse>;
+    };
+  };
+  passkey: {
+    options: () => Response<PublicKeyCredentialCreationOptionsJSON>;
+    store: (data: PublicKeyCredentialJSON) => Response<void>;
   };
   people: {
     list: () => Response<Person[]>;

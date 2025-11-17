@@ -19,9 +19,9 @@ const routes: RouteRecordRaw[] = [
         },
       },
       {
-        path: 'password',
-        name: 'profile-password',
-        component: () => import('@/pages/profile/password.vue'),
+        path: 'security',
+        name: 'profile-security',
+        component: () => import('@/pages/profile/security.vue'),
         meta: {
           protected: true,
         },
