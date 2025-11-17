@@ -27,12 +27,12 @@ const form = ref({
   password: '',
 });
 
-const signIn = async () => {
+const signIn = async (type: 'base' | 'passkey') => {
   if (loading.value) return;
 
   loading.value = true;
   try {
-    await userStore.signInBase(form.value);
+    await (type === 'base' ? userStore.signInBase(form.value) : userStore.signInPasskey());
     await router.push({ name: 'index' });
   } catch {}
   loading.value = false;
@@ -50,7 +50,7 @@ useHead(() => ({
     </Text>
 
     <div class="p-6 rounded-xl border-solid border-1 border-gray flex flex-col gap-4">
-      <Form class="flex flex-col gap-4" @submit="signIn">
+      <Form class="flex flex-col gap-4" @submit="() => signIn('base')">
         <FormField name="email" v-slot="{ componentField }">
           <FormItem>
             <FormLabel>
@@ -61,6 +61,7 @@ useHead(() => ({
               <Input
                 v-bind="componentField"
                 v-model="form.email"
+                :disabled="loading"
                 :placeholder="$t('pages.authentication.sign_in.form.email.placeholder')"
                 type="email"
               />
@@ -80,6 +81,7 @@ useHead(() => ({
               <Input
                 v-bind="componentField"
                 v-model="form.password"
+                :disabled="loading"
                 :placeholder="$t('pages.authentication.sign_in.form.password.placeholder')"
                 type="password"
               />
@@ -89,12 +91,12 @@ useHead(() => ({
           </FormItem>
         </FormField>
 
-        <Button type="submit">
+        <Button :disabled="loading" type="submit">
           {{ $t('pages.authentication.sign_in.form.action') }}
         </Button>
       </Form>
 
-      <Button variant="outline" @click="userStore.signInPasskey">
+      <Button :disabled="loading" variant="outline" @click="() => signIn('passkey')">
         <KeySquare />
         {{ $t('pages.authentication.sign_in.sign_in_with_passkey') }}
       </Button>

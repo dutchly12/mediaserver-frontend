@@ -48,10 +48,13 @@ export const useUserStore = defineStore('user', () => {
 
     if (!credential) return;
 
-    await api.authentications.passkey.create({
+    const { data } = await api.authentications.passkey.create({
       assertion: credential.toJSON(),
       challenge: options.challenge,
     });
+    updateTokens(data);
+
+    await loadUser();
   };
 
   const refresh = async () => {
