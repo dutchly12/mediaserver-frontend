@@ -83,7 +83,9 @@ export const useUserStore = defineStore('user', () => {
       const publicKey = PublicKeyCredential.parseCreationOptionsFromJSON(options);
       if (!publicKey) return;
 
-      const attestation = (await navigator.credentials.create({ publicKey })) as PublicKeyCredential;
+      const attestation = (await navigator.credentials.create({
+        publicKey,
+      })) as PublicKeyCredential;
       if (!attestation) return;
 
       await api.passkey.store({ attestation: attestation.toJSON() });
@@ -104,6 +106,6 @@ export const useUserStore = defineStore('user', () => {
     signInPasskey,
     refresh,
     signOut,
-    createPasskey
+    createPasskey,
   };
 });
