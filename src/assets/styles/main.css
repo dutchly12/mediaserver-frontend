@@ -1,492 +1,14 @@
+@import './fonts.css';
 @import 'tailwindcss';
 @import 'tw-animate-css';
-@import 'vue-sonner/style.css';
 
 @custom-variant dark (&:is(.dark *));
 
-:root {
-  font-family: 'Inter', sans-serif;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-@layer base {
-  :root {
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@supports (font-variation-settings: normal) {
-  :root {
-    font-family: 'InterVariable', sans-serif;
-    font-optical-sizing: auto;
-  }
-}
-
-@font-face {
-  font-family: InterVariable;
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterVariable.woff2') format('woff2');
-}
-@font-face {
-  font-family: InterVariable;
-  font-style: italic;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterVariable-Italic.woff2') format('woff2');
-}
-
-/* static fonts */
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 100;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-Thin.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: italic;
-  font-weight: 100;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-ThinItalic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 200;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-ExtraLight.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: italic;
-  font-weight: 200;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-ExtraLightItalic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-Light.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: italic;
-  font-weight: 300;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-LightItalic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-Regular.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-Italic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-Medium.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-MediumItalic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-SemiBold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: italic;
-  font-weight: 600;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-SemiBoldItalic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-Bold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: italic;
-  font-weight: 700;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-BoldItalic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-ExtraBold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: italic;
-  font-weight: 800;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-ExtraBoldItalic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-Black.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: italic;
-  font-weight: 900;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/Inter-BlackItalic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: normal;
-  font-weight: 100;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-Thin.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: italic;
-  font-weight: 100;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-ThinItalic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: normal;
-  font-weight: 200;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-ExtraLight.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: italic;
-  font-weight: 200;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-ExtraLightItalic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-Light.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: italic;
-  font-weight: 300;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-LightItalic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-Regular.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-Italic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-Medium.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-MediumItalic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-SemiBold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: italic;
-  font-weight: 600;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-SemiBoldItalic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-Bold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: italic;
-  font-weight: 700;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-BoldItalic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-ExtraBold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: italic;
-  font-weight: 800;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-ExtraBoldItalic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-Black.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'InterDisplay';
-  font-style: italic;
-  font-weight: 900;
-  font-display: swap;
-  src: url('@/assets/fonts/inter/InterDisplay-BlackItalic.woff2') format('woff2');
-}
-
-@font-feature-values InterVariable {
-  @character-variant {
-    cv01: 1;
-    cv02: 2;
-    cv03: 3;
-    cv04: 4;
-    cv05: 5;
-    cv06: 6;
-    cv07: 7;
-    cv08: 8;
-    cv09: 9;
-    cv10: 10;
-    cv11: 11;
-    cv12: 12;
-    cv13: 13;
-    alt-1: 1; /* Alternate one */
-    alt-3: 9; /* Flat-top three */
-    open-4: 2; /* Open four */
-    open-6: 3; /* Open six */
-    open-9: 4; /* Open nine */
-    lc-l-with-tail: 5; /* Lower-case L with tail */
-    simplified-u: 6; /* Simplified u */
-    alt-double-s: 7; /* Alternate German double s */
-    uc-i-with-serif: 8; /* Upper-case i with serif */
-    uc-g-with-spur: 10; /* Capital G with spur */
-    single-story-a: 11; /* Single-story a */
-    compact-lc-f: 12; /* Compact f */
-    compact-lc-t: 13; /* Compact t */
-  }
-  @styleset {
-    ss01: 1;
-    ss02: 2;
-    ss03: 3;
-    ss04: 4;
-    ss05: 5;
-    ss06: 6;
-    ss07: 7;
-    ss08: 8;
-    open-digits: 1; /* Open digits */
-    disambiguation: 2; /* Disambiguation (with zero) */
-    disambiguation-except-zero: 4; /* Disambiguation (no zero) */
-    round-quotes-and-commas: 3; /* Round quotes &amp; commas */
-    square-punctuation: 7; /* Square punctuation */
-    square-quotes: 8; /* Square quotes */
-    circled-characters: 5; /* Circled characters */
-    squared-characters: 6; /* Squared characters */
-  }
-}
-@font-feature-values Inter {
-  @character-variant {
-    cv01: 1;
-    cv02: 2;
-    cv03: 3;
-    cv04: 4;
-    cv05: 5;
-    cv06: 6;
-    cv07: 7;
-    cv08: 8;
-    cv09: 9;
-    cv10: 10;
-    cv11: 11;
-    cv12: 12;
-    cv13: 13;
-    alt-1: 1; /* Alternate one */
-    alt-3: 9; /* Flat-top three */
-    open-4: 2; /* Open four */
-    open-6: 3; /* Open six */
-    open-9: 4; /* Open nine */
-    lc-l-with-tail: 5; /* Lower-case L with tail */
-    simplified-u: 6; /* Simplified u */
-    alt-double-s: 7; /* Alternate German double s */
-    uc-i-with-serif: 8; /* Upper-case i with serif */
-    uc-g-with-spur: 10; /* Capital G with spur */
-    single-story-a: 11; /* Single-story a */
-    compact-lc-f: 12; /* Compact f */
-    compact-lc-t: 13; /* Compact t */
-  }
-  @styleset {
-    ss01: 1;
-    ss02: 2;
-    ss03: 3;
-    ss04: 4;
-    ss05: 5;
-    ss06: 6;
-    ss07: 7;
-    ss08: 8;
-    open-digits: 1; /* Open digits */
-    disambiguation: 2; /* Disambiguation (with zero) */
-    disambiguation-except-zero: 4; /* Disambiguation (no zero) */
-    round-quotes-and-commas: 3; /* Round quotes &amp; commas */
-    square-punctuation: 7; /* Square punctuation */
-    square-quotes: 8; /* Square quotes */
-    circled-characters: 5; /* Circled characters */
-    squared-characters: 6; /* Squared characters */
-  }
-}
-@font-feature-values InterDisplay {
-  @character-variant {
-    cv01: 1;
-    cv02: 2;
-    cv03: 3;
-    cv04: 4;
-    cv05: 5;
-    cv06: 6;
-    cv07: 7;
-    cv08: 8;
-    cv09: 9;
-    cv10: 10;
-    cv11: 11;
-    cv12: 12;
-    cv13: 13;
-    alt-1: 1; /* Alternate one */
-    alt-3: 9; /* Flat-top three */
-    open-4: 2; /* Open four */
-    open-6: 3; /* Open six */
-    open-9: 4; /* Open nine */
-    lc-l-with-tail: 5; /* Lower-case L with tail */
-    simplified-u: 6; /* Simplified u */
-    alt-double-s: 7; /* Alternate German double s */
-    uc-i-with-serif: 8; /* Upper-case i with serif */
-    uc-g-with-spur: 10; /* Capital G with spur */
-    single-story-a: 11; /* Single-story a */
-    compact-lc-f: 12; /* Compact f */
-    compact-lc-t: 13; /* Compact t */
-  }
-  @styleset {
-    ss01: 1;
-    ss02: 2;
-    ss03: 3;
-    ss04: 4;
-    ss05: 5;
-    ss06: 6;
-    ss07: 7;
-    ss08: 8;
-    open-digits: 1; /* Open digits */
-    disambiguation: 2; /* Disambiguation (with zero) */
-    disambiguation-except-zero: 4; /* Disambiguation (no zero) */
-    round-quotes-and-commas: 3; /* Round quotes &amp; commas */
-    square-punctuation: 7; /* Square punctuation */
-    square-quotes: 8; /* Square quotes */
-    circled-characters: 5; /* Circled characters */
-    squared-characters: 6; /* Squared characters */
-  }
-}
-
 @theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -502,7 +24,6 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -511,10 +32,6 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -525,39 +42,73 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
   --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
 @layer base {

@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { ImageOff } from 'lucide-vue-next';
 import { numberToTime } from '@/lib/formatters';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-import Text from '@/components/ui/Text.vue';
+import { UiText } from '@/components/ui';
 import type { ListVideo } from '@/types/model/video';
 
 const props = defineProps<{ video: ListVideo }>();
@@ -44,19 +44,19 @@ const formatterDuration = computed(
         <ImageOff class="h-[30%] w-fit aspect-square text-white" />
       </div>
 
-      <Text
+      <UiText
         v-if="formatterDuration"
         variant="small"
         class="absolute right-0 bottom-0 p-1 bg-black text-white z-1"
       >
         {{ formatterDuration }}
-      </Text>
+      </UiText>
 
       <div v-if="showProgressBar" class="absolute left-0 bottom-0 h-1 w-full z-2">
         <div :style="{ width: `${progressPercent}%` }" class="h-full bg-teal-200"></div>
       </div>
     </AspectRatio>
 
-    <Text :title="video.name" variant="muted" class="truncate">{{ video.name }}</Text>
+    <UiText :title="video.name" variant="muted" class="truncate">{{ video.name }}</UiText>
   </RouterLink>
 </template>

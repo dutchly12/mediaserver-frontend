@@ -7,11 +7,9 @@ import { useLayout } from '@/composables/use-layout';
 import { useApi } from '@/composables/use-api';
 import { useForm } from 'vee-validate';
 import { toast } from 'vue-sonner';
-import { FormControl, FormItem, FormLabel, FormMessage, FormField } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { FileInput } from '@/components/ui/file-input';
-import { Button } from '@/components/ui/button';
 import type { Person, PersonUpdateRequestData } from '@/types/model/person';
+import { UiButton, UiField } from '@/components/ui';
 
 type PersonForm = PersonUpdateRequestData['person'];
 
@@ -86,41 +84,25 @@ useHead(() => ({
 <template>
   <div>
     <form @submit="updatePerson" class="max-w-[500px] flex flex-col gap-4">
-      <FormField name="name" v-slot="{ componentField }">
-        <FormItem>
-          <FormLabel>
-            {{ $t('pages.people.id.edit.form.name.label') }}
-          </FormLabel>
+      <UiField :label="$t('pages.people.id.edit.form.name.label')" name="name" v-slot="{ field }">
+        <Input
+          :placeholder="t('pages.people.id.edit.form.name.placeholder')"
+          :disabled="loading"
+          v-bind="field"
+        />
+      </UiField>
 
-          <FormControl>
-            <Input
-              :placeholder="t('pages.people.id.edit.form.name.placeholder')"
-              :disabled="loading"
-              v-bind="componentField"
-            />
-          </FormControl>
+      <UiField
+        :label="$t('pages.people.id.edit.form.picture.label')"
+        name="picture"
+        v-slot="{ field }"
+      >
+        <Input :disabled="loading" type="file" v-bind="field" />
+      </UiField>
 
-          <FormMessage />
-        </FormItem>
-      </FormField>
-
-      <FormField name="picture" v-slot="{ componentField }">
-        <FormItem>
-          <FormLabel>
-            {{ $t('pages.people.id.edit.form.picture.label') }}
-          </FormLabel>
-
-          <FormControl>
-            <FileInput :disabled="loading" v-bind="componentField" />
-          </FormControl>
-
-          <FormMessage />
-        </FormItem>
-      </FormField>
-
-      <Button :disabled="loading" type="submit" class="self-baseline">
+      <UiButton :disabled="loading" type="submit" class="self-baseline">
         {{ $t('actions.update') }}
-      </Button>
+      </UiButton>
     </form>
   </div>
 </template>

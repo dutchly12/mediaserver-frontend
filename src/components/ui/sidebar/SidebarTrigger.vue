@@ -22,8 +22,6 @@ const { toggleSidebar } = useSidebar();
     @click="toggleSidebar"
   >
     <PanelLeft />
-    <span class="sr-only">
-      {{ $t('actions.toggle_sidebar') }}
-    </span>
+    <span class="sr-only">Toggle Sidebar</span>
   </Button>
 </template>

@@ -7,14 +7,14 @@ import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 
 <template>
   <SidebarProvider>
-    <AppSidebar class="z-2000" />
+    <AppSidebar />
 
     <SidebarInset>
       <div>
         <AppHeader
           :title="layoutOptions?.title"
           :actions="layoutOptions?.actions"
-          class="z-1000 sticky top-0 shrink-0"
+          class="z-50 sticky top-0 shrink-0"
         />
 
         <main class="py-4 px-4">

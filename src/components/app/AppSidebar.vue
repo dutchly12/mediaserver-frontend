@@ -26,10 +26,9 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
+import { UiItem } from '@/components/ui';
 
 const route = useRoute();
 const router = useRouter();
@@ -112,14 +111,11 @@ const handleSignOutClick = async () => {
     <SidebarFooter>
       <SidebarMenu>
         <SidebarMenuItem v-if="needRefreshServiceWorker">
-          <Alert>
-            <AlertTitle>{{ $t('meta.new_version') }}</AlertTitle>
-            <AlertDescription>
-              <Button size="sm" @click="updateServiceWorker">
-                {{ $t('actions.update') }}
-              </Button>
-            </AlertDescription>
-          </Alert>
+          <UiItem
+            :title="$t('meta.new_version')"
+            :actions="[{ label: $t('actions.update'), handler: updateServiceWorker }]"
+            variant="outline"
+          />
         </SidebarMenuItem>
 
         <SidebarMenuItem>

@@ -7,10 +7,8 @@ import { useForm } from 'vee-validate';
 import { toast } from 'vue-sonner';
 import { useLayout } from '@/composables/use-layout';
 import { useApi } from '@/composables/use-api';
-import { FormControl, FormItem, FormLabel, FormMessage, FormField } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { FileInput } from '@/components/ui/file-input';
-import { Button } from '@/components/ui/button';
+import { UiButton, UiField } from '@/components/ui';
 import type { PersonCreateRequestData } from '@/types/model/person';
 
 type PersonForm = PersonCreateRequestData['person'];
@@ -66,40 +64,20 @@ useHead(() => ({
 
 <template>
   <form @submit="savePerson" class="max-w-[500px] flex flex-col gap-4">
-    <FormField name="name" v-slot="{ componentField }">
-      <FormItem>
-        <FormLabel>
-          {{ $t('pages.people.new.form.name.label') }}
-        </FormLabel>
+    <UiField :label="$t('pages.people.new.form.name.label')" name="name" v-slot="{ field }">
+      <Input
+        :placeholder="t('pages.people.new.form.name.placeholder')"
+        :disabled="loading"
+        v-bind="field"
+      />
+    </UiField>
 
-        <FormControl>
-          <Input
-            :placeholder="t('pages.people.new.form.name.placeholder')"
-            :disabled="loading"
-            v-bind="componentField"
-          />
-        </FormControl>
+    <UiField :label="$t('pages.people.new.form.picture.label')" name="picture" v-slot="{ field }">
+      <Input :disabled="loading" v-bind="field" type="file" />
+    </UiField>
 
-        <FormMessage />
-      </FormItem>
-    </FormField>
-
-    <FormField name="picture" v-slot="{ componentField }">
-      <FormItem>
-        <FormLabel>
-          {{ $t('pages.people.new.form.picture.label') }}
-        </FormLabel>
-
-        <FormControl>
-          <FileInput :disabled="loading" v-bind="componentField" />
-        </FormControl>
-
-        <FormMessage />
-      </FormItem>
-    </FormField>
-
-    <Button :disabled="loading" type="submit" class="self-baseline">
+    <UiButton :disabled="loading" type="submit" class="self-baseline">
       {{ $t('actions.create') }}
-    </Button>
+    </UiButton>
   </form>
 </template>

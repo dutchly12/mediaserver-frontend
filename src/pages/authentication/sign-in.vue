@@ -5,26 +5,32 @@ import { useHead } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
 import { useForm } from 'vee-validate';
 import { KeySquare } from 'lucide-vue-next';
+import * as z from 'zod';
+import { toTypedSchema } from '@vee-validate/zod';
 import { useApi } from '@/composables/use-api';
 import { useUserStore } from '@/stores/user';
-import Text from '@/components/ui/Text.vue';
 import { Button } from '@/components/ui/button';
-import { FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { UiField, UiText } from '@/components/ui';
+
+const formSchema = z.object({
+  email: z.email(),
+  password: z.string().min(10),
+});
 
 const router = useRouter();
 const { t } = useI18n();
 const api = useApi();
 const userStore = useUserStore();
-
-const loading = ref(false);
-
 const form = useForm({
+  validationSchema: toTypedSchema(formSchema),
   initialValues: {
     email: '',
     password: '',
   },
 });
+
+const loading = ref(false);
 
 const moveToApp = async () => {
   await router.push({ name: 'index' });
@@ -68,49 +74,37 @@ useHead(() => ({
 
 <template>
   <div>
-    <Text variant="h1" align="center" class="mb-4">
+    <UiText variant="h1" align="center" class="mb-4">
       {{ $t('pages.authentication.sign_in.title') }}
-    </Text>
+    </UiText>
 
     <div class="p-6 rounded-xl border-solid border-1 border-gray flex flex-col gap-4">
       <form class="flex flex-col gap-4" @submit="handleBaseFormSubmit">
-        <FormField name="email" v-slot="{ componentField }">
-          <FormItem>
-            <FormLabel>
-              {{ $t('pages.authentication.sign_in.form.email.label') }}
-            </FormLabel>
+        <UiField
+          :label="$t('pages.authentication.sign_in.form.email.label')"
+          name="email"
+          v-slot="{ field }"
+        >
+          <Input
+            v-bind="field"
+            :disabled="loading"
+            :placeholder="$t('pages.authentication.sign_in.form.email.placeholder')"
+            type="email"
+          />
+        </UiField>
 
-            <FormControl>
-              <Input
-                v-bind="componentField"
-                :disabled="loading"
-                :placeholder="$t('pages.authentication.sign_in.form.email.placeholder')"
-                type="email"
-              />
-            </FormControl>
-
-            <FormMessage />
-          </FormItem>
-        </FormField>
-
-        <FormField name="password" v-slot="{ componentField }">
-          <FormItem>
-            <FormLabel>
-              {{ $t('pages.authentication.sign_in.form.password.label') }}
-            </FormLabel>
-
-            <FormControl>
-              <Input
-                v-bind="componentField"
-                :disabled="loading"
-                :placeholder="$t('pages.authentication.sign_in.form.password.placeholder')"
-                type="password"
-              />
-            </FormControl>
-
-            <FormMessage />
-          </FormItem>
-        </FormField>
+        <UiField
+          :label="$t('pages.authentication.sign_in.form.password.label')"
+          name="password"
+          v-slot="{ field }"
+        >
+          <Input
+            v-bind="field"
+            :disabled="loading"
+            :placeholder="$t('pages.authentication.sign_in.form.password.placeholder')"
+            type="password"
+          />
+        </UiField>
 
         <Button :disabled="loading" type="submit">
           {{ $t('pages.authentication.sign_in.form.action') }}

@@ -5,8 +5,8 @@ import { useI18n } from 'vue-i18n';
 import { useHead } from '@unhead/vue';
 import { useApi } from '@/composables/use-api';
 import { formatDate, numberToTime } from '@/lib/formatters';
+import { UiText } from '@/components/ui';
 import VideoPlayer from '@/components/video/player.vue';
-import Text from '@/components/ui/Text.vue';
 import {
   Card,
   CardAction,
@@ -113,25 +113,25 @@ useHead(() => ({
 
         <CardContent class="grid grid-cols-[auto_1fr] items-center gap-2">
           <template v-for="item in contentItems" :key="item.title">
-            <Text variant="muted"> {{ item.title }}: </Text>
-            <Text variant="small"> {{ item.value }} </Text>
+            <UiText variant="muted"> {{ item.title }}: </UiText>
+            <UiText variant="small"> {{ item.value }} </UiText>
           </template>
 
-          <Text variant="muted"> {{ $t('labels.people') }}: </Text>
+          <UiText variant="muted"> {{ $t('labels.people') }}: </UiText>
           <div v-if="video?.people.length" class="flex flex-wrap gap-2">
             <RouterLink
               v-for="person in video?.people"
               :key="person.id"
               :to="{ name: 'people-id', params: { id: person.id } }"
             >
-              <Text variant="small" class="text-blue-500 hover:text-blue-800 transition-colors">
+              <UiText variant="small" class="text-blue-500 hover:text-blue-800 transition-colors">
                 {{ person.name }}
-              </Text>
+              </UiText>
             </RouterLink>
           </div>
-          <Text v-else variant="small"> - </Text>
+          <UiText v-else variant="small"> - </UiText>
 
-          <Text variant="muted"> {{ $t('labels.tags') }}: </Text>
+          <UiText variant="muted"> {{ $t('labels.tags') }}: </UiText>
           <div v-if="video?.viewed || video?.tags.length" class="flex flex-wrap gap-2">
             <Badge v-if="video.viewed">
               <Check />
@@ -142,7 +142,7 @@ useHead(() => ({
               {{ tag.name }}
             </Badge>
           </div>
-          <Text v-else variant="small"> - </Text>
+          <UiText v-else variant="small"> - </UiText>
         </CardContent>
       </Card>
     </div>

@@ -9,8 +9,8 @@ const props = defineProps<{
 
 <template>
   <div
-    data-slot="alert-title"
-    :class="cn('col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight', props.class)"
+    data-slot="item-footer"
+    :class="cn('flex basis-full items-center justify-between gap-2', props.class)"
   >
     <slot />
   </div>

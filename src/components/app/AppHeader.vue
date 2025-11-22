@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { Separator } from '@/components/ui/separator';
+import { UiText } from '@/components/ui';
 import type { LayoutAction } from '@/types/composables/use-layout';
-import Text from '@/components/ui/Text.vue';
 import { Button } from '@/components/ui/button';
 
 const props = defineProps<{
@@ -18,9 +18,9 @@ const props = defineProps<{
     <Separator orientation="vertical" class="mr-2" />
 
     <div class="flex-1 flex justify-between items-center">
-      <Text variant="h4">
+      <UiText variant="h4">
         {{ props.title }}
-      </Text>
+      </UiText>
 
       <div class="flex items-center gap-2">
         <template v-for="action in props.actions" :key="action.key">

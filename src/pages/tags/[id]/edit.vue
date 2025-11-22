@@ -7,9 +7,8 @@ import { useForm } from 'vee-validate';
 import { toast } from 'vue-sonner';
 import { useLayout } from '@/composables/use-layout';
 import { useApi } from '@/composables/use-api';
-import { FormControl, FormItem, FormLabel, FormMessage, FormField } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { UiButton, UiField } from '@/components/ui';
 import type { Tag, TagUpdateRequestData } from '@/types/model/tag';
 
 type TagForm = TagUpdateRequestData['tag'];
@@ -77,26 +76,16 @@ useHead(() => ({
 
 <template>
   <form @submit="updateTag" class="max-w-[500px] flex flex-col gap-4">
-    <FormField name="name" v-slot="{ componentField }">
-      <FormItem>
-        <FormLabel>
-          {{ $t('pages.tags.id.edit.form.name.label') }}
-        </FormLabel>
+    <UiField :label="$t('pages.tags.id.edit.form.name.label')" name="name" v-slot="{ field }">
+      <Input
+        :placeholder="t('pages.tags.id.edit.form.name.placeholder')"
+        :disabled="loading"
+        v-bind="field"
+      />
+    </UiField>
 
-        <FormControl>
-          <Input
-            :placeholder="t('pages.tags.id.edit.form.name.placeholder')"
-            :disabled="loading"
-            v-bind="componentField"
-          />
-        </FormControl>
-
-        <FormMessage />
-      </FormItem>
-    </FormField>
-
-    <Button :disabled="loading" type="submit" class="self-baseline">
+    <UiButton :disabled="loading" type="submit" class="self-baseline">
       {{ $t('actions.update') }}
-    </Button>
+    </UiButton>
   </form>
 </template>

@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n';
 import { useLayout } from '@/composables/use-layout';
 import { useApi } from '@/composables/use-api';
 import { Plus } from 'lucide-vue-next';
-import Text from '@/components/ui/Text.vue';
+import { UiText } from '@/components/ui';
 import type { Tag } from '@/types/model/tag';
 
 const { t } = useI18n();
@@ -47,9 +47,9 @@ useHead(() => ({
 <template>
   <div>
     <RouterLink v-for="tag in tags" :key="tag.id" :to="{ name: 'tags-id', params: { id: tag.id } }">
-      <Text>
+      <UiText>
         {{ tag.name }}
-      </Text>
+      </UiText>
     </RouterLink>
   </div>
 </template>
