@@ -4,3 +4,9 @@ export interface PaginationMeta {
   page: number;
   pages: number;
 }
+
+export interface BaseBackendError {
+  status: number;
+  error: string;
+  message: string;
+}
