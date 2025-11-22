@@ -19,7 +19,11 @@
     "security": "Security",
     "sessions": "Sessions",
     "only_unviewed_videos": "Only unviewed videos",
-    "a_of_b": "{a} of {b}"
+    "a_of_b": "{a} of {b}",
+    "color_scheme": "Color scheme",
+    "auto": "Auto",
+    "light": "Light",
+    "dark": "Dark"
   },
   "actions": {
     "create": "Create",
