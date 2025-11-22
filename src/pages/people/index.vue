@@ -61,7 +61,7 @@ useHead(() => ({
         />
 
         <div v-else class="w-full h-full flex justify-center items-center border rounded-xl">
-          <ImageOff class="h-[30%] w-fit aspect-square text-white" />
+          <ImageOff class="h-[30%] w-fit aspect-square" />
         </div>
       </AspectRatio>
 

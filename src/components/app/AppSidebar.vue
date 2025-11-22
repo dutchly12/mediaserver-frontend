@@ -51,7 +51,7 @@ const menuItems = computed(() =>
       icon: TagsIcon,
     },
     {
-      title: t('labels.random_video'),
+      title: t('labels.random_unviewed_video'),
       routeName: 'videos-random',
       icon: Shuffle,
     },
