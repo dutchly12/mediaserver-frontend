@@ -163,13 +163,13 @@ useHead(() => ({
       </TabsList>
 
       <TabsContent value="main">
-        <form @submit="updateVideo" class="max-w-[600px]">
+        <form class="max-w-[600px]" @submit="updateVideo">
           <Card>
             <CardContent class="flex flex-col gap-4">
               <UiField
+                v-slot="{ field }"
                 :label="$t('pages.videos.id.edit.form.name.label')"
                 name="name"
-                v-slot="{ field }"
               >
                 <Input
                   :placeholder="$t('pages.videos.id.edit.form.name.placeholder')"
@@ -179,9 +179,9 @@ useHead(() => ({
               </UiField>
 
               <UiField
+                v-slot="{ field }"
                 :label="$t('pages.videos.id.edit.form.people.label')"
                 name="people"
-                v-slot="{ field }"
               >
                 <Select multiple v-bind="field">
                   <SelectTrigger>
@@ -201,9 +201,9 @@ useHead(() => ({
               </UiField>
 
               <UiField
+                v-slot="{ field }"
                 :label="$t('pages.videos.id.edit.form.tags.label')"
                 name="tags"
-                v-slot="{ field }"
               >
                 <Select multiple v-bind="field">
                   <SelectTrigger>

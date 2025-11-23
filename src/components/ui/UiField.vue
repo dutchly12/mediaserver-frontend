@@ -15,7 +15,7 @@ const computedId = computed(() => `${props.name}_${id}`);
 </script>
 
 <template>
-  <VeeValidateField :name="props.name" v-slot="{ field, errors }">
+  <VeeValidateField v-slot="{ field, errors }" :name="props.name">
     <Field :data-invalid="!!errors?.length">
       <FieldLabel v-if="props.label || $slots.label" :for="computedId">
         <slot name="label">

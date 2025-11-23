@@ -3,7 +3,7 @@ import { SidebarTrigger } from '@/components/ui/sidebar';
 import { Separator } from '@/components/ui/separator';
 import { UiText } from '@/components/ui';
 import type { LayoutAction } from '@/types/composables/use-layout';
-import { Button } from '@/components/ui/button';
+import { UiButton } from '@/components/ui';
 
 const props = defineProps<{
   title?: string;
@@ -25,14 +25,14 @@ const props = defineProps<{
       <div class="flex items-center gap-2">
         <template v-for="action in props.actions" :key="action.key">
           <RouterLink v-if="action.type === 'link'" :to="action.to">
-            <Button size="icon" variant="outline">
+            <UiButton size="icon" variant="outline">
               <component :is="action.icon" />
-            </Button>
+            </UiButton>
           </RouterLink>
 
-          <Button v-else size="icon" variant="outline">
+          <UiButton v-else size="icon" variant="outline">
             <component :is="action.icon" @click="action.callback" />
-          </Button>
+          </UiButton>
         </template>
       </div>
     </div>

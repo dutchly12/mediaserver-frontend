@@ -63,8 +63,8 @@ useHead(() => ({
 </script>
 
 <template>
-  <form @submit="savePerson" class="max-w-[500px] flex flex-col gap-4">
-    <UiField :label="$t('pages.people.new.form.name.label')" name="name" v-slot="{ field }">
+  <form class="max-w-[500px] flex flex-col gap-4" @submit="savePerson">
+    <UiField v-slot="{ field }" :label="$t('pages.people.new.form.name.label')" name="name">
       <Input
         :placeholder="t('pages.people.new.form.name.placeholder')"
         :disabled="loading"
@@ -72,7 +72,7 @@ useHead(() => ({
       />
     </UiField>
 
-    <UiField :label="$t('pages.people.new.form.picture.label')" name="picture" v-slot="{ field }">
+    <UiField v-slot="{ field }" :label="$t('pages.people.new.form.picture.label')" name="picture">
       <Input :disabled="loading" v-bind="field" type="file" />
     </UiField>
 

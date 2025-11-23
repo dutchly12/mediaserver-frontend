@@ -83,8 +83,8 @@ useHead(() => ({
 
 <template>
   <div>
-    <form @submit="updatePerson" class="max-w-[500px] flex flex-col gap-4">
-      <UiField :label="$t('pages.people.id.edit.form.name.label')" name="name" v-slot="{ field }">
+    <form class="max-w-[500px] flex flex-col gap-4" @submit="updatePerson">
+      <UiField v-slot="{ field }" :label="$t('pages.people.id.edit.form.name.label')" name="name">
         <Input
           :placeholder="t('pages.people.id.edit.form.name.placeholder')"
           :disabled="loading"
@@ -93,9 +93,9 @@ useHead(() => ({
       </UiField>
 
       <UiField
+        v-slot="{ field }"
         :label="$t('pages.people.id.edit.form.picture.label')"
         name="picture"
-        v-slot="{ field }"
       >
         <Input :disabled="loading" type="file" v-bind="field" />
       </UiField>

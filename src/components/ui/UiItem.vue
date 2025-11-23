@@ -27,7 +27,7 @@ const props = defineProps<{
 
 <template>
   <Item :variant="props.variant">
-    <ItemMedia :variant="props.mediaVariant" v-if="$slots.media">
+    <ItemMedia v-if="$slots.media" :variant="props.mediaVariant">
       <slot name="media" />
     </ItemMedia>
 

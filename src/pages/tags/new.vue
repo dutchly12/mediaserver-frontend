@@ -56,8 +56,8 @@ useHead(() => ({
 </script>
 
 <template>
-  <form @submit="saveTag" class="max-w-[500px] flex flex-col gap-4">
-    <UiField :label="$t('pages.tags.new.form.name.label')" name="name" v-slot="{ field }">
+  <form class="max-w-[500px] flex flex-col gap-4" @submit="saveTag">
+    <UiField v-slot="{ field }" :label="$t('pages.tags.new.form.name.label')" name="name">
       <Input
         :placeholder="t('pages.tags.new.form.name.placeholder')"
         :disabled="loading"

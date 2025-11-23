@@ -81,9 +81,9 @@ useHead(() => ({
     <div class="p-6 rounded-xl border-solid border-1 border-gray flex flex-col gap-4">
       <form class="flex flex-col gap-4" @submit="handleBaseFormSubmit">
         <UiField
+          v-slot="{ field }"
           :label="$t('pages.authentication.sign_in.form.email.label')"
           name="email"
-          v-slot="{ field }"
         >
           <Input
             v-bind="field"
@@ -94,9 +94,9 @@ useHead(() => ({
         </UiField>
 
         <UiField
+          v-slot="{ field }"
           :label="$t('pages.authentication.sign_in.form.password.label')"
           name="password"
-          v-slot="{ field }"
         >
           <Input
             v-bind="field"

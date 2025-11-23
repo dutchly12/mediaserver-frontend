@@ -15,8 +15,18 @@ export default defineConfigWithVueTs(
   skipFormatting,
   {
     rules: {
-      '@typescript-eslint/no-explicit-any': 0,
-      'vue/multi-word-component-names': 0,
+      '@typescript-eslint/no-explicit-any': ['off'],
+      'vue/attributes-order': ['error'],
+      'vue/block-order': ['error'],
+      'vue/multi-word-component-names': ['off'],
+      'vue/no-required-prop-with-default': ['error'],
+      'vue/component-name-in-template-casing': [
+        'error',
+        'PascalCase',
+        {
+          registeredComponentsOnly: false,
+        },
+      ],
     },
   },
   {

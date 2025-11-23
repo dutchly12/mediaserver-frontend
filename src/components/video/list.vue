@@ -77,10 +77,10 @@ watch(() => [props.params, userStore.onlyUnviewedVideos], loadVideos, {
 
     <Pagination
       v-if="meta.pages > 1"
+      v-slot="{ page, pageCount }"
       :page="meta.page"
       :items-per-page="meta.limit"
       :total="meta.count"
-      v-slot="{ page, pageCount }"
       @update:page="setPage"
     >
       <PaginationContent>

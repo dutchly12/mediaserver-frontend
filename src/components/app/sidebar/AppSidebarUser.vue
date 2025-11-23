@@ -70,7 +70,7 @@ const handleSignOutClick = async () => {
           <Label as-child for="only-viewed-viewed-switch">
             {{ $t('labels.only_unviewed_videos') }}
           </Label>
-          <Switch v-model="userStore.onlyUnviewedVideos" id="only-viewed-viewed-switch" />
+          <Switch id="only-viewed-viewed-switch" v-model="userStore.onlyUnviewedVideos" />
         </div>
       </DropdownMenuItem>
 
