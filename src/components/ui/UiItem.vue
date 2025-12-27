@@ -47,7 +47,7 @@ const props = defineProps<{
 
     <ItemActions v-if="props.actions?.length || $slots.actions">
       <slot name="actions">
-        <UiButton v-for="action in props.actions" :key="action.label">
+        <UiButton v-for="action in props.actions" :key="action.label" @click="action.handler">
           {{ action.label }}
         </UiButton>
       </slot>
