@@ -9,22 +9,14 @@ import { useLayout } from '@/composables/use-layout';
 import { useApi } from '@/composables/use-api';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import type { Screenshot } from '@/types/model/screenshot';
 import type { Tag } from '@/types/model/tag';
 import type { Person } from '@/types/model/person';
 import type { Video } from '@/types/model/video';
-import { UiButton, UiField } from '@/components/ui';
+import { UiButton, type UiSelectOption } from '@/components/ui';
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
+import { FormInput, FormSelect } from '@/components/form';
 
 const validationScheme = z.object({
   name: z.string(),
@@ -42,6 +34,7 @@ const form = useForm({
     person_ids: [],
     tag_ids: [],
   },
+  keepValuesOnUnmount: true,
 });
 
 const loading = ref(false);
@@ -51,6 +44,18 @@ const tags = ref<Tag[]>([]);
 const people = ref<Person[]>([]);
 
 const routeId = computed(() => route.params.id as string);
+const peopleOptions = computed<UiSelectOption[]>(() =>
+  people.value.map((person) => ({
+    label: person.name,
+    value: person.id,
+  })),
+);
+const tagsOptions = computed<UiSelectOption[]>(() =>
+  tags.value.map((tag) => ({
+    label: tag.name,
+    value: tag.id,
+  })),
+);
 
 const tabs = computed(() => [
   {
@@ -93,11 +98,15 @@ const init = async () => {
 
     if (!video.value) return;
 
+    console.log(JSON.parse(JSON.stringify(video.value)));
+
     form.setValues({
       name: video.value.name,
       person_ids: video.value.people.map((person) => person.id),
       tag_ids: video.value.tags.map((tag) => tag.id),
     });
+
+    console.log(form.values);
   } catch {
   } finally {
     loading.value = false;
@@ -163,62 +172,33 @@ useHead(() => ({
       </TabsList>
 
       <TabsContent value="main">
-        <form class="max-w-[600px]" @submit="updateVideo">
+        <form class="max-w-150" @submit="updateVideo">
           <Card>
             <CardContent class="flex flex-col gap-4">
-              <UiField
-                v-slot="{ field }"
-                :label="$t('pages.videos.id.edit.form.name.label')"
+              <FormInput
                 name="name"
-              >
-                <Input
-                  :placeholder="$t('pages.videos.id.edit.form.name.placeholder')"
-                  :disabled="loading"
-                  v-bind="field"
-                />
-              </UiField>
+                :label="$t('pages.videos.id.edit.form.name.label')"
+                :placeholder="$t('pages.videos.id.edit.form.name.placeholder')"
+                :disabled="loading"
+              />
 
-              <UiField
-                v-slot="{ field }"
+              <FormSelect
+                name="person_ids"
                 :label="$t('pages.videos.id.edit.form.people.label')"
-                name="people"
-              >
-                <Select multiple v-bind="field">
-                  <SelectTrigger>
-                    <SelectValue
-                      :placeholder="$t('pages.videos.id.edit.form.people.placeholder')"
-                    />
-                  </SelectTrigger>
+                :placeholder="$t('pages.videos.id.edit.form.people.placeholder')"
+                :options="peopleOptions"
+                :disabled="loading"
+                multiple
+              />
 
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectItem v-for="person in people" :key="person.id" :value="person.id">
-                        {{ person.name }}
-                      </SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              </UiField>
-
-              <UiField
-                v-slot="{ field }"
+              <FormSelect
+                name="tag_ids"
                 :label="$t('pages.videos.id.edit.form.tags.label')"
-                name="tags"
-              >
-                <Select multiple v-bind="field">
-                  <SelectTrigger>
-                    <SelectValue :placeholder="$t('pages.videos.id.edit.form.tags.placeholder')" />
-                  </SelectTrigger>
-
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectItem v-for="tag in tags" :key="tag.id" :value="tag.id">
-                        {{ tag.name }}
-                      </SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              </UiField>
+                :placeholder="$t('pages.videos.id.edit.form.tags.placeholder')"
+                :options="tagsOptions"
+                :disabled="loading"
+                multiple
+              />
             </CardContent>
 
             <CardFooter>
