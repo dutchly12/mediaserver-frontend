@@ -29,7 +29,8 @@
     "create": "Create",
     "toggle_sidebar": "Toggle Sidebar",
     "update": "Update",
-    "sign_out": "Sign out"
+    "sign_out": "Sign out",
+    "delete": "Delete"
   },
   "components": {
     "file_input": {
@@ -198,7 +199,24 @@
           "title": "Security settings"
         },
         "title": "Security settings",
-        "create_passkey": "Create Passkey"
+        "create_passkey": "Create Passkey",
+        "password_form": {
+          "old_password": {
+            "label": "Old password",
+            "placeholder": "Input old password"
+          },
+          "new_password": {
+            "label": "New password",
+            "placeholder": "Input new password"
+          },
+          "new_password_confirmation": {
+            "label": "New password confirmation",
+            "placeholder": "Repeat new password"
+          }
+        },
+        "password_dont_match": "password confirmation does not match",
+        "generated_at": "Generated at: {date}",
+        "not_yet_generated": "Not yet generated"
       },
       "sessions": {
         "meta": {
