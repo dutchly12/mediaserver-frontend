@@ -97,6 +97,10 @@ export const useUserStore = defineStore('user', () => {
     }
   };
 
+  const deletePasskey = () => {
+    return api.passkey.destroy();
+  };
+
   return {
     accessToken,
     refreshToken,
@@ -110,5 +114,6 @@ export const useUserStore = defineStore('user', () => {
     refresh,
     signOut,
     createPasskey,
+    deletePasskey,
   };
 });

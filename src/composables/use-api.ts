@@ -26,8 +26,10 @@ export const useApi = (): Api => {
         },
       },
       passkey: {
+        one: () => axios('/v1/passkey', { method: 'get' }),
         options: () => axios('/v1/passkey/options', { method: 'post' }),
         store: (data) => axios('/v1/passkey', { method: 'post', data }),
+        destroy: () => axios('/v1/passkey', { method: 'delete' }),
       },
       people: {
         list: () => axios('/v1/people', { method: 'get' }),

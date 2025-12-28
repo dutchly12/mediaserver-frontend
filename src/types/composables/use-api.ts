@@ -25,6 +25,7 @@ import type {
 } from '@/types/model/person';
 import type { Tag, TagCreateRequestData, TagUpdateRequestData } from '@/types/model/tag';
 import type { PaginationMeta } from '@/types/common';
+import type { Passkey } from '@/types/model/passkey';
 
 interface PaginatedData<T> {
   items: T[];
@@ -48,8 +49,10 @@ export interface Api {
     };
   };
   passkey: {
+    one: () => Response<Passkey | null>;
     options: () => Response<PublicKeyCredentialCreationOptionsJSON>;
     store: (data: PublicKeyCredentialJSON) => Response<void>;
+    destroy: () => Response<void>;
   };
   people: {
     list: () => Response<Person[]>;

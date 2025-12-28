@@ -2,11 +2,10 @@
 import { useI18n } from 'vue-i18n';
 import { useHead } from '@unhead/vue';
 import { useLayout } from '@/composables/use-layout';
-import { useUserStore } from '@/stores/user';
-import { Button } from '@/components/ui/button';
+import ProfilePasswordForm from '@/components/profile/ProfilePasswordForm.vue';
+import ProfilePasskeyForm from '@/components/profile/ProfilePasskeyForm.vue';
 
 const { t } = useI18n();
-const userStore = useUserStore();
 
 useLayout(() => ({
   title: t('pages.profile.security.title'),
@@ -18,9 +17,9 @@ useHead(() => ({
 </script>
 
 <template>
-  <div>
-    <Button @click="userStore.createPasskey">
-      {{ $t('pages.profile.security.create_passkey') }}
-    </Button>
+  <div class="max-w-150 flex flex-col gap-4">
+    <ProfilePasswordForm />
+
+    <ProfilePasskeyForm />
   </div>
 </template>

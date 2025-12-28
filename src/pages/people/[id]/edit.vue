@@ -7,9 +7,9 @@ import { useLayout } from '@/composables/use-layout';
 import { useApi } from '@/composables/use-api';
 import { useForm } from 'vee-validate';
 import { toast } from 'vue-sonner';
-import { Input } from '@/components/ui/input';
+import { UiButton } from '@/components/ui';
+import { FormFile, FormInput } from '@/components/form';
 import type { Person, PersonUpdateRequestData } from '@/types/model/person';
-import { UiButton, UiField } from '@/components/ui';
 
 type PersonForm = PersonUpdateRequestData['person'];
 
@@ -83,22 +83,19 @@ useHead(() => ({
 
 <template>
   <div>
-    <form class="max-w-[500px] flex flex-col gap-4" @submit="updatePerson">
-      <UiField v-slot="{ field }" :label="$t('pages.people.id.edit.form.name.label')" name="name">
-        <Input
-          :placeholder="t('pages.people.id.edit.form.name.placeholder')"
-          :disabled="loading"
-          v-bind="field"
-        />
-      </UiField>
+    <form class="max-w-150 flex flex-col gap-4" @submit="updatePerson">
+      <FormInput
+        :label="$t('pages.people.id.edit.form.name.label')"
+        :placeholder="t('pages.people.id.edit.form.name.placeholder')"
+        :disabled="loading"
+        name="name"
+      />
 
-      <UiField
-        v-slot="{ field }"
+      <FormFile
         :label="$t('pages.people.id.edit.form.picture.label')"
+        :disabled="loading"
         name="picture"
-      >
-        <Input :disabled="loading" type="file" v-bind="field" />
-      </UiField>
+      />
 
       <UiButton :disabled="loading" type="submit" class="self-baseline">
         {{ $t('actions.update') }}

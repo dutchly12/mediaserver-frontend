@@ -9,13 +9,12 @@ import * as z from 'zod';
 import { toTypedSchema } from '@vee-validate/zod';
 import { useApi } from '@/composables/use-api';
 import { useUserStore } from '@/stores/user';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { UiField, UiText } from '@/components/ui';
+import { UiButton, UiText } from '@/components/ui';
+import { FormInput } from '@/components/form';
 
 const formSchema = z.object({
   email: z.email(),
-  password: z.string().min(10),
+  password: z.string(),
 });
 
 const router = useRouter();
@@ -78,43 +77,33 @@ useHead(() => ({
       {{ $t('pages.authentication.sign_in.title') }}
     </UiText>
 
-    <div class="p-6 rounded-xl border-solid border-1 border-gray flex flex-col gap-4">
+    <div class="p-6 rounded-xl border-solid border border-gray flex flex-col gap-4">
       <form class="flex flex-col gap-4" @submit="handleBaseFormSubmit">
-        <UiField
-          v-slot="{ field }"
+        <FormInput
           :label="$t('pages.authentication.sign_in.form.email.label')"
+          :placeholder="$t('pages.authentication.sign_in.form.email.placeholder')"
+          :disabled="loading"
           name="email"
-        >
-          <Input
-            v-bind="field"
-            :disabled="loading"
-            :placeholder="$t('pages.authentication.sign_in.form.email.placeholder')"
-            type="email"
-          />
-        </UiField>
+          type="email"
+        />
 
-        <UiField
-          v-slot="{ field }"
+        <FormInput
           :label="$t('pages.authentication.sign_in.form.password.label')"
+          :placeholder="$t('pages.authentication.sign_in.form.password.placeholder')"
+          :disabled="loading"
           name="password"
-        >
-          <Input
-            v-bind="field"
-            :disabled="loading"
-            :placeholder="$t('pages.authentication.sign_in.form.password.placeholder')"
-            type="password"
-          />
-        </UiField>
+          type="password"
+        />
 
-        <Button :disabled="loading" type="submit">
+        <UiButton :disabled="loading" type="submit">
           {{ $t('pages.authentication.sign_in.form.action') }}
-        </Button>
+        </UiButton>
       </form>
 
-      <Button :disabled="loading" variant="outline" @click="handlePasskeySignIn">
+      <UiButton :disabled="loading" variant="outline" @click="handlePasskeySignIn">
         <KeySquare />
         {{ $t('pages.authentication.sign_in.sign_in_with_passkey') }}
-      </Button>
+      </UiButton>
     </div>
   </div>
 </template>
