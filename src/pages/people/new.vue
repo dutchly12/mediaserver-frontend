@@ -7,8 +7,8 @@ import { useForm } from 'vee-validate';
 import { toast } from 'vue-sonner';
 import { useLayout } from '@/composables/use-layout';
 import { useApi } from '@/composables/use-api';
-import { Input } from '@/components/ui/input';
-import { UiButton, UiField } from '@/components/ui';
+import { FormFile, FormInput } from '@/components/form';
+import { UiButton } from '@/components/ui';
 import type { PersonCreateRequestData } from '@/types/model/person';
 
 type PersonForm = PersonCreateRequestData['person'];
@@ -63,18 +63,19 @@ useHead(() => ({
 </script>
 
 <template>
-  <form class="max-w-[500px] flex flex-col gap-4" @submit="savePerson">
-    <UiField v-slot="{ field }" :label="$t('pages.people.new.form.name.label')" name="name">
-      <Input
-        :placeholder="t('pages.people.new.form.name.placeholder')"
-        :disabled="loading"
-        v-bind="field"
-      />
-    </UiField>
+  <form class="max-w-150 flex flex-col gap-4" @submit="savePerson">
+    <FormInput
+      :label="$t('pages.people.new.form.name.label')"
+      :placeholder="t('pages.people.new.form.name.placeholder')"
+      :disabled="loading"
+      name="name"
+    />
 
-    <UiField v-slot="{ field }" :label="$t('pages.people.new.form.picture.label')" name="picture">
-      <Input :disabled="loading" v-bind="field" type="file" />
-    </UiField>
+    <FormFile
+      :label="$t('pages.people.new.form.picture.label')"
+      :disabled="loading"
+      name="picture"
+    />
 
     <UiButton :disabled="loading" type="submit" class="self-baseline">
       {{ $t('actions.create') }}
