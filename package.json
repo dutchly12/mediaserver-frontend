@@ -60,6 +60,6 @@
     "vite-plugin-vue-devtools": "^8.0.5",
     "vue-tsc": "^3.2.2",
     "workbox-window": "^7.4.0",
-    "wrangler": "^4.56.0"
+    "wrangler": "^4.59.0"
   }
 }
