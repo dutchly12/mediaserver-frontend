@@ -13,7 +13,7 @@ importers:
         version: 2.1.1(vue@3.5.26(typescript@5.9.3))
       '@vee-validate/zod':
         specifier: ^4.15.1
-        version: 4.15.1(vue@3.5.26(typescript@5.9.3))(zod@4.3.4)
+        version: 4.15.1(vue@3.5.26(typescript@5.9.3))(zod@4.3.5)
       '@vueuse/core':
         specifier: ^14.1.0
         version: 14.1.0(vue@3.5.26(typescript@5.9.3))
@@ -45,8 +45,8 @@ importers:
         specifier: ^2.0.9
         version: 2.0.9
       zod:
-        specifier: ^4.3.4
-        version: 4.3.4
+        specifier: ^4.3.5
+        version: 4.3.5
     devDependencies:
       '@tailwindcss/vite':
         specifier: ^4.1.18
@@ -3824,8 +3824,8 @@ packages:
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
-  zod@4.3.4:
-    resolution: {integrity: sha512-Zw/uYiiyF6pUT1qmKbZziChgNPRu+ZRneAsMUDU6IwmXdWt5JwcUfy2bvLOCUtz5UniaN/Zx5aFttZYbYc7O/A==}
+  zod@4.3.5:
+    resolution: {integrity: sha512-k7Nwx6vuWx1IJ9Bjuf4Zt1PEllcwe7cls3VNzm4CQ1/hgtFUK2bRNG3rvnpPUhFjmqJKAKtjV576KnUkHocg/g==}
 
 snapshots:
 
@@ -5425,11 +5425,11 @@ snapshots:
       unhead: 2.1.1
       vue: 3.5.26(typescript@5.9.3)
 
-  '@vee-validate/zod@4.15.1(vue@3.5.26(typescript@5.9.3))(zod@4.3.4)':
+  '@vee-validate/zod@4.15.1(vue@3.5.26(typescript@5.9.3))(zod@4.3.5)':
     dependencies:
       type-fest: 4.41.0
       vee-validate: 4.15.1(vue@3.5.26(typescript@5.9.3))
-      zod: 4.3.4
+      zod: 4.3.5
     transitivePeerDependencies:
       - vue
 
@@ -7817,4 +7817,4 @@ snapshots:
 
   zod@3.25.76: {}
 
-  zod@4.3.4: {}
+  zod@4.3.5: {}
