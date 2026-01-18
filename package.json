@@ -7,7 +7,7 @@
     "node": "24.x",
     "pnpm": "10.x"
   },
-  "packageManager": "pnpm@10.26.2+sha512.0e308ff2005fc7410366f154f625f6631ab2b16b1d2e70238444dd6ae9d630a8482d92a451144debc492416896ed16f7b114a86ec68b8404b2443869e68ffda6",
+  "packageManager": "pnpm@10.28.0+sha512.05df71d1421f21399e053fde567cea34d446fa02c76571441bfc1c7956e98e363088982d940465fd34480d4d90a0668bc12362f8aa88000a64e83d0b0e47be48",
   "scripts": {
     "dev": "vite",
     "build": "run-p types:check \"build-only {@}\" --",
@@ -37,8 +37,8 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
-    "@tsconfig/node24": "^24.0.3",
-    "@types/node": "^24.10.7",
+    "@tsconfig/node24": "^24.0.4",
+    "@types/node": "^24.10.9",
     "@vitejs/plugin-vue": "^6.0.3",
     "@vue/eslint-config-prettier": "^10.2.0",
     "@vue/eslint-config-typescript": "^14.6.0",
@@ -47,7 +47,7 @@
     "clsx": "^2.1.1",
     "eslint": "^9.39.2",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-vue": "^10.6.2",
+    "eslint-plugin-vue": "^10.7.0",
     "jiti": "^2.6.1",
     "npm-run-all2": "^8.0.4",
     "prettier": "^3.8.0",
