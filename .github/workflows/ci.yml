@@ -1,4 +1,5 @@
 name: CI
+
 on:
   pull_request:
     branches:
@@ -7,7 +8,7 @@ on:
 jobs:
   format:
     name: Check files format
-    runs-on: [self-hosted, linux, arm64]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
@@ -30,7 +31,7 @@ jobs:
 
   lint:
     name: Check code lint
-    runs-on: [self-hosted, linux, arm64]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
@@ -53,7 +54,7 @@ jobs:
 
   types:
     name: Check types
-    runs-on: [self-hosted, linux, arm64]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout

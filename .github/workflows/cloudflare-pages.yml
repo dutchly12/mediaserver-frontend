@@ -10,9 +10,8 @@ concurrency:
 
 jobs:
   publish:
-    if: ${{ github.actor != 'dependabot[bot]' }}
     name: build & publish
-    runs-on: [self-hosted, linux, arm64]
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       deployments: write
